@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n\nhtml,\nbody {\n  width: 100%;\n  height: 100%;\n  margin: 0;\n}\n\n.colorToDropdown .multiselect-dropdown {\n  background-color: #fff;\n}\n\n.pd-r-0 { padding-right: 0px; }\n\n.pd-0 { padding: 0px; }\n\n.margin-0 { margin: 0%; }\n\n.w-100 { width:100%; }\n\n.w-auto { width:auto; }\n\n.display-inline-block { display: inline-block; }\n\n.display-block { display: block; }\n\n.shadownAnimation {\n  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);   \n}\n\n.btn:hover {\n  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); \n}\n\n.font-S-Times_New_Roman-n4 {\n  font-family: \"Times New Roman\"!important;\n}\n\n.ng-element {\n  top: auto;\n  left: auto;\n  pointer-events: all;\n}\n\n.multiselectArrow {\n      border: 0 !important;             /*Removes border*/\n      -webkit-appearance: none;            /*Removes default chrome and safari style*/\n      -moz-appearance: none;             /* Removes Default Firefox style*/\n      /* background: url('dropdown_arrow.png') no-repeat;        */\n         /*Adds background-image*/\n      background-position: 82px 7px;           /*Position of the background-image*/\n      width: 100px;            /*Width of select dropdown to give space for arrow image*/\n      text-indent: 0.01px;          /* Removes default arrow from firefox*/\n      text-overflow: \"\";               /*Removes default arrow from firefox*/\n}"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n\nhtml,\nbody {\n  width: 100%;\n  height: 100%;\n  margin: 0;\n}\n\n.colorToDropdown .multiselect-dropdown {\n  background-color: #fff;\n}\n\n.pd-r-0 { padding-right: 0px; }\n\n.pd-0 { padding: 0px; }\n\n.margin-0 { margin: 0%; }\n\n.w-100 { width:100%; }\n\n.w-auto { width:auto; }\n\n.display-inline-block { display: inline-block; }\n\n.display-block { display: block; }\n\n.shadownAnimation {\n  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.3);   \n}\n\n.btn:hover {\n  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); \n}\n\n.font-S-Times_New_Roman-n4 {\n  font-family: \"Times New Roman\"!important;\n}\n\n.ng-element {\n  top: auto;\n  left: auto;\n  pointer-events: all;\n}\n\n.multiselectArrow {\n      border: 0 !important;             /*Removes border*/\n      -webkit-appearance: none;            /*Removes default chrome and safari style*/\n      -moz-appearance: none;             /* Removes Default Firefox style*/\n      /* background: url('dropdown_arrow.png') no-repeat;        */\n         /*Adds background-image*/\n      background-position: 82px 7px;           /*Position of the background-image*/\n      width: 100px;            /*Width of select dropdown to give space for arrow image*/\n      text-indent: 0.01px;          /* Removes default arrow from firefox*/\n      text-overflow: \"\";               /*Removes default arrow from firefox*/\n}\n\n.material-icons {\n  color: rgb(22, 70, 142);\n}"
 
 /***/ }),
 
@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\Milandeep\Dealer Locator\UI App\new\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! C:\Milandeep\Dealer Locator\UI App\new\src\styles.css */"./src/styles.css");
 
 
 /***/ })

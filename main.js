@@ -36,7 +36,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -46,18 +45,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
 var routes = [
-    {
-        path: '', redirectTo: 'AppComponent', pathMatch: 'full'
-    },
-    {
-        path: 'home',
-        component: _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]
-    },
-    {
-        path: '**', component: _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_3__["PageNotFoundComponent"]
-    }
+    { path: '', component: _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"] },
+    { path: 'home', component: _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"] },
+    { path: '**', redirectTo: 'PageNotFoundComponent' }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -93,7 +84,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<!-- <app-myfrontpage></app-myfrontpage> -->\n<!-- <app-map>Hiii</app-map> -->\n\n<!-- <app-login></app-login> -->\n \n<!-- <router-outlet></router-outlet> -->\n\n<app-header></app-header>\n<app-contentpage></app-contentpage>\n<app-dealerlist></app-dealerlist>\n<app-footer></app-footer>\n\n<ng4-loading-spinner></ng4-loading-spinner>\n<!-- <router-outlet></router-outlet> -->"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<!-- <app-myfrontpage></app-myfrontpage> -->\n<!-- <app-map>Hiii</app-map> -->\n\n<!-- <app-login></app-login> -->\n \n<!-- <router-outlet></router-outlet> -->\n \n<app-header></app-header>\n<app-contentpage></app-contentpage>\n<app-dealerlist></app-dealerlist>\n<app-footer></app-footer>\n\n<ng4-loading-spinner></ng4-loading-spinner>\n<!-- <router-outlet></router-outlet> -->"
 
 /***/ }),
 
@@ -163,12 +154,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_16__);
 /* harmony import */ var _dealerlist_google_places_directive__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./dealerlist/google-places.directive */ "./src/app/dealerlist/google-places.directive.ts");
 /* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
+/* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ngx-bootstrap/modal */ "./node_modules/ngx-bootstrap/modal/fesm5/ngx-bootstrap-modal.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -205,13 +199,13 @@ var AppModule = /** @class */ (function () {
                 _dealerlist_google_places_directive__WEBPACK_IMPORTED_MODULE_17__["GooglePlacesDirective"],
                 _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_18__["PageNotFoundComponent"]
             ],
-            imports: [_app_routing_module__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"],
+            imports: [_app_routing_module__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"], ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_19__["ModalModule"].forRoot(),
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"], _agm_core__WEBPACK_IMPORTED_MODULE_10__["AgmCoreModule"].forRoot({
                 // apiKey: 'AIzaSyCU3uiVhTEmbOIjw84jKPhi_Jo0K66zQCs'  //'AIzaSyDHZiHDIg4O8JlhWG07u-8bjsdP_6tnqaw'//'AIzaSyAQIM4bPOWHTrGjbad_TBHMTld7txdtuew'  // 'AIzaSyAhpG4sth-EFJH37leaUpeo5Q1ZzC1UZ34'//AIzaSyDHZiHDIg4O8JlhWG07u-8bjsdP_6tnqaw
                 }), agm_direction__WEBPACK_IMPORTED_MODULE_11__["AgmDirectionModule"], ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_12__["NgMultiSelectDropDownModule"].forRoot(), _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClientModule"], ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_16__["Ng4LoadingSpinnerModule"].forRoot()
             ],
-            providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
+            providers: [ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_19__["ModalModule"]],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]],
         })
     ], AppModule);
     return AppModule;
@@ -250,7 +244,7 @@ var AllRegions = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".imageClass{\r\n    background-image: url(\r\n        https://s3.amazonaws.com/upload.uxpin/files/913027/903263/carrier-transicold-trailer-refrigeration-unit-keeps-food-safe-during-transport-1280x720-f49fba.jpg\r\n        );\r\n        height: 400px;\r\n        background-size: cover; \r\n        background-repeat: repeat; \r\n        background-position: center center; \r\n        width: auto;\r\n} \r\n\r\n.transparentSection{  \r\n    height: 130px;\r\n    opacity: 1;\r\n    mix-blend-mode: normal;\r\n    padding: 0px;\r\n    border-width: 0px;\r\n    border-radius: 0px;\r\n    border-color: rgb(102, 102, 102);\r\n    border-style: solid;\r\n    background-color: rgba(0, 51, 171, 0.88);\r\n    background-image: none;\r\n    background-size: cover;\r\n    background-repeat: repeat;\r\n    background-position: center center;    \r\n    position: relative;\r\n    margin-top:-130px;   \r\n    width: 96%; \r\n    margin-left: 2%; \r\n    margin-right: 2%;\r\n \r\n} \r\n\r\n.transparentSectionText{        \r\n   opacity: 1;\r\n   mix-blend-mode: normal;\r\n   color: rgb(255, 255, 255);\r\n   font-size: 49px;\r\n   font-weight: normal;\r\n   font-style: normal;\r\n   text-decoration: none;\r\n   text-align: center;\r\n   padding-top: 20px;\r\n  \r\n} \r\n\r\n@media only screen and (max-width:768px){\r\n    /* for mobile */\r\n    .transparentSectionText{\r\n        font-size: 33px;\r\n        padding-top: 10px;\r\n    };\r\n   } \r\n\r\n@media only screen and (max-width:320px){\r\n    /* for mobile */\r\n    .transparentSectionText{\r\n        font-size:28px;\r\n    };\r\n   } \r\n\r\n@media only screen and (min-width:425px) and (max-width:768px){\r\n    /* for tablet or ipad both view */\r\n    .transparentSectionText{\r\n        padding-top:35px;\r\n     };\r\n   } \r\n\r\n@media only screen and (min-width:1024px){\r\n            /* for desktop  */\r\n         /*   .transparentSectionText{font-size: 49px};*/\r\n   } \r\n\r\n.seachDealersWrapperClass{\r\n    background-color: #f0f0f0;\r\n    width: auto;\r\n    height: auto;\r\n} \r\n\r\n.seachDealersClass {\r\n     display: block;    \r\n     opacity: 1;\r\n     mix-blend-mode: normal;\r\n     padding: 0px; \r\n     border-width: 0px; \r\n     border-radius: 0px; \r\n     border-color: rgb(102, 102, 102); \r\n     border-style: solid; \r\n     background-color: #ffffff; \r\n     background-image: none; \r\n     background-size: cover; \r\n     background-repeat: repeat; \r\n     background-position: center center; \r\n     width: auto; \r\n     height: auto;    \r\n    margin-left: 2%;  \r\n    margin-right: 2%; \r\n} \r\n\r\n.font-G-a9qp4vvmdw-n4{\r\n    font-family: G-Roboto-n4, Arial !important;\r\n} \r\n\r\n.allRegionsClass {     \r\n    background-color: #ffffff;\r\n    width: 100%;   \r\n    mix-blend-mode: normal; \r\n    color: rgb(51, 51, 51); \r\n    border-width: 1px; \r\n    border-color: rgb(153, 153, 153); \r\n    border-style: solid; \r\n    border-radius: 4px; \r\n    font-size: 16px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-align: left;\r\n    text-align-last: left;   \r\n} \r\n\r\n/*  class for row */ \r\n\r\n.searchDealer {\r\n    max-width: 960px;\r\n    margin: 0 auto;\r\n    padding-top: 20px;\r\n} \r\n\r\n/* End  Class*/ \r\n\r\n.selectCityClass{    \r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    background-color: rgb(255, 255, 255); \r\n    border-color: rgb(153, 153, 153); \r\n    border-width: 1px; \r\n    color: rgb(51, 51, 51); \r\n    font-size: 16px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    border-radius: 4px; \r\n    border-style: solid; \r\n    background-image: none; \r\n    background-size: auto; \r\n    background-repeat: repeat; \r\n    background-position: center center; \r\n    width: 98%; \r\n    margin: 0 0% 0 0%;\r\n    padding-left: 0;\r\n    vertical-align: top;\r\n    padding: 20px;\r\n} \r\n\r\n@media (max-width:700px) {\r\n    .allDropdownWrapperClass { min-width: 30%;}\r\n  } \r\n\r\n@media (max-width:900px) {  \r\n    .allDropdownWrapperClass { min-width: 30%;}\r\n  } \r\n\r\n.btnSearchClass{\r\n    color: rgb(255, 255, 255); \r\n   text-align: center; \r\n   background-color: rgb(0, 51, 171);\r\n   min-height: 4.5rem;\r\n   min-width: 30px;\r\n   width:10%;\r\n   margin: 0% 0% 0% 2%;  \r\n   border-width: 0px; \r\n   border-radius: 4px; \r\n   border-color: rgb(102, 102, 102); \r\n   border-style: solid;\r\n} \r\n\r\n.linkCompleteDealerList{\r\n    text-align: center;\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    font-size: 16px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: underline;  \r\n    height: 19px; \r\n     color:black;\r\n     cursor: pointer;\r\n     margin: 2% 0 2% 0px;\r\n     -webkit-text-decoration: none solid rgb(192,192,192);\r\n             text-decoration: none solid rgb(192,192,192);\r\n} \r\n\r\n.linkCompleteDealerList:hover{\r\n    color: blue;\r\n} \r\n\r\n.advanceSearchWrapperClass{\r\n    background-color: rgb(240, 240, 240);\r\n} \r\n\r\n.advanceSearchClass\r\n{   \r\n    width: auto; \r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    padding: 0px;\r\n    border-width: 0px; \r\n    border-radius: 0px; \r\n    border-color: rgb(102, 102, 102); \r\n    border-style: solid;  \r\n    background-image: none; \r\n    background-size: cover; \r\n    background-repeat: repeat; \r\n    background-position: center center;  \r\n} \r\n\r\n.svgAdvanceSeachImageWrapperClass{\r\n    margin-left: 1%;\r\n    padding: 1%;\r\n    height: auto ;\r\n    /* margin-right:10%; */\r\n} \r\n\r\n.svgAdvanceSeachImageClass{\r\n    float: left;\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    fill: rgb(51, 51, 51); \r\n    width: 20px; \r\n    height: 2%;\r\n} \r\n\r\n.AdvanceSeachTextHeadingClass{\r\n    display: inline-block;\r\n      margin: 1% 0px 0 0%;     \r\n} \r\n\r\n.allDropdownWrapperClass{\r\n    display: inline-block;\r\n    padding: 1%;\r\n} \r\n\r\n.allDropdownClass{\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    color: rgb(0, 0, 0); \r\n    border-width: 0px; \r\n    border-color: rgb(102, 102, 102); \r\n    border-style: solid; \r\n    border-radius: 4px; \r\n    font-size: 12px; \r\n    font-weight: normal; \r\n    font-style: normal; text-align: left; \r\n    text-align-last: left; \r\n    background-color: rgb(255, 255, 255);\r\n    /* box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 2px 0px inset;  */\r\n    \r\n} \r\n\r\n.allDropdownAdditional{\r\n    width:100%; \r\n    height: 32px;\r\n    border: 1px solid #adadad;\r\n} \r\n\r\n.textboxClass{\r\n    margin: 0 0 0 0;\r\n    width:100%;\r\n    height:3.5rem;\r\n    border-color: rgb(102, 102, 102); \r\n    border-radius: 4px; \r\n} \r\n\r\n.checkboxDropdown {\r\n    background-color: #ffffff;\r\n    width:34%;\r\n    margin :0 0 0 55%;\r\n    background:none;\r\n} \r\n\r\n.advanceSearch {\r\n    padding-left: 10px;\r\n    padding-top: 20px;\r\n} \r\n\r\n.show_more{\r\n    color: rgb(21, 98, 207);\r\n    font-size: 14px;\r\n    font-weight: bold;\r\n    line-height: 30px;\r\n} \r\n\r\n@media (max-width: 420px) {\r\n        .searchDealer *.col-xs-4 {\r\n            width: 100%;\r\n            padding-right: 15px;\r\n            padding-bottom: 10px;\r\n        }\r\n        .searchDealer *.col-xs-8 {\r\n            width: 100%;\r\n        }\r\n    } \r\n\r\n@media(max-width: 480px) {\r\n    .advanceSearch .col-xs-4 {\r\n        width: 100%;\r\n    }\r\n} \r\n\r\n@media (min-width: 720px) {\r\n    .advanceSearch .col-sm-4 {\r\n        width: 29%;\r\n    }\r\n\r\n    .advanceSearch .col-sm-3 {\r\n        width: 25%;\r\n    }\r\n\r\n    .advanceSearch .col-sm-3 {\r\n        width: 25%;\r\n    }\r\n} \r\n\r\n@media (max-width: 930px) {\r\n    .advanceSearch .col-sm-2 {\r\n        width: 100%;\r\n    }\r\n} \r\n\r\n.search-city-input{\r\n    width:85%;\r\n} \r\n\r\n.search-btn{\r\n    width:15%;\r\n} \r\n\r\n.btnSearchClass{\r\n    width: 100%; \r\n    text-transform: uppercase;\r\n} \r\n\r\nselect.allRegionsClass{\r\n    color: rgb(51, 51, 51);\r\n  } \r\n\r\n/* select.allRegionsClass option { color: black; } */ \r\n\r\nselect.allRegionsClass option:first-child{\r\n    color: rgb(51, 51, 51);\r\n  } \r\n\r\nselect.allRegionsClass:hover,input.selectCityClass:hover,button.btnSearchClass:hover{\r\n    box-shadow: 0px 2px 2px 0px rgb(51,51,51);\r\n  } \r\n\r\n.linkCompleteDealerList{\r\n     text-decoration:underline;\r\n } \r\n\r\n.dropdown-btn{\r\n    border:none !important;\r\n    border-radius:2px;\r\n } \r\n\r\n@media (max-width: 991px) and (min-width: 320px){\r\n        .visible-sm-search{\r\n            display: block !important;\r\n            background-color: rgb(0, 51, 171);\r\n            color: #fff;\r\n            height: 4.3rem;\r\n        }\r\n    } \r\n\r\n@media (max-width: 768px) and (min-width: 320px){\r\n        .visible-lg-search{\r\n            display:none !important;\r\n        }\r\n\r\n    } \r\n\r\n@media  (min-width: 769px){\r\n        .visible-sm-search{\r\n            display:none !important;\r\n         }\r\n    } \r\n\r\n.arrow-icon{\r\n     font-weight: bold;\r\n    color: rgb(21, 98, 207);\r\n    margin-top: 0px;\r\n    position: relative;\r\n    top: 6px;\r\n    }"
+module.exports = ".imageClass{\r\n    background-image: url(\r\n        https://s3.amazonaws.com/upload.uxpin/files/913027/903263/carrier-transicold-trailer-refrigeration-unit-keeps-food-safe-during-transport-1280x720-f49fba.jpg\r\n        );\r\n        height: 400px;\r\n        background-size: cover; \r\n        background-repeat: repeat; \r\n        background-position: center center; \r\n        width: auto;\r\n} \r\n\r\n.transparentSection{  \r\n    height: 130px;\r\n    opacity: 1;\r\n    mix-blend-mode: normal;\r\n    padding: 0px;\r\n    border-width: 0px;\r\n    border-radius: 0px;\r\n    border-color: rgb(102, 102, 102);\r\n    border-style: solid;\r\n    background-color: rgba(0, 51, 171, 0.88);\r\n    background-image: none;\r\n    background-size: cover;\r\n    background-repeat: repeat;\r\n    background-position: center center;    \r\n    position: relative;\r\n    margin-top:-130px;   \r\n    width: 96%; \r\n    margin-left: 2%; \r\n    margin-right: 2%;\r\n \r\n} \r\n\r\n.transparentSectionText{        \r\n   opacity: 1;\r\n   mix-blend-mode: normal;\r\n   color: rgb(255, 255, 255);\r\n   font-size: 49px;\r\n   font-weight: normal;\r\n   font-style: normal;\r\n   text-decoration: none;\r\n   text-align: center;\r\n   padding-top: 20px;\r\n  \r\n} \r\n\r\n@media only screen and (max-width:768px){\r\n    /* for mobile */\r\n    .transparentSectionText{\r\n        font-size: 33px;\r\n        padding-top: 10px;\r\n    };\r\n   } \r\n\r\n@media only screen and (max-width:320px){\r\n    /* for mobile */\r\n    .transparentSectionText{\r\n        font-size:28px;\r\n    };\r\n   } \r\n\r\n@media only screen and (min-width:425px) and (max-width:768px){\r\n    /* for tablet or ipad both view */\r\n    .transparentSectionText{\r\n        padding-top:35px;\r\n     };\r\n   } \r\n\r\n@media only screen and (min-width:1024px){\r\n            /* for desktop  */\r\n         /*   .transparentSectionText{font-size: 49px};*/\r\n   } \r\n\r\n.seachDealersWrapperClass{\r\n    background-color: #f0f0f0;\r\n    width: auto;\r\n    height: auto;\r\n} \r\n\r\n.seachDealersClass {\r\n     display: block;    \r\n     opacity: 1;\r\n     mix-blend-mode: normal;\r\n     padding: 0px; \r\n     border-width: 0px; \r\n     border-radius: 0px; \r\n     border-color: rgb(102, 102, 102); \r\n     border-style: solid; \r\n     background-color: #ffffff; \r\n     background-image: none; \r\n     background-size: cover; \r\n     background-repeat: repeat; \r\n     background-position: center center; \r\n     width: auto; \r\n     height: auto;    \r\n    margin-left: 2%;  \r\n    margin-right: 2%; \r\n} \r\n\r\n.font-G-a9qp4vvmdw-n4{\r\n    font-family: G-Roboto-n4, Arial !important;\r\n} \r\n\r\n.allRegionsClass {     \r\n    background-color: #ffffff;\r\n    width: 100%;   \r\n    mix-blend-mode: normal; \r\n    color: rgb(51, 51, 51); \r\n    border-width: 1px; \r\n    border-color: rgb(153, 153, 153); \r\n    border-style: solid; \r\n    border-radius: 4px; \r\n    font-size: 16px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-align: left;\r\n    text-align-last: left;  \r\n    cursor: pointer; \r\n} \r\n\r\n/*  class for row */ \r\n\r\n.searchDealer {\r\n    max-width: 960px;\r\n    margin: 0 auto;\r\n    padding-top: 20px;\r\n} \r\n\r\n/* End  Class*/ \r\n\r\n.selectCityClass{    \r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    background-color: rgb(255, 255, 255); \r\n    border-color: rgb(153, 153, 153); \r\n    border-width: 1px; \r\n    color: rgb(51, 51, 51); \r\n    font-size: 16px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    border-radius: 4px; \r\n    border-style: solid; \r\n    background-image: none; \r\n    background-size: auto; \r\n    background-repeat: repeat; \r\n    background-position: center center; \r\n    width: 98%; \r\n    margin: 0 0% 0 0%;\r\n    padding-left: 0;\r\n    vertical-align: top;\r\n    padding: 20px;\r\n} \r\n\r\n@media (max-width:700px) {\r\n    .allDropdownWrapperClass { min-width: 30%;}\r\n  } \r\n\r\n@media (max-width:900px) {  \r\n    .allDropdownWrapperClass { min-width: 30%;}\r\n  } \r\n\r\n.btnSearchClass{\r\n    color: rgb(255, 255, 255); \r\n   text-align: center; \r\n   background-color: rgb(0, 51, 171);\r\n   min-height: 4.5rem;\r\n   min-width: 30px;\r\n   width:10%;\r\n   margin: 0% 0% 0% 2%;  \r\n   border-width: 0px; \r\n   border-radius: 4px; \r\n   border-color: rgb(102, 102, 102); \r\n   border-style: solid;\r\n} \r\n\r\n.linkCompleteDealerList{\r\n    text-align: center;\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    font-size: 16px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: underline;  \r\n    height: 19px; \r\n     color:black;\r\n     cursor: pointer;\r\n     margin: 2% 0 2% 0px;\r\n     -webkit-text-decoration: none solid rgb(192,192,192);\r\n             text-decoration: none solid rgb(192,192,192);\r\n} \r\n\r\n.linkCompleteDealerList:hover{\r\n    color: blue;\r\n} \r\n\r\n.advanceSearchWrapperClass{\r\n    background-color: rgb(240, 240, 240);\r\n} \r\n\r\n.advanceSearchClass\r\n{   \r\n    width: auto; \r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    padding: 0px;\r\n    border-width: 0px; \r\n    border-radius: 0px; \r\n    border-color: rgb(102, 102, 102); \r\n    border-style: solid;  \r\n    background-image: none; \r\n    background-size: cover; \r\n    background-repeat: repeat; \r\n    background-position: center center;  \r\n} \r\n\r\n.svgAdvanceSeachImageWrapperClass{\r\n    margin-left: 1%;\r\n    padding: 1%;\r\n    height: auto ;\r\n    /* margin-right:10%; */\r\n} \r\n\r\n.svgAdvanceSeachImageClass{\r\n    float: left;\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    fill: rgb(51, 51, 51); \r\n    width: 20px; \r\n    height: 2%;\r\n} \r\n\r\n.AdvanceSeachTextHeadingClass{\r\n    display: inline-block;\r\n      margin: 1% 0px 0 0%;     \r\n} \r\n\r\n.allDropdownWrapperClass{\r\n    display: inline-block;\r\n    padding: 1%;\r\n} \r\n\r\n.allDropdownClass{\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    color: rgb(0, 0, 0); \r\n    border-width: 0px; \r\n    border-color: rgb(102, 102, 102); \r\n    border-style: solid; \r\n    border-radius: 4px; \r\n    font-size: 12px; \r\n    font-weight: normal; \r\n    font-style: normal; text-align: left; \r\n    text-align-last: left; \r\n    background-color: rgb(255, 255, 255);\r\n    cursor: pointer;\r\n    /* box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 2px 0px inset;  */\r\n    \r\n} \r\n\r\n.allDropdownAdditional{\r\n    width:100%; \r\n    height: 32px;\r\n    border: 1px solid #adadad;\r\n} \r\n\r\n.textboxClass{\r\n    margin: 0 0 0 0;\r\n    width:100%;\r\n    height:3.5rem;\r\n    border-color: rgb(102, 102, 102); \r\n    border-radius: 4px; \r\n} \r\n\r\n.checkboxDropdown {\r\n    background-color: #ffffff;\r\n    width:34%;\r\n    margin :0 0 0 55%;\r\n    background:none;\r\n} \r\n\r\n.advanceSearch {\r\n    padding-left: 10px;\r\n    padding-top: 20px;\r\n} \r\n\r\n.show_more{\r\n    color: rgb(21, 98, 207);\r\n    font-size: 14px;\r\n    font-weight: bold;\r\n    line-height: 30px;\r\n    cursor: pointer;\r\n} \r\n\r\n@media (max-width: 420px) {\r\n        .searchDealer *.col-xs-4 {\r\n            width: 100%;\r\n            padding-right: 15px;\r\n            padding-bottom: 10px;\r\n        }\r\n        .searchDealer *.col-xs-8 {\r\n            width: 100%;\r\n        }\r\n    } \r\n\r\n@media(max-width: 480px) {\r\n    .advanceSearch .col-xs-4 {\r\n        width: 100%;\r\n    }\r\n} \r\n\r\n@media (min-width: 720px) {\r\n    .advanceSearch .col-sm-4 {\r\n        width: 29%;\r\n    }\r\n\r\n    .advanceSearch .col-sm-3 {\r\n        width: 25%;\r\n    }\r\n\r\n    .advanceSearch .col-sm-3 {\r\n        width: 25%;\r\n    }\r\n} \r\n\r\n@media (max-width: 930px) {\r\n    .advanceSearch .col-sm-2 {\r\n        width: 100%;\r\n    }\r\n} \r\n\r\n.search-city-input{\r\n    width:85%;\r\n} \r\n\r\n.search-btn{\r\n    width:15%;\r\n} \r\n\r\n.btnSearchClass{\r\n    width: 100%; \r\n    text-transform: uppercase;\r\n} \r\n\r\nselect.allRegionsClass{\r\n    color: rgb(51, 51, 51);\r\n  } \r\n\r\n/* select.allRegionsClass option { color: black; } */ \r\n\r\nselect.allRegionsClass option:first-child{\r\n    color: rgb(51, 51, 51);\r\n  } \r\n\r\nselect.allRegionsClass:hover,input.selectCityClass:hover,button.btnSearchClass:hover{\r\n    box-shadow: 0px 2px 2px 0px rgb(51,51,51);\r\n  } \r\n\r\n.linkCompleteDealerList{\r\n     text-decoration:underline;\r\n } \r\n\r\n.dropdown-btn{\r\n    border:none !important;\r\n    border-radius:2px;\r\n } \r\n\r\n@media (max-width: 991px) and (min-width: 320px){\r\n        .visible-sm-search{\r\n            display: block !important;\r\n            background-color: rgb(0, 51, 171);\r\n            color: #fff;\r\n            height: 4.3rem;\r\n        }\r\n    } \r\n\r\n@media (max-width: 768px) and (min-width: 320px){\r\n        .visible-lg-search{\r\n            display:none !important;\r\n        }\r\n\r\n    } \r\n\r\n@media  (min-width: 769px){\r\n        .visible-sm-search{\r\n            display:none !important;\r\n         }\r\n    } \r\n\r\n.arrow-icon{\r\n     font-weight: bold;\r\n    color: rgb(21, 98, 207);\r\n    margin-top: 0px;\r\n    position: relative;\r\n    top: 6px;\r\n    }"
 
 /***/ }),
 
@@ -261,7 +255,7 @@ module.exports = ".imageClass{\r\n    background-image: url(\r\n        https://
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"imageClass shadownAnimation\">\r\n</div>\r\n<div class=\"row transparentSection\">\r\n    <div class=\"col-xs ng-element transparentSectionText font-S-Times_New_Roman-n4\">\r\n      Carrier Transicold's Truck Trailer Dealer Locator  </div>\r\n</div>\r\n    <div class=\"seachDealersWrapperClass\">\r\n        <div class=\"seachDealersClass\">\r\n            <div class=\"row searchDealer\" [ngClass]=\"flagAdvanceSearch ? 'show' : 'hide'\">\r\n                <div class=\"col-xs-3 pd-r-0 col-md-3\">\r\n                    <select #Region  class=\"font-G-a9qp4vvmdw-n4 allRegionsClass input-lg\"> \r\n                        <!-- <option value=\"null\" style=\"color:rgb(51, 51, 51);\">All Regions</option>                             -->\r\n                            <option *ngFor=\"let region of _allRegionsList\" value={{region.id}}>\r\n                          {{region.name}}\r\n                            </option>\r\n                    </select>\r\n                </div>\r\n    \r\n                <div class=\"col-xs-9 col-md-9\">\r\n                    <div class=\"search-city\">\r\n                        <div class=\"pull-left search-city-input\">\r\n                             <input google-place #searchText  class=\"selectCityClass input-lg\"\r\n                              placeholder=\"Enter City name or Postal code\"\r\n                              (onSelect)=\"setAddress($event)\"\r\n                              />\r\n                        </div>\r\n                        <!-- <ul style=\"list-style-type: none;\">\r\n                                <li *ngFor=\"let key of addrKeys\">\r\n                                  <span style=\"font-weight: bold\">{{key}}</span>: <span>{{addr[key]}}</span>\r\n                                </li>\r\n                              </ul> -->\r\n\r\n                    <div class=\"pull-right search-btn\">\r\n                    <button type=\"button\" class=\"btn btnSearchClass visible-lg-search show\" (click)=\"onSerchClick(searchText.value,Region.value,distanceDropdown.value,dealerServices.value,userLoclat,userLoclng)\">Search</button>\r\n                    <button type=\"button\" class=\"btn visible-sm-search hide glyphicon glyphicon-search\" (click)=\"onSerchClick(searchText.value,Region.value,distanceDropdown.value,dealerServices.value,userLoclat,userLoclng)\"></button>\r\n                    </div>\r\n                    <div class=\"clearfix\"></div>\r\n                    </div>\r\n                </div>\r\n                </div>\r\n    \r\n            <div>\r\n                <p class=\"linkCompleteDealerList\" (click)=\"toggleFilter()\">See The Complete Dealer List\r\n                </p>\r\n            </div>\r\n    \r\n            <div class=\"advanceSearchWrapperClass shadownAnimation\">\r\n                <div class=\"advanceSearchClass\">\r\n                    <div class=\"row advanceSearch\">\r\n                            <div class=\"form-group col-xs-4 col-sm-2\">\r\n                                    <svg version=\"1.2\" preserveAspectRatio=\"none\" viewBox=\"0 0 24 24\" class=\"svgAdvanceSeachImageClass\">\r\n                                        <g>\r\n                                            <path xmlns:default=\"http://www.w3.org/2000/svg\" d=\"M10,18h4v-2h-4V18z M3,6v2h18V6H3z M6,13h12v-2H6V13z\" \r\n                                            style=\"fill: rgb(51, 51, 51);\"></path>\r\n                                        </g>\r\n                                    </svg>\r\n                                    <div class=\"AdvanceSeachTextHeadingClass font-weight-bold\">Advance Search</div>\r\n                                </div>\r\n                    \r\n                    <div [ngClass]=\"flagAdvanceSearch ? 'hide' : 'show'\">\r\n                     <div class=\"form-group col-sm-2\">\r\n                        <select #rgn (change)=\"onDropdownChange(rgn.value)\" class=\"allDropdownClass allDropdownAdditional shadownAnimation\">                                  \r\n                                <option *ngFor=\"let region of _allRegionsList\" value={{region.id}}>\r\n                                        {{region.name}}\r\n                                    </option>\r\n                        </select>                               \r\n                    </div>\r\n                    <div class=\"form-group col-sm-2\">\r\n                        <ng-multiselect-dropdown class=\"allDropdownClass colorToDropdown shadownAnimation\" \r\n                        [placeholder]=\"'All States'\" \r\n                        [data]=\"filteredStates\" \r\n                        [settings]=\"dropdownSettings\" \r\n                        (onSelect)=\"onItemSelect($event)\" \r\n                        (onSelectAll)=\"onSelectAll($event)\">\r\n                        </ng-multiselect-dropdown>\r\n                    </div>\r\n                    <div class=\"form-group col-sm-2\">\r\n                        <ng-multiselect-dropdown class=\"allDropdownClass colorToDropdown shadownAnimation\" \r\n                        [placeholder]=\"'All Cities'\" \r\n                        [data]=\"filterdCities\" \r\n                        [settings]=\"dropdownSettings\" \r\n                        (onSelect)=\"onItemSelect($event)\" \r\n                        (onSelectAll)=\"onSelectAll($event)\">\r\n                        </ng-multiselect-dropdown>\r\n    \r\n                    </div>\r\n\r\n\r\n\r\n                    <div class=\"form-group col-sm-2\" >                           \r\n                        <input class=\"input-md textboxClass\" placeholder=\"Postal Code\"  style=\"border: 1px solid #adadad;padding: 6px 12px 6px 12px\">\r\n                    </div>\r\n                    <div class=\"form-group col-sm-2\" >                           \r\n                        <span class=\"arrow-icon\"><i class=\"material-icons\">KDown </i> </span> <span class=\"show_more\" (click)=\"toggleFilter(true)\"> {{!isAdvFilter ? 'Show More Filters' : \"Hide Filters\"}}</span>\r\n                    </div> \r\n                    \r\n                    </div>\r\n\r\n                    <!-- <div class=\"col-sm-8\" [ngClass]=\"{'col-sm-offset-1': flagAdvanceSearch, 'col-sm-offset-3': !flagAdvanceSearch, 'show' : isAdvFilter, 'hide' : !isAdvFilter}\"> -->\r\n                            <div class=\"col-sm-8\" [ngClass]=\"{'col-sm-offset-1': flagAdvanceSearch, 'col-sm-offset-3': !flagAdvanceSearch, 'show' : isAdvFilter, 'hide' : !isAdvFilter, 'show':flagAdvanceSearch}\">\r\n                        <div class=\"form-group col-xs-6 col-sm-5\">\r\n                            <select #distanceDropdown class=\"form-control allDropdownClass shadownAnimation\" >\r\n                                <option value=\"1\">Distance (In miles)</option>\r\n                                <option value=\"2\">10</option>\r\n                                <option value=\"3\">20</option>\r\n                                <option value=\"4\">30</option>\r\n                                <option value=\"5\">40</option>\r\n                                <option value=\"6\">50</option>\r\n                            </select>\r\n                        </div>\r\n    \r\n                        <div  class=\"form-group col-xs-6 col-sm-5\">\r\n                            <ng-multiselect-dropdown #dealerServices\r\n                            class=\"allDropdownClass colorToDropdown shadownAnimation multiselectArrow\" \r\n                            [placeholder]=\"'All Dealer Services'\" \r\n                            [data]=\"serviceType\" \r\n                            [settings]=\"dropdownSettings\" \r\n                            (onSelect)=\"onItemSelect($event)\" \r\n                            (onSelectAll)=\"onSelectAll($event)\">\r\n                            </ng-multiselect-dropdown>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                </div>\r\n    \r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n     \r\n    \r\n    "
+module.exports = "<div class=\"imageClass shadownAnimation\">\r\n</div>\r\n<div class=\"row transparentSection\">\r\n    <div class=\"col-xs ng-element transparentSectionText font-S-Times_New_Roman-n4\">\r\n      Carrier Transicold's Truck Trailer Dealer Locator  </div>\r\n</div>\r\n    <div class=\"seachDealersWrapperClass\">\r\n        <div class=\"seachDealersClass\">\r\n            <div class=\"row searchDealer\" [ngClass]=\"flagAdvanceSearch ? 'show' : 'hide'\">\r\n                <div class=\"col-xs-3 pd-r-0 col-md-3\">\r\n                    <select  [(ngModel)]=\"selectedRegion\" #Region  class=\"font-G-a9qp4vvmdw-n4 allRegionsClass input-lg\"> \r\n                        <!-- <option value=\"null\" style=\"color:rgb(51, 51, 51);\">All Regions</option>                             -->\r\n                            <option *ngFor=\"let region of _allRegionsList\" value={{region.id}}>\r\n                          {{region.name}}\r\n                            </option>\r\n                    </select>\r\n                </div>\r\n    \r\n                <div class=\"col-xs-9 col-md-9\">\r\n                    <div class=\"search-city\">\r\n                        <div class=\"pull-left search-city-input\">\r\n                             <input google-place #searchText  class=\"selectCityClass input-lg\"\r\n                              placeholder=\"Enter City name or Postal code\"\r\n                              (onSelect)=\"setAddress($event)\"\r\n                              />\r\n                        </div>\r\n                        <!-- <ul style=\"list-style-type: none;\">\r\n                                <li *ngFor=\"let key of addrKeys\">\r\n                                  <span style=\"font-weight: bold\">{{key}}</span>: <span>{{addr[key]}}</span>\r\n                                </li>\r\n                              </ul> -->\r\n\r\n                    <div class=\"pull-right search-btn\">\r\n                    <button type=\"button\" class=\"btn btnSearchClass visible-lg-search show\"             (click)=\"onSerchClick(searchText.value,Region.value,distanceDropdown.value,dealerServices.value,userLoclat,userLoclng)\">Search</button>\r\n                    <button type=\"button\" class=\"btn visible-sm-search hide glyphicon glyphicon-search\" (click)=\"onSerchClick(searchText.value,Region.value,distanceDropdown.value,dealerServices.value,userLoclat,userLoclng)\"></button>\r\n                    </div>\r\n                    <div class=\"clearfix\"></div>\r\n                    </div>\r\n                </div>\r\n                </div>\r\n    \r\n            <div>\r\n                <p class=\"linkCompleteDealerList\" (click)=\"toggleFilter()\">See The Complete Dealer List\r\n                </p>\r\n            </div>\r\n    \r\n            <div class=\"advanceSearchWrapperClass shadownAnimation\">\r\n                <div class=\"advanceSearchClass\">\r\n                    <div class=\"row advanceSearch\">\r\n                            <div class=\"form-group col-xs-4 col-sm-2\">\r\n                                    <svg version=\"1.2\" preserveAspectRatio=\"none\" viewBox=\"0 0 24 24\" class=\"svgAdvanceSeachImageClass\">\r\n                                        <g>\r\n                                            <path xmlns:default=\"http://www.w3.org/2000/svg\" d=\"M10,18h4v-2h-4V18z M3,6v2h18V6H3z M6,13h12v-2H6V13z\" \r\n                                            style=\"fill: rgb(51, 51, 51);\"></path>\r\n                                        </g>\r\n                                    </svg>\r\n                                    <div class=\"AdvanceSeachTextHeadingClass font-weight-bold\">Advance Search</div>\r\n                                </div>\r\n                    \r\n                    <div [ngClass]=\"flagAdvanceSearch ? 'hide' : 'show'\">\r\n                     <div class=\"form-group col-sm-2\">\r\n                        <select [(ngModel)]=\"selectedRegion\" #rgn  (change)=\"onDropdownChange(rgn.value)\"  class=\"allDropdownClass allDropdownAdditional shadownAnimation\">                                  \r\n                                <option *ngFor=\"let region of _allRegionsList\" value={{region.id}}>\r\n                                        {{region.name}}\r\n                                    </option>\r\n                        </select>                               \r\n                    </div>\r\n                    <div class=\"form-group col-sm-2\">\r\n                        <ng-multiselect-dropdown class=\"allDropdownClass colorToDropdown shadownAnimation\" \r\n                        [placeholder]=\"'All States'\" \r\n                        [data]=\"filteredStates\" \r\n                        [settings]=\"dropdownSettings\" \r\n                        (onSelect)=\"onItemSelectState($event)\" \r\n                        (onSelectAll)=\"onSelectAllStates($event)\"\r\n                        (onDeSelect)=\"onItemDeSelectState($event)\"                        \r\n                        >\r\n                        </ng-multiselect-dropdown>\r\n                    </div>\r\n                    <div class=\"form-group col-sm-2\">\r\n                        <ng-multiselect-dropdown class=\"allDropdownClass colorToDropdown shadownAnimation\" \r\n                        [placeholder]=\"'All Cities'\" \r\n                        [data]=\"filterdCities\" \r\n                        [settings]=\"dropdownSettings\" \r\n                        (onSelect)=\"onItemSelectCity($event)\" \r\n                        (onSelectAll)=\"onSelectAllCity($event)\"\r\n                        (onDeSelect)=\"onItemDeSelectCity($event)\">\r\n                        </ng-multiselect-dropdown>\r\n    \r\n                    </div>\r\n\r\n\r\n\r\n                    <div class=\"form-group col-sm-2\" >                           \r\n                        <input class=\"input-md textboxClass\"  [(ngModel)]=\"advSearchPostalCode\" (change)=\"createAdvanceFilterObject()\" placeholder=\"Postal Code\"  style=\"border: 1px solid #adadad;padding: 6px 12px 6px 12px\">\r\n                    </div>\r\n                    <div class=\"form-group col-sm-2\" >                           \r\n                         \r\n                        \r\n                        <span class=\"show_more\" (click)=\"toggleFilter(true)\">\r\n                                <span class=\"arrow-icon\" style=\"cursor:pointer\" *ngIf=\"!isAdvFilter\"><i class=\"material-icons\">keyboard_arrow_down</i> </span>\r\n                                <span class=\"arrow-icon\" style=\"cursor:pointer\" *ngIf=\"isAdvFilter\"><i class=\"material-icons\">keyboard_arrow_up</i> </span>\r\n                                {{!isAdvFilter ? 'Show More Filters' : \"Hide Filters\"}}</span>\r\n                    </div> \r\n                     \r\n                    </div>\r\n\r\n                    <!-- <div class=\"col-sm-8\" [ngClass]=\"{'col-sm-offset-1': flagAdvanceSearch, 'col-sm-offset-3': !flagAdvanceSearch, 'show' : isAdvFilter, 'hide' : !isAdvFilter}\"> -->\r\n                            <div class=\"col-sm-8\" [ngClass]=\"{'col-sm-offset-1': flagAdvanceSearch, 'col-sm-offset-3': !flagAdvanceSearch, 'show' : isAdvFilter, 'hide' : !isAdvFilter, 'show':flagAdvanceSearch}\">\r\n                        <div class=\"form-group col-xs-6 col-sm-5\">\r\n                            <select #distanceDropdown [(ngModel)]=\"advSearchDistance\"  (change)=\"onSerchClick(searchText.value,Region.value,distanceDropdown.value,dealerServices.value,userLoclat,userLoclng)\" class=\"form-control allDropdownClass shadownAnimation\">\r\n                                <option value=\"1\">Distance (In miles)</option>\r\n                                <option value=\"2\">50</option>\r\n                                <option value=\"3\">100</option>\r\n                                <option value=\"4\">150</option>\r\n                                <option value=\"5\">200</option>\r\n                                <option value=\"6\">250</option>\r\n                            </select>\r\n                        </div>\r\n    \r\n                        <div class=\"form-group col-xs-6 col-sm-5\">\r\n                            <ng-multiselect-dropdown #dealerServices\r\n                            class=\"allDropdownClass colorToDropdown shadownAnimation multiselectArrow\" \r\n                            [placeholder]=\"'All Dealer Services'\" \r\n                            [data]=\"serviceType\" \r\n                            [settings]=\"dropdownSettings\" \r\n                            (onSelect)=\"onItemSelectServices($event)\" \r\n                            (onSelectAll)=\"onItemSelectAllServices($event)\"\r\n                            (onDeSelect)=\"onItemDeSelectService($event)\"\r\n                            (onDeSelectAll)=\"onItemDeSelectAllService($event)\"\r\n                            >\r\n                            </ng-multiselect-dropdown>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                </div>\r\n    \r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n     \r\n    \r\n    "
 
 /***/ }),
 
@@ -277,11 +271,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContentpageComponent", function() { return ContentpageComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _models_statesModel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/statesModel */ "./src/app/models/statesModel.ts");
-/* harmony import */ var _services_service_type_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/service-type.service */ "./src/app/services/service-type.service.ts");
-/* harmony import */ var _services_dealer_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/dealer.service */ "./src/app/services/dealer.service.ts");
-/* harmony import */ var _services_all_regions_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/all-regions.service */ "./src/app/services/all-regions.service.ts");
-/* harmony import */ var _models_filterModel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../models/filterModel */ "./src/app/models/filterModel.ts");
-/* harmony import */ var _services_data_service_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/data-service.service */ "./src/app/services/data-service.service.ts");
+/* harmony import */ var _models_citiesModel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/citiesModel */ "./src/app/models/citiesModel.ts");
+/* harmony import */ var _services_service_type_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/service-type.service */ "./src/app/services/service-type.service.ts");
+/* harmony import */ var _services_dealer_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/dealer.service */ "./src/app/services/dealer.service.ts");
+/* harmony import */ var _services_all_regions_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/all-regions.service */ "./src/app/services/all-regions.service.ts");
+/* harmony import */ var _models_filterModel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../models/filterModel */ "./src/app/models/filterModel.ts");
+/* harmony import */ var _services_data_service_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/data-service.service */ "./src/app/services/data-service.service.ts");
+/* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ng4-loading-spinner */ "./node_modules/ng4-loading-spinner/ng4-loading-spinner.umd.js");
+/* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _models_advanceFilterModel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../models/advanceFilterModel */ "./src/app/models/advanceFilterModel.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -298,13 +296,17 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
+
 var ContentpageComponent = /** @class */ (function () {
-    function ContentpageComponent(serviceTypeService, _dealerService, _statescitiesService, _dataService, zone) {
+    function ContentpageComponent(serviceTypeService, _dealerService, _statescitiesService, _dataService, zone, spinnerService) {
         this.serviceTypeService = serviceTypeService;
         this._dealerService = _dealerService;
         this._statescitiesService = _statescitiesService;
         this._dataService = _dataService;
         this.zone = zone;
+        this.spinnerService = spinnerService;
         this.toggleDropdown = false;
         this.toggleFilters = false;
         this.filteredStates = [];
@@ -314,23 +316,14 @@ var ContentpageComponent = /** @class */ (function () {
         this.dropdownList = [];
         this.selectedItems = [];
         this.dropdownSettings = {};
-        this.dropdownSettingsStates = {};
-        this.dropdownSettingsCities = {};
-        this.loadDataCheck = false;
+        this.selectedFilterStatesIds = [];
+        this.selectedFilterCitiesIds = [];
+        this.selectedServiceIds = [];
+        this.filteredCountryDetails = [];
         this._allRegionsList = _dealerService.getAllRegions();
-        this.getAllRegions();
+        this.getAllCountryCityState();
     }
     ContentpageComponent.prototype.ngOnChanges = function () {
-        this.loadDataCheck = false;
-        this.dropdownSettingsStates = {
-            singleSelection: false,
-            idField: 'id',
-            textField: 'name',
-            selectAllText: 'Select All',
-            unSelectAllText: 'UnSelect All',
-            //itemsShowLimit: 3,
-            enableSearchFilter: true,
-        };
     };
     ContentpageComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -339,7 +332,6 @@ var ContentpageComponent = /** @class */ (function () {
             _this.userLoclat = position.coords.latitude;
             _this.userLoclng = position.coords.longitude;
             _this.onSerchClick("", 1, 1, "", _this.userLoclat, _this.userLoclng);
-            _this.loadDataCheck = true;
         });
         this.dropdownSettings = {
             singleSelection: false,
@@ -350,56 +342,175 @@ var ContentpageComponent = /** @class */ (function () {
             itemsShowLimit: 3,
             enableSearchFilter: true,
         };
-        this.dropdownSettingsStates = {
-            singleSelection: false,
-            idField: 'id',
-            textField: 'name',
-            selectAllText: 'Select All',
-            unSelectAllText: 'UnSelect All',
-            //itemsShowLimit: 3,
-            enableSearchFilter: true,
-        };
-        this.dropdownSettingsCities = {
-            singleSelection: false,
-            idField: '.code',
-            textField: 'name',
-            selectAllText: 'Select All',
-            unSelectAllText: 'UnSelect All',
-            enableSearchFilter: true,
-        };
         this.serviceType = this.serviceTypeService.getAllServices();
+        this.advSearchDistance = 1;
+        this.selectedRegion = 1;
     };
-    ContentpageComponent.prototype.getAllRegions = function () {
+    ContentpageComponent.prototype.getAllCountryCityState = function () {
         var _this = this;
         this._statescitiesService.getAllRegions().subscribe(function (data) {
             _this.allcitystatecountry = data;
         });
     };
     ContentpageComponent.prototype.onDropdownChange = function (country) {
-        // this.filteredStates=[new statesModel('1','aa'),new statesModel('2','aqqqa')]; 
         var _this = this;
+        this.filteredCountryDetails = [];
+        this.advSearchCountry = country;
         var selectedCountry = this._dataService.getSelectedCountries(country);
-        var filteredCountryDetails = this._dataService.filterCountry(this.allcitystatecountry, selectedCountry);
-        //var filteredCountryDetails = this.allcitystatecountry.filter(a => a.name == this.serchCountryCode);
-        var count = 0;
+        this.filteredCountryDetails = this._dataService.filterCountry(this.allcitystatecountry, selectedCountry);
         this.filteredStates = [];
-        filteredCountryDetails[0].stateList.forEach(function (element) {
-            _this.filteredStates.push(new _models_statesModel__WEBPACK_IMPORTED_MODULE_1__["statesModel"](element.code, element.name));
-        });
         this.filterdCities = [];
-        this.filterdCities = filteredCountryDetails[0].cityList;
+        this.selectedFilterStatesIds = [];
+        this.selectedFilterCitiesIds = [];
+        for (var i = 0; i < this.filteredCountryDetails.length; i++) {
+            this.filteredCountryDetails[i].stateList.forEach(function (element) {
+                _this.filteredStates.push(new _models_statesModel__WEBPACK_IMPORTED_MODULE_1__["statesModel"](element.code, element.name));
+            });
+            if (this.filteredStates) {
+                this.filteredStates = this.filteredStates.sort(function (a, b) { return a.name.localeCompare(b.name); });
+            }
+            this.filteredCountryDetails[i].cityList.forEach(function (element) {
+                _this.filterdCities.push(new _models_citiesModel__WEBPACK_IMPORTED_MODULE_2__["citiesModel"](element.code, element.name));
+            });
+            if (this.filterdCities) {
+                this.filterdCities = this.filterdCities.sort(function (a, b) { return a.name.localeCompare(b.name); });
+            }
+        }
     };
-    ContentpageComponent.prototype.onItemSelect = function (item) {
-        console.log(item);
+    ContentpageComponent.prototype.onItemSelectServices = function (item) {
+        this.selectedServiceIds.push(item.id);
+        //console.log(this.selectedServiceIds);  
+        this.searchWithSelectedServices();
     };
-    ContentpageComponent.prototype.onSelectAll = function (items) {
-        console.log(items);
+    ContentpageComponent.prototype.onItemSelectAllServices = function (items) {
+        var _this = this;
+        this.selectedServiceIds = [];
+        items.forEach(function (element) {
+            _this.selectedServiceIds.push(element.id);
+        });
+        //console.log(this.selectedServiceIds);
+        this.searchWithSelectedServices();
+    };
+    ContentpageComponent.prototype.onItemDeSelectService = function (item) {
+        this.selectedServiceIds.splice(this.selectedServiceIds.indexOf(item.id), 1);
+        //console.log(this.selectedServiceIds);
+        this.searchWithSelectedServices();
+    };
+    ContentpageComponent.prototype.onItemDeSelectAllService = function (item) {
+        this.selectedServiceIds = [];
+        //console.log(this.selectedServiceIds);
+        this.searchWithSelectedServices();
+    };
+    ContentpageComponent.prototype.searchWithSelectedServices = function () {
+        if (this.isAdvFilter) {
+            alert();
+            this.advanceDataFilterObj.dealerServices = this.selectedServiceIds;
+            this.sendAdvanceSearchMessage(this.advanceDataFilterObj);
+        }
+        else {
+            this.dataFilter.dealerServices = this.selectedServiceIds;
+            this.sendMessage(this.dataFilter);
+        }
+    };
+    ContentpageComponent.prototype.onItemSelectState = function (item) {
+        var state = { id: item.id, name: item.name };
+        this.selectedFilterStatesIds.push(state);
+        //console.log(this.selectedFilterStatesIds);
+        this.getFilteredCities();
+        this.createAdvanceFilterObject();
+    };
+    ContentpageComponent.prototype.onItemDeSelectState = function (item) {
+        var result = [];
+        this.selectedFilterStatesIds.forEach(function (element) {
+            if (element.id !== item.id) {
+                result.push(element);
+            }
+        });
+        this.selectedFilterStatesIds = result;
+        this.getFilteredCities();
+        this.createAdvanceFilterObject();
+    };
+    ContentpageComponent.prototype.onItemDeSelectAllState = function (item) {
+        this.selectedFilterStatesIds = [];
+        this.getFilteredCities();
+        this.createAdvanceFilterObject();
+    };
+    ContentpageComponent.prototype.onSelectAllStates = function (items) {
+        var _this = this;
+        this.selectedFilterStatesIds = [];
+        this.selectedFilterCitiesIds = [];
+        items.forEach(function (element) {
+            var state = { id: element.id, name: element.name };
+            _this.selectedFilterStatesIds.push(state);
+            //this.selectedFilterStatesIds.push(element.id)
+        });
+        this.getFilteredCities();
+        this.createAdvanceFilterObject();
+    };
+    ContentpageComponent.prototype.onSelectAllCity = function (items) {
+        var _this = this;
+        items.forEach(function (element) {
+            _this.selectedFilterCitiesIds.push(element);
+        });
+        //console.log(this.selectedFilterCitiesIds);
+        this.createAdvanceFilterObject();
+    };
+    ContentpageComponent.prototype.onItemSelectCity = function (item) {
+        //console.log(item);
+        this.selectedFilterCitiesIds.push(item);
+        //console.log(this.selectedFilterCitiesIds);
+        this.createAdvanceFilterObject();
+    };
+    ContentpageComponent.prototype.onItemDeSelectCity = function (item) {
+        //this.selectedFilterCitiesIds.splice(this.selectedFilterCitiesIds.indexOf(item), 1);
+        var result = [];
+        this.selectedFilterCitiesIds.forEach(function (element) {
+            if (element !== item) {
+                result.push(element);
+            }
+        });
+        this.selectedFilterCitiesIds = result;
+        this.createAdvanceFilterObject();
+        //console.log(this.selectedFilterCitiesIds);
+    };
+    ContentpageComponent.prototype.getFilteredCities = function () {
+        var _this = this;
+        this.filterdCities = [];
+        this.selectedFilterCitiesIds = [];
+        var result = [];
+        for (var i = 0; i < this.filteredCountryDetails.length; i++) {
+            var res = this._dataService.filterCities(this.filteredCountryDetails[i].cityList, this.selectedFilterStatesIds);
+            if (res.length > 0) {
+                result.push(res);
+            }
+        }
+        if (result[0]) {
+            if (result[0].length > 0) {
+                result[0].forEach(function (element) {
+                    _this.filterdCities.push(new _models_citiesModel__WEBPACK_IMPORTED_MODULE_2__["citiesModel"](element.code, element.name));
+                });
+                if (this.filterdCities) {
+                    this.filterdCities = this.filterdCities.sort(function (a, b) { return a.name.localeCompare(b.name); });
+                }
+            }
+        }
+    };
+    ContentpageComponent.prototype.createAdvanceFilterObject = function () {
+        this.advanceDataFilterObj = new _models_advanceFilterModel__WEBPACK_IMPORTED_MODULE_9__["advanceFilterModel"]();
+        this.advanceDataFilterObj.region = this.advSearchCountry;
+        this.advanceDataFilterObj.selectedStates = this.selectedFilterStatesIds;
+        this.advanceDataFilterObj.selectedCities = this.selectedFilterCitiesIds;
+        this.advanceDataFilterObj.postalCode = this.advSearchPostalCode;
+        this.advanceDataFilterObj.distance = this.advSearchDistance;
+        this.advanceDataFilterObj.dealerServices = this.selectedServiceIds;
+        this.sendAdvanceSearchMessage(this.advanceDataFilterObj);
     };
     ContentpageComponent.prototype.toggle = function () {
         this.toggleDropdown = !this.toggleDropdown;
     };
     ContentpageComponent.prototype.toggleFilter = function (type) {
         if (type === void 0) { type = false; }
+        this.setAdvSearchRegion();
         if (type) {
             this.isAdvFilter = !this.isAdvFilter;
         }
@@ -408,29 +519,44 @@ var ContentpageComponent = /** @class */ (function () {
             this.isAdvFilter = false;
         }
     };
+    ContentpageComponent.prototype.setAdvSearchRegion = function () {
+        this.onDropdownChange(this.selectedRegion);
+        this.onItemDeSelectAllState("");
+    };
     ContentpageComponent.prototype.onSerchClick = function (searchText, region, distanceDropdown, dealerServices, userLoclat, userLoclng) {
-        var data = new _models_filterModel__WEBPACK_IMPORTED_MODULE_5__["filterModel"]();
-        data.inputText = searchText;
-        data.region = region;
-        data.distance = distanceDropdown;
-        data.dealerServices = dealerServices;
-        //alert('called');
-        if (userLoclat && userLoclng) {
-            data.userLat = this.userLoclat;
-            data.userLong = this.userLoclng;
+        if (this.flagAdvanceSearch) {
+            this.spinnerService.show();
+            this.dataFilter = new _models_filterModel__WEBPACK_IMPORTED_MODULE_6__["filterModel"]();
+            this.dataFilter.inputText = searchText;
+            this.dataFilter.region = region;
+            if (distanceDropdown > 1) {
+                this.dataFilter.distance = distanceDropdown;
+            }
+            this.dataFilter.dealerServices = dealerServices;
+            if (userLoclat && userLoclng) {
+                this.dataFilter.userLat = this.userLoclat;
+                this.dataFilter.userLong = this.userLoclng;
+            }
+            this.sendMessage(this.dataFilter);
         }
-        this.sendCheck();
-        this.sendMessage(data);
+        else {
+            if (!this.advanceDataFilterObj) {
+                this.advanceDataFilterObj = new _models_advanceFilterModel__WEBPACK_IMPORTED_MODULE_9__["advanceFilterModel"];
+            }
+            else {
+                this.advanceDataFilterObj.distance = distanceDropdown;
+                this.sendAdvanceSearchMessage(this.advanceDataFilterObj);
+            }
+        }
     };
     ContentpageComponent.prototype.sendMessage = function (filterData) {
         this._dataService.sendMessage(filterData);
     };
-    ContentpageComponent.prototype.sendCheck = function () {
-        this._dataService.sendCheckIfLoadData(this.loadDataCheck);
+    ContentpageComponent.prototype.sendAdvanceSearchMessage = function (filterData) {
+        this._dataService.sendAdvanceSearchFilterMessage(filterData);
     };
     ContentpageComponent.prototype.setAddress = function (addrObj) {
         var _this = this;
-        //debugger;   
         this.zone.run(function () {
             _this.addr = addrObj;
             _this.addrKeys = Object.keys(addrObj);
@@ -449,13 +575,14 @@ var ContentpageComponent = /** @class */ (function () {
             selector: 'app-contentpage',
             template: __webpack_require__(/*! ./contentpage.component.html */ "./src/app/contentpage/contentpage.component.html"),
             styles: [__webpack_require__(/*! ./contentpage.component.css */ "./src/app/contentpage/contentpage.component.css")],
-            providers: [_services_service_type_service__WEBPACK_IMPORTED_MODULE_2__["ServiceTypeService"], _services_all_regions_service__WEBPACK_IMPORTED_MODULE_4__["AllRegionsService"]]
+            providers: [_services_service_type_service__WEBPACK_IMPORTED_MODULE_3__["ServiceTypeService"], _services_all_regions_service__WEBPACK_IMPORTED_MODULE_5__["AllRegionsService"]]
         }),
-        __metadata("design:paramtypes", [_services_service_type_service__WEBPACK_IMPORTED_MODULE_2__["ServiceTypeService"],
-            _services_dealer_service__WEBPACK_IMPORTED_MODULE_3__["DealerService"],
-            _services_all_regions_service__WEBPACK_IMPORTED_MODULE_4__["AllRegionsService"],
-            _services_data_service_service__WEBPACK_IMPORTED_MODULE_6__["DataServiceService"],
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]])
+        __metadata("design:paramtypes", [_services_service_type_service__WEBPACK_IMPORTED_MODULE_3__["ServiceTypeService"],
+            _services_dealer_service__WEBPACK_IMPORTED_MODULE_4__["DealerService"],
+            _services_all_regions_service__WEBPACK_IMPORTED_MODULE_5__["AllRegionsService"],
+            _services_data_service_service__WEBPACK_IMPORTED_MODULE_7__["DataServiceService"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"],
+            ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_8__["Ng4LoadingSpinnerService"]])
     ], ContentpageComponent);
     return ContentpageComponent;
 }());
@@ -490,7 +617,7 @@ var serviceTypes = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".outerBoxClass{\r\n    opacity: 1; mix-blend-mode: normal; padding: 0px;\r\n    border-width: 0px; border-radius: 0px; border-color: rgb(102, 102, 102); border-style: solid; \r\n    background-image: none; background-size: cover; background-repeat: repeat; \r\n    background-position: center center; box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px; width: 100%; height: auto;  \r\n    background-color: #f0f0f0;\r\n    height: auto;\r\n    padding: 0px 0px 20px 0px;\r\n}\r\n.dealerDisplayBox{\r\n    color: rgb(120, 120, 120);\r\n    font-size: 16px; \r\n    text-align: center; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: none;\r\n}\r\n.dlr_distance{\r\n    line-height: 15px;\r\n    color: rgb(119, 119, 119); \r\n    font-size: 12px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: none; \r\n    text-align: left;  \r\n    padding-bottom:8px;\r\n}\r\n.btn-lg{\r\n   background-color: rgb(184, 184, 184);\r\n    background-image: none;\r\n    background-position: center center;\r\n    background-repeat: repeat;\r\n    background-size: cover;\r\n    border-radius: 4px;\r\n     border-width: 0px;\r\n     border-color: rgb(102, 102, 102);\r\n    border-style: solid;\r\n     text-transform:uppercase;\r\n     font-size:14px;\r\n     height: 40px;\r\n     color:#fff;\r\n}\r\n.dlr_address{\r\n    line-height: 20px; \r\n    color: rgb(18, 18, 18); \r\n    font-size: 14px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: none; \r\n    text-align: left;\r\n    overflow-wrap: break-word;\r\n}\r\n.innerBoxClass{\r\n    margin: 0 2% 0% 2%;\r\n    width: auto;\r\n   height:auto;\r\n   background-color: #FFFFFF;\r\n}\r\n.container.container-rounded {\r\n    border-radius: 1px; \r\n    background-color: #FFFFFF;\r\n    width: auto;\r\n    min-height: 100px;  \r\n    border: 1px solid rgb(222,222,222);;  \r\n    padding: 15px;\r\n}\r\n.container.container-rounded.active {\r\n    border-width: 4px;\r\n    border-radius: 0px;\r\n    border-color: rgb(177, 207, 240);\r\n    border-style: solid;\r\n    padding:15px;\r\n     \r\n}\r\nspan{    \r\n    display: block;    \r\n}\r\n.dealerInfomationWrapperClass{\r\n    display: inline-block; \r\n    min-width: 40%;\r\n    padding: 15px;\r\n}\r\n.dealerInfomationClass{\r\n    padding: 2%;\r\n     \r\n}\r\n.dealerNameHeading{\r\n    text-align: center;    \r\n    line-height: 24px;\r\n    color: rgb(51, 51, 51); \r\n    font-size: 26px;\r\n    font-weight: normal;\r\n    font-style: normal; \r\n    text-decoration: none;\r\n    margin-bottom: 20px;\r\n}\r\n.imageDealerOfTheYear{\r\n    width: 100%;\r\n    height:105px; \r\n}\r\n.imagesRowWrapper{\r\n    margin:0;   \r\n    height: 95%;\r\n}\r\n.borderRight{\r\n    padding-right: 20px;\r\n    border-right: 2px solid blue;\r\n    overflow: hidden;\r\n}\r\n.img-responsive{\r\n    height:100px; \r\n    padding:0;\r\n}\r\n.boldClass{\r\n    font-weight: bold;\r\n    font-size:16px;\r\n}\r\n.greenTextClass {\r\n    color: #7aa72d;\r\n    font-size: 16px;}\r\n.redTextClass {\r\n        color:  red;\r\n        font-size: 16px;}\r\n.displayTodayTimingClass{\r\n    display: inline;\r\n}\r\n.fontColorBlue{\r\n    color: rgb(21, 98, 207); \r\n    font-size: 18px; \r\n    font-weight: normal; \r\n    font-style: normal;\r\n     text-decoration: none; \r\n     text-align: left;\r\n     font-family: G-Roboto-n4, Arial !important;\r\n}\r\nagm-map {\r\n    height: 600px;\r\n  }\r\n.displayMapClass{\r\n    margin: 0%;\r\n    border: 1px solid black;\r\n    height:100%;\r\n    width:100%;\r\n}\r\n@media (max-width: 1285px) {\r\n    .outerBoxClass {\r\n        height: auto;\r\n      }\r\n}\r\n.overflowScroll{\r\nmax-height: 600px;\r\noverflow: scroll;\r\noverflow-x: hidden;\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+module.exports = ".outerBoxClass{\r\n    opacity: 1; mix-blend-mode: normal; padding: 0px;\r\n    border-width: 0px; border-radius: 0px; border-color: rgb(102, 102, 102); border-style: solid; \r\n    background-image: none; background-size: cover; background-repeat: repeat; \r\n    background-position: center center; box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px; width: 100%; height: auto;  \r\n    background-color: #f0f0f0;\r\n    height: auto;\r\n    padding: 0px 0px 20px 0px;\r\n}\r\n.dealerDisplayBox{\r\n    color: rgb(120, 120, 120);\r\n    font-size: 16px; \r\n    text-align: center; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: none;\r\n}\r\n.dlr_distance{\r\n    line-height: 15px;\r\n    color: rgb(119, 119, 119); \r\n    font-size: 12px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: none; \r\n    text-align: left;  \r\n    padding-bottom:8px;\r\n}\r\n.btn-lg{\r\n   background-color: rgb(184, 184, 184);\r\n    background-image: none;\r\n    background-position: center center;\r\n    background-repeat: repeat;\r\n    background-size: cover;\r\n    border-radius: 4px;\r\n     border-width: 0px;\r\n     border-color: rgb(102, 102, 102);\r\n    border-style: solid;\r\n     text-transform:uppercase;\r\n     font-size:14px;\r\n     height: 40px;\r\n     color:#fff;\r\n}\r\n.dlr_address{\r\n    line-height: 20px; \r\n    color: rgb(18, 18, 18); \r\n    font-size: 14px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: none; \r\n    text-align: left;\r\n    overflow-wrap: break-word;\r\n}\r\n.innerBoxClass{\r\n    margin: 0 2% 0% 2%;\r\n    width: auto;\r\n   height:auto;\r\n   background-color: #FFFFFF;\r\n}\r\n.container.container-rounded {\r\n    border-radius: 1px; \r\n    background-color: #FFFFFF;\r\n    width: auto;\r\n    min-height: 100px;  \r\n    border: 1px solid rgb(222,222,222);;  \r\n    padding: 15px;\r\n}\r\n.container.container-rounded.active {\r\n    border-width: 4px;\r\n    border-radius: 0px;\r\n    border-color: rgb(177, 207, 240);\r\n    border-style: solid;\r\n    padding:15px;\r\n     \r\n}\r\nspan{    \r\n    display: block;    \r\n}\r\n.dealerInfomationWrapperClass{\r\n    display: inline-block; \r\n    min-width: 40%;\r\n    padding: 15px;\r\n}\r\n.dealerInfomationClass{\r\n    padding: 2%;\r\n     \r\n}\r\n.dealerNameHeading{\r\n    text-align: center;    \r\n    line-height: 24px;\r\n    color: rgb(51, 51, 51); \r\n    font-size: 26px;\r\n    font-weight: normal;\r\n    font-style: normal; \r\n    text-decoration: none;\r\n    margin-bottom: 20px;\r\n}\r\n.imageDealerOfTheYear{\r\n    width: 100%;\r\n    height:105px; \r\n}\r\n.imagesRowWrapper{\r\n    margin:0;   \r\n    height: 95%;\r\n}\r\n.borderRight{\r\n    padding-right: 20px;\r\n    border-right: 2px solid blue;\r\n    overflow: hidden;\r\n}\r\n.img-responsive{\r\n    height:100px; \r\n    padding:0;\r\n}\r\n.boldClass{\r\n    font-weight: bold;\r\n    font-size:16px;\r\n}\r\n.greenTextClass {\r\n    color: #7aa72d;\r\n    font-size: 16px;\r\n}\r\n.redTextClass {\r\n    color:  red;\r\n    font-size: 16px;\r\n}\r\n.displayTodayTimingClass{\r\n    display: inline;\r\n}\r\n.fontColorBlue{\r\n    color: rgb(21, 98, 207); \r\n    font-size: 18px; \r\n    font-weight: normal; \r\n    font-style: normal;\r\n     text-decoration: none; \r\n     text-align: left;\r\n     font-family: G-Roboto-n4, Arial !important;\r\n}\r\nagm-map {\r\n    height: 600px;\r\n  }\r\n.displayMapClass{\r\n    margin: 0%;\r\n    /* border: 1px solid black; */\r\n    height:100%;\r\n    width:100%;\r\n}\r\n@media (max-width: 1285px) {\r\n    .outerBoxClass {\r\n        height: auto;\r\n      }\r\n}\r\n.overflowScroll{\r\nmax-height: 600px;\r\noverflow: scroll;\r\noverflow-x: hidden;\r\n}\r\n.buttonDealerInfoClass{\r\n     margin: 30px 0 0 5px;\r\n     display: inline-block;\r\n }\r\n.dlrTimingClass{\r\n     /* display: inline; */\r\n }\r\n.dealerNameDetails{\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -501,7 +628,7 @@ module.exports = ".outerBoxClass{\r\n    opacity: 1; mix-blend-mode: normal; pad
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ng-element outerBoxClass\">\n    <div class=\"innerBoxClass\" *ngIf=\"dealerArray && dealerArray.length > 0\">\n            \n        <div class=\"container pd-0 margin-0 w-100\">\n            <div class=\"row  pd-0 margin-0 w-100\">\n                <div class=\"col-md-3 col-sm-12 pd-0\">\n                    <div class=\"dealerNameDetails overflowScroll\">\n                        <div class=\"container container-rounded\" *ngFor=\"let dlr of dealerArray; let i=index;\"\n                            (click)=\"selectDealer(dlr,i)\" [ngClass]=\"{active: i===selectedRow}\">\n                            <span class=\"fontColorBlue\">{{ dlr?.name }}</span>\n                            <span class=\"dlr_distance\">{{ dlr?.distance }} Miles Away</span>\n                            <span class=\"dlr_address\"> {{dlr?.dealerAddressDetailModel?.address1 }}</span>\n                            <span class=\"dlr_address\">{{ dlr?.dealerAddressDetailModel?.address2 }}</span>\n                            <span class=\"dlr_address\">{{dlr?.dealerAddressDetailModel?.city}}{{dlr.dealerAddressDetailModel?.city\n                                ? ',' : ''}}\n                                {{ dlr.dealerAddressDetailModel?.state}}{{dlr.dealerAddressDetailModel?.state ? ',' :\n                                ''}}\n                                {{ dlr.dealerAddressDetailModel?.postalCode }}</span>\n                            <span class=\"dlr_address\">{{dlr?.phone}}</span>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-5 col-sm-12 dealerInfomationWrapperClass pd-0\">\n                    <div class=\"dealerInfomationClass\">\n                        <span class=\"dealerNameHeading\">\n                            {{_selectedDealer?.name}}\n                        </span>\n                        <div class=\"imageDealerOfTheYear\">\n                            <div class=\"row imagesRowWrapper\">\n                                <div class=\"col-xs-6 col-sm-3 borderRight\">\n                                    <img class=\"img-responsive\" src=\"{{serviceTypeDealerLevelPath}}\">\n                                </div>\n                                <div *ngIf=\"serviceTypeOne\" class=\"col-xs-6 col-sm-3 pd-r-0\">\n                                    <img class=\"img-responsive\" src=\"assets/img/TT and Truck.png\" alt=\"\">\n                                </div>\n                                <div *ngIf=\"serviceTypeTwo\" class=\"col-xs-6 col-sm-3\">\n                                    <img class=\"img-responsive\" src=\"assets/img/APU icon.png\" alt=\"\">\n                                </div>\n                                <div *ngIf=\"serviceTypeThree\" class=\"col-xs-6 col-sm-3 pd-0\">\n                                    <img class=\"img-responsive\" src=\"assets/img/Truck Service.png\" alt=\"\">\n                                </div>\n                            </div>\n                        </div>\n                        <h5 class=\"boldClass\">Additional Information: </h5>\n                        <span> {{_selectedDealer?.otherInformation}} </span>\n\n                        <div class=\"addressDealerInformationClass\">\n                            <h5 class=\"boldClass\">Address:</h5>\n                            {{_selectedDealer?.dealerAddressDetailModel?.address1}}<br />\n                            {{_selectedDealer?.dealerAddressDetailModel?.address2}}\n                            {{_selectedDealer?.dealerAddressDetailModel?.city}}{{_selectedDealer?.dealerAddressDetailModel?.city\n                            ? ',' : ''}}\n                            {{_selectedDealer?.dealerAddressDetailModel?.state}}{{_selectedDealer?.dealerAddressDetailModel?.state\n                            ? ',' : ''}}\n                            {{_selectedDealer?.dealerAddressDetailModel?.postalCode}}<br />\n                            {{_selectedDealer?.country}}\n                        </div>\n\n                        <h5 class=\"boldClass\">Phone Number:</h5>\n                        {{_selectedDealer?.phone}}\n\n                        <h5 class=\"boldClass\">Mobile Number:</h5>\n                        {{_selectedDealer?.Mobile}}\n\n                        <h5 class=\"boldClass\">Hours: </h5>\n                        <div [ngClass]=\"checkStoreStatusObj ? 'show' : 'hide'\">\n                            <h5 class=\"greenTextClass boldClass display-inline-block\">Open Today </h5>\n                            <div class=\"display-inline-block\">{{ TodayTimingdata[0]?.openingDay}}\n                                {{TodayTimingdata[0]?.startTime}} to\n                                {{TodayTimingdata[0]?.endTime}}</div>\n                        </div>\n                        <h5 class=\"redTextClass boldClass\" [ngClass]=\"checkStoreStatusObj ? 'hide' : 'show'\">Closed</h5>\n\n                        <div *ngFor=\"let dlrTiming of finalTimingsObj\">\n                            <div class=\"col-xs-4\"> {{ dlrTiming.openingDay }}</div>\n                            <div class=\"col-xs-4\">{{ dlrTiming.startTime }}</div>\n                            <div class=\"col-xs-4\">{{ dlrTiming.endTime }}</div>\n                        </div>\n\n\n\n\n                        <button type=\"button\" (click)=\"goToSpecificUrl()\" class=\"btn btn-default btn-lg\">Website</button>\n                        <button type=\"button\" class=\"btn btn-default btn-lg\" style=\"margin-left:20px;\">Share Store\n                            Details</button>\n\n                    </div>\n\n                </div>\n                <div class=\"col-md-4 col-sm-12 displayMapWrapperClass\">\n                    <div class=\"displayMapClass\">\n                        <button type=\"button\" class=\"btn btn-default btn-lg\" (click)=\"getDirection()\">Get Direction</button>\n                        <agm-map [latitude]=\"_selectedDealer?.dealerLatitude\" [longitude]=\"_selectedDealer?.dealerLongitude\"\n                            [zoom]=15>\n                            <agm-marker [latitude]=\"_selectedDealer?.dealerLatitude\" [longitude]=\"_selectedDealer?.dealerLongitude\">\n\n                            </agm-marker>\n\n                        </agm-map>\n\n\n                    </div>\n                </div>\n\n            </div>\n        </div>\n    </div>\n    <div class=\"innerBoxClass\" #nodata  *ngIf=\"!(dealerArray && dealerArray.length > 0)\">\n            <div class=\"container pd-0 margin-0 w-100\" style=\"text-align: center\">\n        <h3>No Data Found</h3>\n    </div>\n</div>\n\n     \n</div>"
+module.exports = "<div class=\"ng-element outerBoxClass\">\n    <div class=\"innerBoxClass\" *ngIf=\"dealerArray && dealerArray.length > 0\">\n\n        <div class=\"container pd-0 margin-0 w-100\">\n            <div class=\"row  pd-0 margin-0 w-100\">\n                <div class=\"col-md-3 col-sm-12 pd-0\">\n                    <div class=\"dealerNameDetails overflowScroll\">\n                        <div class=\"container container-rounded\" *ngFor=\"let dlr of dealerArray; let i=index;\" (click)=\"selectDealer(dlr,i)\"\n                            [ngClass]=\"{active: i===selectedRow}\">\n                            <span class=\"fontColorBlue\">{{ dlr?.name }}</span>\n                            <span class=\"dlr_distance\">{{ dlr?.distance }} Miles Away</span>\n                            <span class=\"dlr_address\"> {{dlr?.dealerAddressDetailModel?.address1 }}</span>\n                            <span class=\"dlr_address\">{{ dlr?.dealerAddressDetailModel?.address2 }}</span>\n                            <span class=\"dlr_address\">{{dlr?.dealerAddressDetailModel?.city}}{{dlr.dealerAddressDetailModel?.city\n                                ? ',' : ''}}\n                                {{ dlr.dealerAddressDetailModel?.state}}{{dlr.dealerAddressDetailModel?.state ? ',' :\n                                ''}}\n                                {{ dlr.dealerAddressDetailModel?.postalCode }}</span>\n                            <span class=\"dlr_address\">{{dlr?.phone}}</span>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-5 col-sm-12 dealerInfomationWrapperClass pd-0\">\n                    <div class=\"dealerInfomationClass\">\n                        <span class=\"dealerNameHeading\">\n                            {{_selectedDealer?.name}}\n                        </span>\n                        <div class=\"imageDealerOfTheYear\">\n                            <div class=\"row imagesRowWrapper\">\n                                <div class=\"col-xs-6 col-sm-3 borderRight\" *ngIf=\"serviceTypeDealerLevelPath\">\n                                    <img class=\"img-responsive\" src=\"{{serviceTypeDealerLevelPath}}\">\n                                </div>\n                                <div *ngIf=\"serviceTypeOne\" class=\"col-xs-6 col-sm-3 pd-r-0\">\n                                    <img class=\"img-responsive\" src=\"assets/img/TT and Truck.png\" alt=\"\">\n                                </div>\n                                <div *ngIf=\"serviceTypeTwo\" class=\"col-xs-6 col-sm-3\">\n                                    <img class=\"img-responsive\" src=\"assets/img/APU icon.png\" alt=\"\">\n                                </div>\n                                <div *ngIf=\"serviceTypeThree\" class=\"col-xs-6 col-sm-3 pd-0\">\n                                    <img class=\"img-responsive\" src=\"assets/img/Truck Service.png\" alt=\"\">\n                                </div>\n                            </div>\n                        </div>\n                        <h5 class=\"boldClass\">Additional Information: </h5>\n                        <span> {{_selectedDealer?.otherInformation}} </span>\n\n                        <div class=\"addressDealerInformationClass\">\n                            <h5 class=\"boldClass\">Address:</h5>\n                            {{_selectedDealer?.dealerAddressDetailModel?.address1}}<br />\n                            {{_selectedDealer?.dealerAddressDetailModel?.address2}}\n                            {{_selectedDealer?.dealerAddressDetailModel?.city}}{{_selectedDealer?.dealerAddressDetailModel?.city\n                            ? ',' : ''}}\n                            {{_selectedDealer?.dealerAddressDetailModel?.state}}{{_selectedDealer?.dealerAddressDetailModel?.state\n                            ? ',' : ''}}\n                            {{_selectedDealer?.dealerAddressDetailModel?.postalCode}}<br />\n                            {{_selectedDealer?.country}}\n                        </div>\n\n                        <h5 class=\"boldClass\">Phone Number:</h5>\n                        {{_selectedDealer?.phone}}\n\n                        <h5 class=\"boldClass\">Mobile Number:</h5>\n                        {{_selectedDealer?.Mobile}}\n\n                        <h5 class=\"boldClass\">Hours: </h5>\n                        <div [ngClass]=\"checkStoreStatusObj ? 'show' : 'hide'\">\n                            <h5 class=\"greenTextClass boldClass display-inline-block\">Open Today </h5>\n                            <div class=\"display-inline-block\" style=\"padding-left:10px\">{{TodayTimingdata[0]?.startTime}}  \n                                 </div>\n                        </div>\n                        <h5 class=\"redTextClass boldClass\" [ngClass]=\"checkStoreStatusObj ? 'hide' : 'show'\">Closed</h5>\n\n                        <div class=\"dlrTimingClass\" *ngFor=\"let dlrTiming of finalTimingsObj\">\n                            <div class=\"col-xs-2\"></div>\n                            <div class=\"col-xs-4\" style=\"padding-left:20px\">{{ dlrTiming.openingDay }} </div>\n                            <div class=\"col-xs-6\" style=\"padding-left:20px\">{{ dlrTiming.startTime }}  </div>                          \n                        </div>\n                        \n                        <div class=\"display-inline-block buttonDealerInfoClass\">\n                            <button type=\"button\" (click)=\"goToSpecificUrl()\" class=\"btn btn-default btn-lg\">Website</button>\n                            <button type=\"button\" class=\"btn btn-default btn-lg\" style=\"margin-left:20px;\">Share Store\n                                    Details</button>\n                        </div>\n\n\n\n                    </div>\n\n                    \n\n\n\n                </div>\n\n              \n\n\n                <div class=\"col-md-4 col-sm-12 displayMapWrapperClass\">\n                    <div class=\"displayMapClass\">\n                        <button class=\"w-100\">\n                            <i class=\"material-icons\" (click)=\"getDirection()\">\n                                directions\n                            </i>\n                        </button>\n                        <agm-map [latitude]=\"_selectedDealer?.dealerLatitude\" [longitude]=\"_selectedDealer?.dealerLongitude\"\n                            [zoom]=15>\n                            <agm-marker [latitude]=\"_selectedDealer?.dealerLatitude\" [longitude]=\"_selectedDealer?.dealerLongitude\">\n\n                            </agm-marker>\n\n                        </agm-map>\n\n\n                    </div>\n                </div>\n\n            </div>\n        </div>\n    </div>\n    <div class=\"innerBoxClass\" #nodata *ngIf=\"!(dealerArray && dealerArray.length > 0)\">\n        <div class=\"container pd-0 margin-0 w-100\" style=\"text-align: center\">\n            <h3>No Data Found</h3>\n        </div>\n    </div>\n\n\n</div>"
 
 /***/ }),
 
@@ -559,7 +686,6 @@ var DealerlistComponent = /** @class */ (function () {
         this.TodayTimingdata = {};
         this.filterObj = {};
         this.country = [];
-        // this.getAllDealers();
         this.getFiltersFromContent();
     }
     DealerlistComponent.prototype.ngOnInit = function () {
@@ -570,7 +696,6 @@ var DealerlistComponent = /** @class */ (function () {
     DealerlistComponent.prototype.getAllDealers = function () {
         var _this = this;
         this._dealerService.getAllDealers().toPromise().then(function (data) {
-            _this.spinnerService.show();
             _this.dealerArray = data;
             _this.dealerCompleteArray = data;
             _this.setSelectedDealer();
@@ -616,15 +741,10 @@ var DealerlistComponent = /** @class */ (function () {
     };
     DealerlistComponent.prototype.getFiltersFromContent = function () {
         var _this = this;
-        this.subscriptionIfLoadData = this._dataService.getCheckIfLoadData().subscribe(function (message) {
-            _this.loadData = message;
-            //console.log(this.loadData);
-        });
         this.subscription = this._dataService.getMessage().subscribe(function (message) {
             _this.message = message.text;
             _this.filterargs = _this.message;
             _this._dealerService.getAllDealers().toPromise().then(function (data) {
-                _this.spinnerService.show();
                 _this.dealerArray = data;
                 _this.dealerCompleteArray = data;
                 _this.setSelectedDealer();
@@ -634,65 +754,83 @@ var DealerlistComponent = /** @class */ (function () {
             });
             if (_this.dealerArray)
                 _this.selectDealer(_this.dealerArray[0], 0);
-            //this._selectedDealer=this.dealerArray[0];
-            //this.selectedRow=0;
-            // if (message) {
-            //   if (message.text.region) {
-            //     const selectedCountry = message.text.region;
-            //     switch (+selectedCountry) {
-            //       case 2: {
-            //         this.dealerArray = this.dealerCompleteArray.filter(a => a.country == 'ARGENTINA');
-            //         this.setSelectedDealer();
-            //         break;
-            //       }
-            //       case 3: {
-            //         //statements; 
-            //         break;
-            //       }
-            //       case 4: {
-            //         //statements; 
-            //         break;
-            //       }
-            //       case 5: {
-            //         //statements; 
-            //         break;
-            //       }
-            //       case 6: {
-            //         //statements; 
-            //         break;
-            //       }
-            //       default: {
-            //         //statements; 
-            //         break;
-            //       }
-            //     }
-            //   }
-            //   if (message.inputText) {
-            //     //this.dealerArray.filter(a=>a.)
-            //   }
-            //   // if(message.inputText !== '' && message.inputText !== null && message !==  undefined)
-            //   // {
-            //   //   this.dealerArray
-            //   // }
-            // }
         });
+        this.subscriptionAdvSearchFilter = this._dataService.getAdvanceSearchFilterMessage().subscribe(function (message) {
+            _this.advSearchFilterArgs = message.text;
+            var items = _this.dealerCompleteArray;
+            _this.filterDealersAdvanceSearch(items, _this.advSearchFilterArgs);
+        });
+    };
+    DealerlistComponent.prototype.filterDealersAdvanceSearch = function (items, filter) {
+        if (items && filter) {
+            var result = [];
+            if (filter.postalCode && filter.postalCode.length > 0) {
+                this.dealerArray = items.filter(function (a) {
+                    if (a.dealerAddressDetailModel)
+                        return a.dealerAddressDetailModel.postalCode === (filter.postalCode);
+                });
+            }
+            else {
+                if (filter.selectedStates && filter.selectedStates.length > 0) {
+                    items.filter(function (a) {
+                        if (a.dealerAddressDetailModel) {
+                            filter.selectedStates.forEach(function (element) {
+                                if (element.name.toLowerCase() == a.dealerAddressDetailModel.state.toLowerCase()) {
+                                    result.push(a);
+                                }
+                            });
+                        }
+                    });
+                }
+                else {
+                    result = items;
+                }
+                if (filter.selectedCities && filter.selectedCities.length > 0) {
+                    var cityResult = [];
+                    result.filter(function (a) {
+                        if (a.dealerAddressDetailModel) {
+                            filter.selectedCities.forEach(function (element) {
+                                if (element.toLowerCase() == a.dealerAddressDetailModel.city.toLowerCase()) {
+                                    cityResult.push(a);
+                                }
+                            });
+                        }
+                    });
+                    result = cityResult;
+                }
+            }
+            if (filter.dealerServices && filter.dealerServices.length > 0) {
+                result = this.filterByServices(result, filter.dealerServices);
+            }
+            if (filter.distance) {
+                result = this.filterByDistance(result, filter.distance);
+            }
+            if (result.length > 0) {
+                result = result.sort(this.compare);
+                this.dealerArray = Array.from(new Set(result));
+                if (this.dealerArray)
+                    this.selectDealer(this.dealerArray[0], 0);
+            }
+            else
+                this.dealerArray = [];
+        }
     };
     DealerlistComponent.prototype.setImagesServiceType = function () {
         if (this._selectedDealer) {
+            this.serviceTypeOne = false;
+            this.serviceTypeTwo = false;
+            this.serviceTypeThree = false;
             var dealerServiceTypes = this._selectedDealer.dealerServiceTypeModel;
             if (dealerServiceTypes) {
                 for (var _i = 0, dealerServiceTypes_1 = dealerServiceTypes; _i < dealerServiceTypes_1.length; _i++) {
                     var ServiceType = dealerServiceTypes_1[_i];
-                    this.serviceTypeOne = false;
-                    this.serviceTypeTwo = false;
-                    this.serviceTypeThree = false;
-                    if (ServiceType.serviceType_uid == 1) {
+                    if (ServiceType.serviceType_uid == "1") {
                         this.serviceTypeOne = true;
                     }
-                    if (ServiceType.serviceType_uid == 2) {
+                    else if (ServiceType.serviceType_uid == "2") {
                         this.serviceTypeTwo = true;
                     }
-                    if (ServiceType.serviceType_uid == 3) {
+                    else if (ServiceType.serviceType_uid == "3") {
                         this.serviceTypeThree = true;
                     }
                 }
@@ -773,7 +911,7 @@ var DealerlistComponent = /** @class */ (function () {
                 for (var i = 0; i < resp.length; i++) {
                     var occurance = resp[i].openingDay.split("-").length - 1;
                     if (resp[i].startTime === "") {
-                        resp[i].startTime = "Closed";
+                        resp[i].startTime = "Close";
                     }
                     if (occurance > 1) {
                         var left = resp[i].openingDay.substring(0, resp[i].openingDay.indexOf("-"));
@@ -781,10 +919,19 @@ var DealerlistComponent = /** @class */ (function () {
                         resp[i].openingDay = left + right;
                     }
                 }
+                resp.forEach(function (day) {
+                    if (day.startTime && day.endTime)
+                        day.startTime = day.startTime + ' Hrs. to ' + day.endTime + ' Hrs.';
+                });
                 this.finalTimingsObj = resp;
                 this.TodayTimingdata = this._selectedDealer.dealerTimingModel.filter(function (a) { return a.openingDay === day; });
                 var open = this.addZero(this.TodayTimingdata[0].startTime);
                 var close = this.addZero(this.TodayTimingdata[0].endTime); //.format('H:mm');
+                // this.TodayTimingdata[0].forEach(day => {
+                //   if(this.TodayTimingdata[0].startTime && this.TodayTimingdata[0].endTime)
+                //   this.TodayTimingdata[0].startTime= ' '+this.TodayTimingdata[0].startTime +' Hrs. to '+ this.TodayTimingdata[0].endTime +' Hrs.'
+                // });
+                this.TodayTimingdata[0].startTime = '    ' + this.TodayTimingdata[0].openingDay + ' ' + this.TodayTimingdata[0].startTime + ' Hrs. to ' + this.TodayTimingdata[0].endTime + ' Hrs.';
                 var currentDate = new Date();
                 var currentTime = currentDate.getHours() + ':' + currentDate.getMinutes();
                 if (currentTime >= open && currentTime <= close) {
@@ -802,7 +949,7 @@ var DealerlistComponent = /** @class */ (function () {
     DealerlistComponent.prototype.filterDealerArray = function (items, filter) {
         if (filter && items.length > 0) {
             this.country = this._dataService.getSelectedCountries(filter.region);
-            this.newList = this._dataService.filterCountryData(items, this.country);
+            this.filteredByCountry = this._dataService.filterCountryData(items, this.country);
             if (filter.inputText) {
                 var location = filter.inputText.trim();
                 this.currentLocation = new _models_locationModel__WEBPACK_IMPORTED_MODULE_7__["locationModel"]();
@@ -814,17 +961,95 @@ var DealerlistComponent = /** @class */ (function () {
                 if (filter.userLat && filter.userLong) {
                     this.currentLocation.lat = filter.userLat;
                     this.currentLocation.lng = filter.userLong;
-                    this.dealerArray = this.applyHaversine(this.newList).sort(this.compare);
+                    this.dealerArray = this.applyHaversine(this.filteredByCountry).sort(this.compare);
+                    if (filter.distance) {
+                        this.dealerArray = this.filterByDistance(this.dealerArray, filter.distance);
+                        if (this.dealerArray)
+                            this.selectDealer(this.dealerArray[0], 0);
+                    }
+                    if (this.filterObj.dealerServices && filter.dealerServices.length > 0) {
+                        this.dealerArray = this.filterByServices(this.dealerArray, filter.dealerServices);
+                        if (this.dealerArray)
+                            this.selectDealer(this.dealerArray[0], 0);
+                    }
                 }
-                return this.newList;
-                // if (filter.distance) {
-                //     return this.filterByDistance(this.newList, filter.distance);
-                // }
+                return this.filteredByCountry;
             }
         }
         else {
             return [];
         }
+    };
+    DealerlistComponent.prototype.filterByDistance = function (items, distance) {
+        switch (+distance) {
+            case 1: {
+                return items;
+                break;
+            }
+            case 2: {
+                return items.filter(function (a) { return a.distance <= 50; });
+                break;
+            }
+            case 3: {
+                return items.filter(function (a) { return a.distance <= 100; });
+                break;
+            }
+            case 4: {
+                return items.filter(function (a) { return a.distance <= 150; });
+                break;
+            }
+            case 5: {
+                return items.filter(function (a) { return a.distance <= 200; });
+                break;
+            }
+            case 5: {
+                return items.filter(function (a) { return a.distance <= 250; });
+                break;
+            }
+            default: {
+                return items;
+            }
+        }
+    };
+    DealerlistComponent.prototype.filterByServices = function (dealers, services) {
+        if (services) {
+            var result = [];
+            dealers.forEach(function (dlr) {
+                services.forEach(function (service) {
+                    if (dlr.dealerServiceTypeModel) {
+                        dlr.dealerServiceTypeModel.forEach(function (serviceType) {
+                            if (serviceType.serviceType_uid == service) {
+                                result.push(dlr);
+                            }
+                        });
+                    }
+                });
+            });
+            // dealers.forEach(dlr => {            
+            //   for (var service in services) {
+            //     dlr.dealerAddressDetailModel.forEach(serviceType => {       
+            //       if (serviceType.serviceType_uid === service) {
+            //         result.push(dlr);
+            //       }
+            //     });
+            //   }
+            // });
+            return result = Array.from(new Set(result));
+        }
+        else {
+            return dealers;
+        }
+        //  return dealers.forEach(dlr => {
+        //   return services.forEach(service => {
+        //       if (dlr.dealerServiceTypeModel) {
+        //         dlr.dealerServiceTypeModel.forEach(serviceType => {
+        //           if (serviceType.serviceType_uid === service) {
+        //             return dlr;
+        //           }
+        //         });
+        //       }
+        //     });
+        //   });
     };
     DealerlistComponent.prototype.addressToCoordinates = function (address) {
         var _this = this;
@@ -839,75 +1064,23 @@ var DealerlistComponent = /** @class */ (function () {
         if (this.loc.lat && this.loc.lng) {
             this.filterObj.userLat = this.currentLocation.lat = this.loc.lat;
             this.filterObj.userLong = this.currentLocation.lng = this.loc.lng;
-            //console.log(this.filterObj);
-            this.spinnerService.hide();
-            this.dealerArray = this.applyHaversine(this.newList).sort(this.compare);
+            this.dealerArray = this.applyHaversine(this.filteredByCountry).sort(this.compare);
+            if (this.filterObj.distance) {
+                this.dealerArray = this.filterByDistance(this.dealerArray, this.filterObj.distance);
+                if (this.dealerArray)
+                    this.selectDealer(this.dealerArray[0], 0);
+            }
+            if (this.filterObj.dealerServices && this.filterObj.dealerServices.length > 0) {
+                this.dealerArray = this.filterByServices(this.dealerArray, this.filterObj.dealerServices);
+                if (this.dealerArray)
+                    this.selectDealer(this.dealerArray[0], 0);
+            }
         }
         else {
             alert("Location Not Found");
-            this.spinnerService.hide();
             this.dealerArray = [];
         }
     };
-    // country: string[] = [];
-    // getSelectedCountries(region: any) {
-    //   const selectedCountry = region;
-    //   this.country = [];
-    //   switch (+selectedCountry) {
-    //     case 1: {
-    //       this.country = [];
-    //       break;
-    //     }
-    //     case 2: {
-    //       this.country.push("ARGENTINA");
-    //       break;
-    //     }
-    //     case 3: {
-    //       this.country.push("BRAZIL");
-    //       break;
-    //     }
-    //     case 4: {
-    //       this.country.push("CHILE");
-    //       this.country.push("COLOMBIA");
-    //       this.country.push("COSTA RICA");
-    //       this.country.push("EL SALVADOR");
-    //       this.country.push("ESTADOS UNIDOS");
-    //       this.country.push("GUATEMALA");
-    //       this.country.push("HONDURAS");
-    //       this.country.push("NICARAGUA");
-    //       this.country.push("PANAMA");
-    //       this.country.push("PUERTO RICO");
-    //       this.country.push("REPUBLICA DOMINICANA");
-    //       this.country.push("VENEZUELA");
-    //       break;
-    //     }
-    //     case 5: {
-    //       this.country.push("MEXICO");
-    //       break;
-    //     }
-    //     case 6: {
-    //       this.country.push("UNITED STATES");
-    //       this.country.push("CANADA");
-    //       break;
-    //     }
-    //     default: {
-    //       break;
-    //     }
-    //   }
-    // }
-    // filterCountryData(items: dealerModel[], countries: string[]) {
-    //   if (countries && countries.length > 0) {
-    //     return items.filter(function (item) {
-    //       for (var ctry of countries) {
-    //         if (ctry === item.country) {
-    //           return item;
-    //         }
-    //       }
-    //     })
-    //   }
-    //   else
-    //     return items;
-    // }
     DealerlistComponent.prototype.applyHaversine = function (locations) {
         var _this = this;
         if (this.currentLocation.lat && this.currentLocation.lng) {
@@ -1379,7 +1552,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".navbarClass{\r\n    height: auto;\r\n   background-color: rgb(247, 247, 247);\r\n    width: auto;\r\n    margin-bottom: 0px;\r\n}\r\n.navbarClass2\r\n{\r\n    height: auto;\r\n    background-color:rgb(255, 255, 255);     \r\n    margin:  0px 0 0 0;\r\n    opacity: 1;\r\n    mix-blend-mode: normal;\r\n    padding: 0px;\r\n    border-width: 0px;\r\n    border-radius: 0px;\r\n    border-color: rgb(102, 102, 102); \r\n    border-style: solid;\r\n     border-style: solid;\r\n     background-color: rgb(255, 255, 255);\r\n    background-image: none;\r\n    background-size: cover;\r\n    background-repeat: repeat;\r\n    background-position: center center;\r\n    width: auto;\r\n    height: 110px;\r\n        \r\n}\r\n.container{\r\n    margin-left: 20px;\r\n}\r\nul.navbar-nav{\r\n    margin-top: 35px;\r\n}\r\n.navbar-nav>li {\r\n    min-width: 100px;\r\n    background-color: white;\r\n}\r\n.navbar-nav>li> a:hover{\r\n       color: rgb(0,51,171)\r\n}\r\n.font-G-a9qp4vvmdw-n3 {\r\n    font-family: G-Roboto-n3, Arial !important;\r\n    font-size: 16px;\r\n}\r\n.svgLanguageClass{\r\n    opacity: 1; mix-blend-mode: normal; fill: rgb(22, 70, 142); \r\n    width: 24px; height: 24px;\r\n    float: left;\r\n    margin: 0% 0% 0% 0%;\r\n}\r\n.selectLanguageClassWrapper{\r\n      display:inline-flex;      \r\n     margin: 0% 0 0 0%; \r\n    height: auto;\r\n    width: 50%;     \r\n}\r\n.selectLanguageClass{\r\n    mix-blend-mode: normal;\r\n    color: rgb(22, 70, 142);\r\n    border-width: 0px; \r\n    border-color: rgb(102, 102, 102);                                            \r\n    border-style: solid; \r\n    border-radius: 3px; \r\n    font-size: 12px; font-weight: normal;                                        \r\n    font-style: normal; \r\n    text-align: left; \r\n    text-align-last: left;                                         \r\n    background-color: rgb(247, 247, 247); \r\n    margin: 5px 10px 5px 0px;\r\n    padding: 0 0px 0 5px;\r\n}\r\n.svgDownloadMobileAppClass{\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    fill: rgb(22, 70, 142); \r\n    margin-right: 5px;\r\n    width: 24px; \r\n    height: 24px;\r\n    float:left;\r\n\r\n}\r\n.downloadMobileAppClass {\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    color: rgb(22, 70, 142); \r\n    font-size: 12px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: none; \r\n    text-align: left; \r\n    height: auto;\r\n    display: inline-block;\r\n}\r\n.mobile-icon{\r\n    color: rgb(22, 70, 142);\r\n}\r\n.down-app{\r\n    position: relative;\r\n    top: -5px;\r\n    margin-left:5px;\r\n}\r\n.navbar-theme-shadow {\r\n    box-shadow: 0 1px 2px rgba(0,0,0,.24), 0 1px 3px rgba(0,0,0,.12);\r\n}\r\n.hidden-xl{\r\n    display:none;\r\n}\r\n@media(min-width:200px) and (max-width:1000px){\r\n    nav.upper-nav{\r\n        display:none;\r\n    }\r\n   \r\n    \r\n}\r\n@media (max-width: 991px) {\r\n    .navbar-header {\r\n        float: none;\r\n    }\r\n    .navbar-left,.navbar-right {\r\n        float: none !important;\r\n    }\r\n    .navbar-toggle {\r\n        display: block;\r\n    }\r\n    .navbar-collapse {\r\n        border-top: 1px solid transparent;\r\n        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);\r\n    }\r\n    .navbar-fixed-top {\r\n        top: 0;\r\n        border-width: 0 0 1px;\r\n    }\r\n    .navbar-collapse.collapse {\r\n        display: none!important;\r\n    }\r\n    .navbar-nav {\r\n        float: none!important;\r\n        margin-top: 7.5px;\r\n    }\r\n    .navbar-nav>li {\r\n        float: none;\r\n    }\r\n    .navbar-nav>li>a {\r\n        padding-top: 10px;\r\n        padding-bottom: 10px;\r\n    }\r\n    .collapse.in{\r\n        display:block !important;\r\n    }\r\n}\r\n.navbar {\r\n    min-height: 40px;\r\n    border:none;\r\n}\r\n.sec-nav{\r\n    margin-top: 8px;\r\n    margin-right: 10px;\r\n}"
+module.exports = ".navbarClass{\r\n    height: auto;\r\n   background-color: rgb(247, 247, 247);\r\n    width: auto;\r\n    margin-bottom: 0px;\r\n}\r\n.navbarClass2\r\n{\r\n    height: auto;\r\n    background-color:rgb(255, 255, 255);     \r\n    margin:  0px 0 0 0;\r\n    opacity: 1;\r\n    mix-blend-mode: normal;\r\n    padding: 0px;\r\n    border-width: 0px;\r\n    border-radius: 0px;\r\n    border-color: rgb(102, 102, 102); \r\n    border-style: solid;\r\n     border-style: solid;\r\n     background-color: rgb(255, 255, 255);\r\n    background-image: none;\r\n    background-size: cover;\r\n    background-repeat: repeat;\r\n    background-position: center center;\r\n    width: auto;\r\n    height: 110px;\r\n        \r\n}\r\n.container{\r\n    margin-left: 20px;\r\n}\r\nul.navbar-nav{\r\n    margin-top: 40px;\r\n}\r\n.navbar-nav>li {\r\n    min-width: 100px;\r\n    background-color: white;\r\n}\r\n.navbar-nav>li> a:hover{\r\n       color: rgb(0,51,171)\r\n}\r\n.font-G-a9qp4vvmdw-n3 {\r\n    font-family: G-Roboto-n3, Arial !important;\r\n    font-size: 16px;\r\n}\r\n.svgLanguageClass{\r\n    opacity: 1; mix-blend-mode: normal; fill: rgb(22, 70, 142); \r\n    width: 24px; height: 24px;\r\n    float: left;\r\n    margin: 0% 0% 0% 0%;\r\n}\r\n.selectLanguageClassWrapper{\r\n      display:inline-flex;      \r\n     margin: 0% 0 0 0%; \r\n    height: auto;\r\n    width: 50%;     \r\n}\r\n.selectLanguageClass{\r\n    mix-blend-mode: normal;\r\n    color: rgb(22, 70, 142);\r\n    border-width: 0px; \r\n    border-color: rgb(102, 102, 102);                                            \r\n    border-style: solid; \r\n    border-radius: 3px; \r\n    font-size: 12px; font-weight: normal;                                        \r\n    font-style: normal; \r\n    text-align: left; \r\n    text-align-last: left;                                         \r\n    background-color: rgb(247, 247, 247); \r\n    /* margin: 5px 10px 5px 0px; */\r\n    margin: 0px 10px 5px 0px;\r\n    padding: 0 0px 0 5px;\r\n    cursor: pointer;\r\n}\r\n.svgDownloadMobileAppClass{\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    fill: rgb(22, 70, 142); \r\n    margin-right: 5px;\r\n    width: 24px; \r\n    height: 24px;\r\n    float:left;\r\n\r\n}\r\n.downloadMobileAppClass {\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    color: rgb(22, 70, 142); \r\n    font-size: 12px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: none; \r\n    text-align: left; \r\n    height: auto;\r\n    display: inline-block;\r\n}\r\n.mobile-icon{\r\n    color: rgb(22, 70, 142);\r\n}\r\n.down-app{\r\n    position: relative;\r\n    top: -7px;\r\n    margin-left:5px;\r\n    cursor: pointer;\r\n}\r\n.navbar-theme-shadow {\r\n    box-shadow: 0 1px 2px rgba(0,0,0,.24), 0 1px 3px rgba(0,0,0,.12);\r\n}\r\n.hidden-xl{\r\n    display:none;\r\n}\r\n@media(min-width:200px) and (max-width:1000px){\r\n    nav.upper-nav{\r\n        display:none;\r\n    }\r\n   \r\n    \r\n}\r\n@media (max-width: 991px) {\r\n    .navbar-header {\r\n        float: none;\r\n    }\r\n    .navbar-left,.navbar-right {\r\n        float: none !important;\r\n    }\r\n    .navbar-toggle {\r\n        display: block;\r\n    }\r\n    .navbar-collapse {\r\n        border-top: 1px solid transparent;\r\n        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);\r\n    }\r\n    .navbar-fixed-top {\r\n        top: 0;\r\n        border-width: 0 0 1px;\r\n    }\r\n    .navbar-collapse.collapse {\r\n        display: none!important;\r\n    }\r\n    .navbar-nav {\r\n        float: none!important;\r\n        margin-top: 7.5px;\r\n    }\r\n    .navbar-nav>li {\r\n        float: none;\r\n    }\r\n    .navbar-nav>li>a {\r\n        padding-top: 10px;\r\n        padding-bottom: 10px;\r\n    }\r\n    .collapse.in{\r\n        display:block !important;\r\n    }\r\n}\r\n.navbar {\r\n    min-height: 40px;\r\n    border:none;\r\n}\r\n.sec-nav{\r\n    margin-top: 8px;\r\n    margin-right: 10px;\r\n}\r\n.hidden{\r\n    display:none;\r\n}\r\n.show{\r\n    display:block;\r\n}\r\n#modal-container {\r\n    position:  fixed;\r\n    top: 300px;\r\n    left: 50%;\r\n    width: 375px;\r\n    background: white;\r\n    margin-left: -187.5px;\r\n    text-align: center;\r\n    box-shadow: 0px 0px 2px 1px black;\r\n    z-index: 100;\r\n}\r\n#overlay {\r\n    position: absolute;\r\n    top: 0px;\r\n    left:  0px;\r\n    z-index:  99;\r\n    background:  rgba(0,0,0,0.8);\r\n    width:  100%;\r\n    height: 100%;\r\n}\r\n.modal-box{\r\n    opacity: 1; mix-blend-mode: \r\n    normal; background-color: rgb(255, 255, 255); \r\n    background-image: none; \r\n    background-position: center center; \r\n    background-repeat: repeat; \r\n    background-size: cover; \r\n    border-radius: 5px; border-width: 0px; \r\n    border-color: rgb(102, 102, 102); border-style: solid; \r\n    padding: 0px; box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 5px 0px; \r\n    \r\n}\r\n.modal-cont{\r\n     margin-top: 75px;\r\n }"
 
 /***/ }),
 
@@ -1390,7 +1563,7 @@ module.exports = ".navbarClass{\r\n    height: auto;\r\n   background-color: rgb
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbarClass navbar-default upper-nav\">\n    <div class=\"container w-auto\" >\n        <div class=\"row\">\n            <div class=\"col-md-4 col-md-offset-8\">    \n                <div class=\"row hidden-xs sec-nav\">   \n                    <div class=\"col-xs display-inline-block pull-right\">\n                        <div >\n                            <div class=\"downloadMobileAppClass\">\n                                <span class=\"mobile-icon\"> <i class=\"material-icons\">language </i>   </span> \n                                <span class=\"down-app\">Download Mobile App</span></div>\n                        </div>\n                    </div>\n                    <div class=\"col-xs pd-0 w-auto display-inline-block pull-right\" >\n                        <div >\n                            <div class=\"selectLanguageClassWrapper \">\n                              <span class=\"mobile-icon\" > <i class=\"material-icons\">phone_iphone </i>   </span>  \n                              <select class=\"ng-element selectLanguageClass\">    \n                                    <option value=\"id-1\">English</option>\n                                    <option value=\"id-2\">Español</option>\n                                    <option value=\"id8611685\">Français</option>\n                                    <option value=\"id1621686\">Português</option>\n                                </select>\n                            </div>    \n                        </div>\n                    </div>      \n                  </div>\n            </div>\n        </div>\n    </div>\n</nav>\n\n\n<nav class=\"nav navbar  font-S-Arial-n4 navbar-default navbar-theme navbar-theme-shadow navbarClass2\">\n    <div class=\"\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed eyebrow\" data-toggle=\"collapse\" data-target=\"#nav-toggle\" aria-expanded=\"false\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"/carrier/\">\n                <link rel=\"alternate\" href=\"https://www.carrier.com/carrier/en/dz/\" hreflang=\"en-dz\">    \n                <link rel=\"alternate\" href=\"https://www.carrier.com/carrier/en/us/\" hreflang=\"en-us\">\n                <img src=\"https://s3.amazonaws.com/upload.uxpin/files/913027/903263/carrier_logo-6599e8.PNG\" alt=\"Carrier Logo\" title=\"Carrier Logo\" itemprop=\"logo\" class=\"carrier-logo\">\n            </a>\n        </div>\n\n\n\n        <div class=\"collapse navbar-collapse menuClass\" id=\"nav-toggle\">\n            <ul class=\"nav navbar-nav font-G-a9qp4vvmdw-n3\">\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/products/\">Products<span class=\"sr-only\">(current)</span></a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/service-support/\">Service and Support</a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/customer-connection/\">Customer Connection</a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/sustainability/\">Sustainability</a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/about-carrier/about-carrier-transicold/\">About Us</a>\n                </li>\n                <li class=\"visible-xs visible-sm hidden-xl\"><a href=\"#\">  <span class=\"mobile-icon\" > <i class=\"material-icons\">phone_iphone </i>   </span>   English </a> </li>\n                <li class=\"visible-xs visible-sm hidden-xl\"><a href=\"#\">  <span class=\"mobile-icon\"> <i class=\"material-icons\">language </i>   </span> Download Mobile App</a></li>\n            </ul>\n        </div>\n    </div>\n\n</nav>"
+module.exports = "<nav class=\"navbar navbarClass navbar-default upper-nav\">\n    <div class=\"container w-auto\">\n        <div class=\"row\">\n            <div class=\"col-md-4 col-md-offset-8\">\n                <div class=\"row hidden-xs sec-nav\">\n                    <div class=\"col-xs display-inline-block pull-right\">\n\n\n                        <div class=\"downloadMobileAppClass\">\n                            <span class=\"mobile-icon\">\n                                <i class=\"material-icons\">phone_iphone</i>\n                            </span>\n                            <span class=\"down-app\" (click)=\"open()\">Download Mobile App</span>\n                        </div>\n\n\n\n                    </div>\n                    <div class=\"col-xs pd-0 w-auto display-inline-block pull-right\">\n                        <div>\n                            <div class=\"selectLanguageClassWrapper \">\n                                <span class=\"mobile-icon\">\n                                    <i class=\"material-icons\">language</i>\n                                </span>\n                                <select class=\"ng-element selectLanguageClass\">\n                                    <option value=\"1\">English</option>\n                                    <option value=\"2\">Español</option>\n                                    <option value=\"3\">Français</option>\n                                    <option value=\"4\">Português</option>\n                                </select>\n                            </div>\n                        </div>\n                    </div>\n\n\n                </div>\n            </div>\n        </div>\n    </div>\n</nav>\n\n\n<nav class=\"nav navbar  font-S-Arial-n4 navbar-default navbar-theme navbar-theme-shadow navbarClass2\">\n    <div class=\"\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed eyebrow\" data-toggle=\"collapse\" data-target=\"#nav-toggle\"\n                aria-expanded=\"false\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"/carrier/\">\n                <link rel=\"alternate\" href=\"https://www.carrier.com/carrier/en/dz/\" hreflang=\"en-dz\">\n                <link rel=\"alternate\" href=\"https://www.carrier.com/carrier/en/us/\" hreflang=\"en-us\">\n                <img src=\"https://s3.amazonaws.com/upload.uxpin/files/913027/903263/carrier_logo-6599e8.PNG\" alt=\"Carrier Logo\"\n                    title=\"Carrier Logo\" itemprop=\"logo\" class=\"carrier-logo\">\n            </a>\n        </div>\n\n\n\n        <div class=\"collapse navbar-collapse menuClass\" id=\"nav-toggle\">\n            <ul class=\"nav navbar-nav font-G-a9qp4vvmdw-n3\">\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/products/\">Products<span class=\"sr-only\">(current)</span></a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/service-support/\">Service and\n                        Support</a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/customer-connection/\">Customer\n                        Connection</a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/sustainability/\">Sustainability</a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/about-carrier/about-carrier-transicold/\">About\n                        Us</a>\n                </li>\n                <li class=\"visible-xs visible-sm hidden-xl\">\n                    <a href=\"#\">\n                        <span class=\"mobile-icon\">\n                            <i class=\"material-icons\">phone_iphone\n\n                            </i>\n                        </span>\n                        <select class=\"ng-element selectLanguageClass\">\n                            <option value=\"1\">English</option>\n                            <option value=\"2\">Español</option>\n                            <option value=\"3\">Français</option>\n                            <option value=\"4\">Português</option>\n                        </select>\n                    </a>\n                </li>\n                <li class=\"visible-xs visible-sm hidden-xl\">\n                    <a href=\"#\">\n                        <span class=\"mobile-icon\">\n                            <i class=\"material-icons\">language\n                            </i> </span> Download Mobile App\n                    </a>\n                </li>\n            </ul>\n        </div>\n    </div>\n\n</nav>\n \n\n<ng-template #generatemodal class=\"modal-box\" style=\"width: 400px; height: 282px;\">\n    <div class=\"modal-header\"  >\n      <h4 class=\"modal-title pull-center\" style=\"text-align:center\">Download Mobile Application</h4>\n      <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">X\n        <span aria-hidden=\"true\"></span>\n      </button>\n    </div>\n    <div class=\"modal-body\">\n            Get the Carrier mobile application to easily find your dealers in the palm of your hands. Available for Android and iOS devices.\n       <div  style=\"margin-top:70px;text-align:center\">\n            <img        \n         src=\"https://uc.uxpin.com/files/913027/903263/1024px-Get_it_on_Google_play.svg-d24706.png\" \n         style=\"opacity: 1; \n         mix-blend-mode: normal; \n         border-radius: 0px; object-fit: fill; \n         object-position: center center; width: 130px; height: 38px; \n         \">\n    \n\n    <img class=\"ng-element el-image el-image-no-back interactive\" data-id=\"de3b344ac4c846ddb95aa2a72c5a08c2\" src=\"https://uc.uxpin.com/files/913027/903263/640px-Download_on_the_App_Store_Badge.svg-9c011d.png\" style=\"opacity: 1; mix-blend-mode: normal; border-radius: 0px; object-fit: fill; object-position: center center; width: 130px; height: 38px; \">\n</div> </div>\n</ng-template>\n "
 
 /***/ }),
 
@@ -1407,6 +1580,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ng4-loading-spinner */ "./node_modules/ng4-loading-spinner/ng4-loading-spinner.umd.js");
 /* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_ngx_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/ngx-bootstrap */ "./node_modules/ngx-bootstrap/esm5/ngx-bootstrap.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1418,20 +1592,29 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var HeaderComponent = /** @class */ (function () {
-    function HeaderComponent(spinnerService) {
+    function HeaderComponent(modalService, spinnerService) {
+        this.modalService = modalService;
         this.spinnerService = spinnerService;
     }
     HeaderComponent.prototype.ngOnInit = function () {
         this.spinnerService.show();
     };
+    HeaderComponent.prototype.open = function () {
+        this.modalRef = this.modalService.show(this.generatemodal, { class: 'modal-md' });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('generatemodal'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], HeaderComponent.prototype, "generatemodal", void 0);
     HeaderComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-header',
             template: __webpack_require__(/*! ./header.component.html */ "./src/app/header/header.component.html"),
             styles: [__webpack_require__(/*! ./header.component.css */ "./src/app/header/header.component.css")]
         }),
-        __metadata("design:paramtypes", [ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_1__["Ng4LoadingSpinnerService"]])
+        __metadata("design:paramtypes", [_node_modules_ngx_bootstrap__WEBPACK_IMPORTED_MODULE_2__["BsModalService"], ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_1__["Ng4LoadingSpinnerService"]])
     ], HeaderComponent);
     return HeaderComponent;
 }());
@@ -1563,6 +1746,48 @@ var LoginService = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], LoginService);
     return LoginService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/advanceFilterModel.ts":
+/*!**********************************************!*\
+  !*** ./src/app/models/advanceFilterModel.ts ***!
+  \**********************************************/
+/*! exports provided: advanceFilterModel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "advanceFilterModel", function() { return advanceFilterModel; });
+var advanceFilterModel = /** @class */ (function () {
+    function advanceFilterModel() {
+    }
+    return advanceFilterModel;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/citiesModel.ts":
+/*!***************************************!*\
+  !*** ./src/app/models/citiesModel.ts ***!
+  \***************************************/
+/*! exports provided: citiesModel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "citiesModel", function() { return citiesModel; });
+var citiesModel = /** @class */ (function () {
+    function citiesModel(id, name) {
+        this.id = id;
+        this.name = name;
+    }
+    return citiesModel;
 }());
 
 
@@ -1885,8 +2110,17 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var DataServiceService = /** @class */ (function () {
     function DataServiceService() {
         this.subject = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.subjectCheckFlag = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.subjectAdvSearchFilter = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
         this.country = [];
+        // if (this.selectedFilterStatesIds && this.selectedFilterStatesIds.length > 0) {
+        //   for (var i = 0; i < this.selectedFilterStatesIds.length; i++) {
+        //     let stateId = this.selectedFilterStatesIds[i];
+        //       this.filteredCountryDetails[i].cityList.forEach(element => {
+        //         if (element.StateCode === stateId)
+        //           this.filterdCities.push(new citiesModel(element.code, element.name));
+        //       });
+        //   }
+        // }
     }
     DataServiceService.prototype.sendMessage = function (filterData) {
         this.subject.next({ text: filterData });
@@ -1894,14 +2128,13 @@ var DataServiceService = /** @class */ (function () {
     DataServiceService.prototype.getMessage = function () {
         return this.subject.asObservable();
     };
-    DataServiceService.prototype.sendCheckIfLoadData = function (check) {
-        this.subjectCheckFlag.next({ text: check });
+    DataServiceService.prototype.sendAdvanceSearchFilterMessage = function (filterData) {
+        this.subjectAdvSearchFilter.next({ text: filterData });
     };
-    DataServiceService.prototype.getCheckIfLoadData = function () {
-        return this.subjectCheckFlag.asObservable();
+    DataServiceService.prototype.getAdvanceSearchFilterMessage = function () {
+        return this.subjectAdvSearchFilter.asObservable();
     };
-    DataServiceService.prototype.getSelectedCountries = function (region) {
-        var selectedCountry = region;
+    DataServiceService.prototype.getSelectedCountries = function (selectedCountry) {
         this.country = [];
         switch (+selectedCountry) {
             case 1: {
@@ -1970,6 +2203,21 @@ var DataServiceService = /** @class */ (function () {
                     }
                 }
             });
+        }
+        else
+            return items;
+    };
+    DataServiceService.prototype.filterCities = function (items, selectedStates) {
+        var returnResult = [];
+        if (selectedStates && selectedStates.length > 0) {
+            items.filter(function (item) {
+                selectedStates.forEach(function (element) {
+                    if (element.id === item.StateCode) {
+                        returnResult.push(item);
+                    }
+                });
+            });
+            return returnResult;
         }
         else
             return items;
@@ -2221,7 +2469,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\Milandeep\Dealer Locator\UI App\new\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Milandeep\Dealer Locator\UI App\new\src\main.ts */"./src/main.ts");
 
 
 /***/ })
