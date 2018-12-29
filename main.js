@@ -542,7 +542,7 @@ var ContentpageComponent = /** @class */ (function () {
                 this.inputText = this.dataFilter.inputText;
             }
             this.sendMessage(this.dataFilter);
-            this.advSearchDistance = 5;
+            this.advSearchDistance = 1;
         }
         else if (type === 'advSearch') {
             this.spinnerService.show();
