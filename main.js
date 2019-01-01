@@ -84,7 +84,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n \n<app-header></app-header>\n<app-contentpage></app-contentpage>\n<app-dealerlist></app-dealerlist>\n<app-footer></app-footer>\n\n<ng4-loading-spinner></ng4-loading-spinner> \n\n\n \n\n<cookie-law #cookieLaw \nname=\"ng4CookieLaw\"\n(isSeen)=\"cookieLawSeen = $event\"\nlearnMore=\"/learn-more\" \ntarget=\"_blank\" position=\"top\"></cookie-law>\n"
+module.exports = "\n \n<app-header></app-header>\n<app-contentpage></app-contentpage>\n<app-dealerlist></app-dealerlist>\n<app-footer></app-footer>\n\n<ng4-loading-spinner></ng4-loading-spinner> \n\n\n \n<!-- \n<cookie-law #cookieLaw \nname=\"ng4CookieLaw\"\n(isSeen)=\"cookieLawSeen = $event\"\nlearnMore=\"/learn-more\" theme= \"edgeless\" \ntarget=\"_blank\" position=\"top\"></cookie-law> -->\n"
 
 /***/ }),
 
@@ -99,6 +99,7 @@ module.exports = "\n \n<app-header></app-header>\n<app-contentpage></app-content
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var ngx_cookieconsent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-cookieconsent */ "./node_modules/ngx-cookieconsent/esm5/ngx-cookieconsent.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -109,26 +110,56 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(ccService) {
+        this.ccService = ccService;
         this.title = 'Dealer Locator';
     }
     AppComponent.prototype.ngOnInit = function () {
-        this.cookieLawSeen = this.cookieLawEl.cookieLawSeen;
+        //this.cookieLawSeen = this.cookieLawEl.cookieLawSeen;
+        // subscribe to cookieconsent observables to react to main events
+        this.popupOpenSubscription = this.ccService.popupOpen$.subscribe(function () {
+            // you can use this.ccService.getConfig() to do stuff...
+            console.log('popupOpen');
+        });
+        this.popupCloseSubscription = this.ccService.popupClose$.subscribe(function () {
+            // you can use this.ccService.getConfig() to do stuff...
+            console.log('popuClose');
+        });
+        this.initializeSubscription = this.ccService.initialize$.subscribe(function (event) {
+            // you can use this.ccService.getConfig() to do stuff...
+            console.log("initialize: " + JSON.stringify(event));
+        });
+        this.statusChangeSubscription = this.ccService.statusChange$.subscribe(function (event) {
+            // you can use this.ccService.getConfig() to do stuff...
+            console.log("statusChange: " + JSON.stringify(event));
+        });
+        this.revokeChoiceSubscription = this.ccService.revokeChoice$.subscribe(function () {
+            // you can use this.ccService.getConfig() to do stuff...
+            console.log("revokeChoice");
+        });
+        this.noCookieLawSubscription = this.ccService.noCookieLaw$.subscribe(function (event) {
+            // you can use this.ccService.getConfig() to do stuff...
+            console.log("noCookieLaw: " + JSON.stringify(event));
+        });
     };
-    AppComponent.prototype.dismiss = function () {
-        this.cookieLawEl.dismiss();
+    AppComponent.prototype.ngOnDestroy = function () {
+        // unsubscribe to cookieconsent observables to prevent memory leaks
+        this.popupOpenSubscription.unsubscribe();
+        this.popupCloseSubscription.unsubscribe();
+        this.initializeSubscription.unsubscribe();
+        this.statusChangeSubscription.unsubscribe();
+        this.revokeChoiceSubscription.unsubscribe();
+        this.noCookieLawSubscription.unsubscribe();
     };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('cookieLaw'),
-        __metadata("design:type", Object)
-    ], AppComponent.prototype, "cookieLawEl", void 0);
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [ngx_cookieconsent__WEBPACK_IMPORTED_MODULE_1__["NgcCookieConsentService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -169,7 +200,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
 /* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ngx-bootstrap/modal */ "./node_modules/ngx-bootstrap/modal/fesm5/ngx-bootstrap-modal.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var angular2_cookie_law__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! angular2-cookie-law */ "./node_modules/angular2-cookie-law/fesm5/angular2-cookie-law.js");
+/* harmony import */ var ngx_cookieconsent__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ngx-cookieconsent */ "./node_modules/ngx-cookieconsent/esm5/ngx-cookieconsent.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -198,7 +229,35 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+//import { CookieLawModule } from 'angular2-cookie-law';
 
+var cookieConfig = {
+    cookie: {
+        domain: 'tinesoft.github.io'
+    },
+    position: "top",
+    theme: "edgeless",
+    palette: {
+        popup: {
+            background: "#1aa5da",
+            text: "#ffffff",
+            link: "#ffffff"
+        },
+        button: {
+            background: "#0033ab",
+            text: "#ffffff",
+            border: "transparent"
+        }
+    },
+    type: "opt-out",
+    content: {
+        message: "This website use cookies. By clicking on \"Accept\" you are agreeing to our use of cookies. For more details view our ",
+        dismiss: "Accept",
+        deny: "",
+        link: "Cookie Policy Information.",
+        href: "https://automattic.com/cookies/"
+    }
+};
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -218,7 +277,8 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [_app_routing_module__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"], ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_19__["ModalModule"].forRoot(),
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_20__["BrowserAnimationsModule"],
-                angular2_cookie_law__WEBPACK_IMPORTED_MODULE_21__["CookieLawModule"],
+                //CookieLawModule, // import Angular's CookieLaw modules
+                ngx_cookieconsent__WEBPACK_IMPORTED_MODULE_21__["NgcCookieConsentModule"].forRoot(cookieConfig),
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"], _agm_core__WEBPACK_IMPORTED_MODULE_10__["AgmCoreModule"].forRoot({
                 // apiKey: 'AIzaSyCU3uiVhTEmbOIjw84jKPhi_Jo0K66zQCs'  //'AIzaSyDHZiHDIg4O8JlhWG07u-8bjsdP_6tnqaw'//'AIzaSyAQIM4bPOWHTrGjbad_TBHMTld7txdtuew'  // 'AIzaSyAhpG4sth-EFJH37leaUpeo5Q1ZzC1UZ34'//AIzaSyDHZiHDIg4O8JlhWG07u-8bjsdP_6tnqaw
                 }), agm_direction__WEBPACK_IMPORTED_MODULE_11__["AgmDirectionModule"], ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_12__["NgMultiSelectDropDownModule"].forRoot(), _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClientModule"], ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_16__["Ng4LoadingSpinnerModule"].forRoot()
@@ -263,7 +323,7 @@ var AllRegions = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".imageClass{\r\n    background-image: url(\r\n        https://s3.amazonaws.com/upload.uxpin/files/913027/903263/carrier-transicold-trailer-refrigeration-unit-keeps-food-safe-during-transport-1280x720-f49fba.jpg\r\n        );\r\n        height: 400px;\r\n        background-size: cover; \r\n        background-repeat: repeat; \r\n        background-position: center center; \r\n        width: auto;\r\n} \r\n\r\n.transparentSection{  \r\n    height: 130px;\r\n    opacity: 1;\r\n    mix-blend-mode: normal;\r\n    padding: 0px;\r\n    border-width: 0px;\r\n    border-radius: 0px;\r\n    border-color: rgb(102, 102, 102);\r\n    border-style: solid;\r\n    background-color: rgba(0, 51, 171, 0.88);\r\n    background-image: none;\r\n    background-size: cover;\r\n    background-repeat: repeat;\r\n    background-position: center center;    \r\n    position: relative;\r\n    margin-top:-130px;   \r\n    width: 96%; \r\n    margin-left: 2%; \r\n    margin-right: 2%;\r\n \r\n} \r\n\r\n.transparentSectionText{        \r\n   opacity: 1;\r\n   mix-blend-mode: normal;\r\n   color: rgb(255, 255, 255);\r\n   font-size: 49px;\r\n   font-weight: normal;\r\n   font-style: normal;\r\n   text-decoration: none;\r\n   text-align: center;\r\n   padding-top: 20px;\r\n  \r\n} \r\n\r\n@media only screen and (max-width:768px){\r\n    /* for mobile */\r\n    .transparentSectionText{\r\n        font-size: 30px;\r\n        padding-top: 10px;\r\n    };\r\n   } \r\n\r\n@media only screen and (max-width:320px){\r\n    /* for mobile */\r\n    .transparentSectionText{\r\n        font-size:28px;\r\n    };\r\n   } \r\n\r\n@media only screen and (min-width:425px) and (max-width:768px){\r\n    /* for tablet or ipad both view */\r\n    .transparentSectionText{\r\n        padding-top:35px;\r\n     };\r\n   } \r\n\r\n@media only screen and (min-width:1024px){\r\n            /* for desktop  */\r\n         /*   .transparentSectionText{font-size: 49px};*/\r\n   } \r\n\r\n.seachDealersWrapperClass{\r\n    background-color: #f0f0f0;\r\n    width: auto;\r\n    height: auto;\r\n} \r\n\r\n.seachDealersClass {\r\n     display: block;    \r\n     opacity: 1;\r\n     mix-blend-mode: normal;\r\n     padding: 0px; \r\n     border-width: 0px; \r\n     border-radius: 0px; \r\n     border-color: rgb(102, 102, 102); \r\n     border-style: solid; \r\n     background-color: #ffffff; \r\n     background-image: none; \r\n     background-size: cover; \r\n     background-repeat: repeat; \r\n     background-position: center center; \r\n     width: auto; \r\n     height: auto;    \r\n    margin-left: 2%;  \r\n    margin-right: 2%; \r\n} \r\n\r\n.font-G-a9qp4vvmdw-n4{\r\n    font-family: G-Roboto-n4, Arial !important;\r\n} \r\n\r\n.allRegionsClass {     \r\n    background-color: #ffffff;\r\n    width: 100%;   \r\n    mix-blend-mode: normal; \r\n    color: rgb(51, 51, 51); \r\n    border-width: 1px; \r\n    border-color: rgb(153, 153, 153); \r\n    border-style: solid; \r\n    border-radius: 4px; \r\n    font-size: 16px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-align: left;\r\n    text-align-last: left;  \r\n    cursor: pointer; \r\n} \r\n\r\n/*  class for row */ \r\n\r\n.searchDealer {\r\n    max-width: 960px;\r\n    margin: 0 auto;\r\n    padding-top: 20px;\r\n} \r\n\r\n/* End  Class*/ \r\n\r\n.selectCityClass{    \r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    background-color: rgb(255, 255, 255); \r\n    border-color: rgb(153, 153, 153); \r\n    border-width: 1px; \r\n    color: rgb(51, 51, 51); \r\n    font-size: 16px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    border-radius: 4px; \r\n    border-style: solid; \r\n    background-image: none; \r\n    background-size: auto; \r\n    background-repeat: repeat; \r\n    background-position: center center; \r\n    width: 98%; \r\n    margin: 0 0% 0 0%;\r\n    padding-left: 0;\r\n    vertical-align: top;\r\n    padding: 20px;\r\n} \r\n\r\n@media (max-width:700px) {\r\n    .allDropdownWrapperClass { min-width: 30%;}\r\n  } \r\n\r\n@media (max-width:900px) {  \r\n    .allDropdownWrapperClass { min-width: 30%;}\r\n  } \r\n\r\n.btnSearchClass{\r\n    color: rgb(255, 255, 255); \r\n   text-align: center; \r\n   background-color: rgb(0, 51, 171);\r\n   min-height: 4.5rem;\r\n   min-width: 30px;\r\n   width:10%;\r\n   margin: 0% 0% 0% 2%;  \r\n   border-width: 0px; \r\n   border-radius: 4px; \r\n   border-color: rgb(102, 102, 102); \r\n   border-style: solid;\r\n} \r\n\r\n.linkCompleteDealerList{\r\n    text-align: center;\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    font-size: 16px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: underline;  \r\n    height: 19px; \r\n     color:black;\r\n     cursor: pointer;\r\n     /* margin: 2% 0 2% 0px; */\r\n     margin: 2% 40% 2% 40%;\r\n     -webkit-text-decoration: none solid rgb(192,192,192);\r\n             text-decoration: none solid rgb(192,192,192);\r\n} \r\n\r\n.linkCompleteDealerList:hover{\r\n    color: blue;\r\n} \r\n\r\n.advanceSearchWrapperClass{\r\n    background-color: rgb(240, 240, 240);\r\n} \r\n\r\n.advanceSearchClass\r\n{   \r\n    width: auto; \r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    padding: 0px;\r\n    border-width: 0px; \r\n    border-radius: 0px; \r\n    border-color: rgb(102, 102, 102); \r\n    border-style: solid;  \r\n    background-image: none; \r\n    background-size: cover; \r\n    background-repeat: repeat; \r\n    background-position: center center;  \r\n} \r\n\r\n.svgAdvanceSeachImageWrapperClass{\r\n    margin-left: 1%;\r\n    padding: 1%;\r\n    height: auto ;\r\n    /* margin-right:10%; */\r\n} \r\n\r\n.svgAdvanceSeachImageClass{\r\n    float: left;\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    fill: rgb(51, 51, 51); \r\n    width: 20px; \r\n    height: 2%;\r\n} \r\n\r\n.AdvanceSeachTextHeadingClass{\r\n    display: inline-block;\r\n      margin: 1% 0px 0 0%;     \r\n} \r\n\r\n.allDropdownWrapperClass{\r\n    display: inline-block;\r\n    padding: 1%;\r\n} \r\n\r\n.allDropdownClass{\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    color: rgb(0, 0, 0); \r\n    border-width: 0px; \r\n    border-color: rgb(102, 102, 102); \r\n    border-style: solid; \r\n    border-radius: 4px; \r\n    font-size: 12px; \r\n    font-weight: normal; \r\n    font-style: normal; text-align: left; \r\n    text-align-last: left; \r\n    background-color: rgb(255, 255, 255);\r\n    cursor: pointer;\r\n    /* box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 2px 0px inset;  */\r\n    \r\n} \r\n\r\n.allDropdownAdditional{\r\n    width:100%; \r\n    height: 32px;\r\n    border: 1px solid #adadad;\r\n} \r\n\r\n.textboxClass{\r\n    margin: 0 0 0 0;\r\n    width:100%;\r\n    height:3.5rem;\r\n    border-color: rgb(102, 102, 102); \r\n    border-radius: 4px; \r\n} \r\n\r\n.checkboxDropdown {\r\n    background-color: #ffffff;\r\n    width:34%;\r\n    margin :0 0 0 55%;\r\n    background:none;\r\n} \r\n\r\n.advanceSearch {\r\n    padding-left: 10px;\r\n    padding-top: 20px;\r\n} \r\n\r\n.show_more{\r\n    color: rgb(21, 98, 207);\r\n    font-size: 14px;\r\n    font-weight: bold;\r\n    line-height: 30px;\r\n    cursor: pointer;\r\n} \r\n\r\n@media (max-width: 420px) {\r\n        .searchDealer *.col-xs-4 {\r\n            width: 100%;\r\n            padding-right: 15px;\r\n            padding-bottom: 10px;\r\n        }\r\n        .searchDealer *.col-xs-8 {\r\n            width: 100%;\r\n        }\r\n    } \r\n\r\n@media(max-width: 480px) {\r\n    .advanceSearch .col-xs-4 {\r\n        width: 100%;\r\n    }\r\n} \r\n\r\n@media (min-width: 720px) {\r\n    .advanceSearch .col-sm-4 {\r\n        width: 29%;\r\n    }\r\n\r\n    .advanceSearch .col-sm-3 {\r\n        width: 25%;\r\n    }\r\n\r\n    .advanceSearch .col-sm-3 {\r\n        width: 25%;\r\n    }\r\n} \r\n\r\n@media (max-width: 930px) {\r\n    .advanceSearch .col-sm-2 {\r\n        width: 100%;\r\n    }\r\n} \r\n\r\n.search-city-input{\r\n    width:85%;\r\n} \r\n\r\n.search-btn{\r\n    width:15%;\r\n} \r\n\r\n.btnSearchClass{\r\n    width: 100%; \r\n    text-transform: uppercase;\r\n} \r\n\r\nselect.allRegionsClass{\r\n    color: rgb(51, 51, 51);\r\n  } \r\n\r\n/* select.allRegionsClass option { color: black; } */ \r\n\r\nselect.allRegionsClass option:first-child{\r\n    color: rgb(51, 51, 51);\r\n  } \r\n\r\nselect.allRegionsClass:hover,input.selectCityClass:hover,button.btnSearchClass:hover{\r\n    box-shadow: 0px 2px 2px 0px rgb(51,51,51);\r\n  } \r\n\r\n.linkCompleteDealerList{\r\n     text-decoration:underline;\r\n } \r\n\r\n.dropdown-btn{\r\n    border:none !important;\r\n    border-radius:2px;\r\n } \r\n\r\n@media (max-width: 991px) and (min-width: 100px){\r\n        .visible-sm-search{\r\n            display: block !important;\r\n            background-color: rgb(0, 51, 171);\r\n            color: #fff;\r\n            height: 4.3rem;\r\n        }\r\n    } \r\n\r\n@media (max-width: 768px) and (min-width: 100px){\r\n        .visible-lg-search{\r\n            display:none !important;\r\n        }\r\n\r\n    } \r\n\r\n@media  (min-width: 769px){\r\n        .visible-sm-search{\r\n            display:none !important;\r\n         }\r\n    } \r\n\r\n.arrow-icon{\r\n     font-weight: bold;\r\n    color: rgb(21, 98, 207);\r\n    margin-top: 0px;\r\n    position: relative;\r\n    top: 6px;\r\n    }"
+module.exports = ".imageClass{\r\n    background-image: url(\r\n        https://s3.amazonaws.com/upload.uxpin/files/913027/903263/carrier-transicold-trailer-refrigeration-unit-keeps-food-safe-during-transport-1280x720-f49fba.jpg\r\n        );\r\n        height: 400px;\r\n        background-size: cover; \r\n        background-repeat: repeat; \r\n        background-position: center center; \r\n        width: auto;\r\n} \r\n\r\n.transparentSection{  \r\n    height: 130px;\r\n    opacity: 1;\r\n    mix-blend-mode: normal;\r\n    padding: 0px;\r\n    border-width: 0px;\r\n    border-radius: 0px;\r\n    border-color: rgb(102, 102, 102);\r\n    border-style: solid;\r\n    background-color: rgba(0, 51, 171, 0.88);\r\n    background-image: none;\r\n    background-size: cover;\r\n    background-repeat: repeat;\r\n    background-position: center center;    \r\n    position: relative;\r\n    margin-top:-130px;   \r\n    width: 96%; \r\n    margin-left: 2%; \r\n    margin-right: 2%;\r\n \r\n} \r\n\r\n.transparentSectionText{        \r\n   opacity: 1;\r\n   mix-blend-mode: normal;\r\n   color: rgb(255, 255, 255);\r\n   font-size: 49px;\r\n   font-weight: normal;\r\n   font-style: normal;\r\n   text-decoration: none;\r\n   text-align: center;\r\n   padding-top: 20px;\r\n  \r\n} \r\n\r\n@media only screen and (max-width:768px){\r\n    /* for mobile */\r\n    .transparentSectionText{\r\n        font-size: 30px;\r\n        padding-top: 10px;\r\n    };\r\n   } \r\n\r\n@media only screen and (max-width:320px){\r\n    /* for mobile */\r\n    .transparentSectionText{\r\n        font-size:28px;\r\n    };\r\n   } \r\n\r\n@media only screen and (min-width:425px) and (max-width:768px){\r\n    /* for tablet or ipad both view */\r\n    .transparentSectionText{\r\n        padding-top:35px;\r\n     };\r\n   } \r\n\r\n@media only screen and (min-width:1024px){\r\n            /* for desktop  */\r\n         /*   .transparentSectionText{font-size: 49px};*/\r\n   } \r\n\r\n.seachDealersWrapperClass{\r\n    background-color: #f0f0f0;\r\n    width: auto;\r\n    height: auto;\r\n} \r\n\r\n.seachDealersClass {\r\n     display: block;    \r\n     opacity: 1;\r\n     mix-blend-mode: normal;\r\n     padding: 0px; \r\n     border-width: 0px; \r\n     border-radius: 0px; \r\n     border-color: rgb(102, 102, 102); \r\n     border-style: solid; \r\n     background-color: #ffffff; \r\n     background-image: none; \r\n     background-size: cover; \r\n     background-repeat: repeat; \r\n     background-position: center center; \r\n     width: auto; \r\n     height: auto;    \r\n    margin-left: 2%;  \r\n    margin-right: 2%; \r\n} \r\n\r\n.font-G-a9qp4vvmdw-n4{\r\n    font-family: G-Roboto-n4, Arial !important;\r\n} \r\n\r\n.allRegionsClass {     \r\n    background-color: #ffffff;\r\n    width: 100%;   \r\n    mix-blend-mode: normal; \r\n    color: rgb(51, 51, 51); \r\n    border-width: 1px; \r\n    border-color: rgb(153, 153, 153); \r\n    border-style: solid; \r\n    border-radius: 4px; \r\n    font-size: 16px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-align: left;\r\n    text-align-last: left;  \r\n    cursor: pointer; \r\n} \r\n\r\n/*  class for row */ \r\n\r\n.searchDealer {\r\n    max-width: 960px;\r\n    margin: 0 auto;\r\n    padding-top: 20px;\r\n} \r\n\r\n/* End  Class*/ \r\n\r\n.selectCityClass{    \r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    background-color: rgb(255, 255, 255); \r\n    border-color: rgb(153, 153, 153); \r\n    border-width: 1px; \r\n    color: rgb(51, 51, 51); \r\n    font-size: 16px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    border-radius: 4px; \r\n    border-style: solid; \r\n    background-image: none; \r\n    background-size: auto; \r\n    background-repeat: repeat; \r\n    background-position: center center; \r\n    width: 98%; \r\n    margin: 0 0% 0 0%;\r\n    padding-left: 0;\r\n    vertical-align: top;\r\n    padding: 20px;\r\n} \r\n\r\n@media (max-width:700px) {\r\n    .allDropdownWrapperClass { min-width: 30%;}\r\n  } \r\n\r\n@media (max-width:900px) {  \r\n    .allDropdownWrapperClass { min-width: 30%;}\r\n  } \r\n\r\n.btnSearchClass{\r\n    color: rgb(255, 255, 255); \r\n   text-align: center; \r\n   background-color: rgb(0, 51, 171);\r\n   min-height: 4.5rem;\r\n   min-width: 30px;\r\n   width:10%;\r\n   margin: 0% 0% 0% 2%;  \r\n   border-width: 0px; \r\n   border-radius: 4px; \r\n   border-color: rgb(102, 102, 102); \r\n   border-style: solid;\r\n} \r\n\r\n.linkCompleteDealerList{\r\n    text-align: center;\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    font-size: 16px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: underline;  \r\n    height: 19px; \r\n     color:black;\r\n     cursor: pointer;\r\n     /* margin: 2% 0 2% 0px; */\r\n     margin: 2% 40% 2% 40%;\r\n     /* text-decoration: none solid rgb(192,192,192); */\r\n     text-decoration:underline;\r\n} \r\n\r\n.linkCompleteDealerList:hover{\r\n    color: blue;\r\n} \r\n\r\n.advanceSearchWrapperClass{\r\n    background-color: rgb(240, 240, 240);\r\n} \r\n\r\n.advanceSearchClass\r\n{   \r\n    width: auto; \r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    padding: 0px;\r\n    border-width: 0px; \r\n    border-radius: 0px; \r\n    border-color: rgb(102, 102, 102); \r\n    border-style: solid;  \r\n    background-image: none; \r\n    background-size: cover; \r\n    background-repeat: repeat; \r\n    background-position: center center;  \r\n} \r\n\r\n.svgAdvanceSeachImageWrapperClass{\r\n    margin-left: 1%;\r\n    padding: 1%;\r\n    height: auto ;\r\n    /* margin-right:10%; */\r\n} \r\n\r\n.svgAdvanceSeachImageClass{\r\n    float: left;\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    fill: rgb(51, 51, 51); \r\n    width: 20px; \r\n    height: 2%;\r\n} \r\n\r\n.AdvanceSeachTextHeadingClass{\r\n    display: inline-block;\r\n      margin: 1% 0px 0 0%;     \r\n} \r\n\r\n.allDropdownWrapperClass{\r\n    display: inline-block;\r\n    padding: 1%;\r\n} \r\n\r\n.allDropdownClass{\r\n    opacity: 1; \r\n    mix-blend-mode: normal; \r\n    color: rgb(0, 0, 0); \r\n    border-width: 0px; \r\n    border-color: rgb(102, 102, 102); \r\n    border-style: solid; \r\n    border-radius: 4px; \r\n    font-size: 12px; \r\n    font-weight: normal; \r\n    font-style: normal; text-align: left; \r\n    text-align-last: left; \r\n    background-color: rgb(255, 255, 255);\r\n    cursor: pointer;\r\n    /* box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 2px 0px inset;  */\r\n    \r\n} \r\n\r\n.allDropdownAdditional{\r\n    width:100%; \r\n    height: 32px;\r\n    border: 1px solid #adadad;\r\n} \r\n\r\n.textboxClass{\r\n    margin: 0 0 0 0;\r\n    width:100%;\r\n    height:3.5rem;\r\n    border-color: rgb(102, 102, 102); \r\n    border-radius: 4px; \r\n} \r\n\r\n.checkboxDropdown {\r\n    background-color: #ffffff;\r\n    width:34%;\r\n    margin :0 0 0 55%;\r\n    background:none;\r\n} \r\n\r\n.advanceSearch {\r\n    padding-left: 10px;\r\n    padding-top: 20px;\r\n} \r\n\r\n.show_more{\r\n    color: rgb(21, 98, 207);\r\n    font-size: 14px;\r\n    font-weight: bold;\r\n    line-height: 30px;\r\n    cursor: pointer;\r\n} \r\n\r\n@media (max-width: 420px) {\r\n        .searchDealer *.col-xs-4 {\r\n            width: 100%;\r\n            padding-right: 15px;\r\n            padding-bottom: 10px;\r\n        }\r\n        .searchDealer *.col-xs-8 {\r\n            width: 100%;\r\n        }\r\n    } \r\n\r\n@media(min-width: 480px) and (max-width: 719px) {\r\n        \r\n        .linkCompleteDealerList{\r\n            margin: 2% auto 2% auto;\r\n        }\r\n    } \r\n\r\n@media(max-width: 480px) {\r\n    .advanceSearch .col-xs-4 {\r\n        width: 100%;\r\n    }\r\n    .linkCompleteDealerList{\r\n        margin: 2% auto 2% auto;\r\n    }\r\n} \r\n\r\n@media (min-width: 720px) {\r\n    .advanceSearch .col-sm-4 {\r\n        width: 29%;\r\n    }\r\n\r\n    .advanceSearch .col-sm-3 {\r\n        width: 25%;\r\n    }\r\n\r\n    .advanceSearch .col-sm-3 {\r\n        width: 25%;\r\n    }\r\n    .linkCompleteDealerList{\r\n        margin: 2% auto 2% auto;\r\n    }\r\n} \r\n\r\n@media (max-width: 930px) {\r\n    .advanceSearch .col-sm-2 {\r\n        width: 100%;\r\n    }\r\n} \r\n\r\n.search-city-input{\r\n    width:85%;\r\n} \r\n\r\n.search-btn{\r\n    width:15%;\r\n} \r\n\r\n.btnSearchClass{\r\n    width: 100%; \r\n    text-transform: uppercase;\r\n} \r\n\r\nselect.allRegionsClass{\r\n    color: rgb(51, 51, 51);\r\n  } \r\n\r\n/* select.allRegionsClass option { color: black; } */ \r\n\r\nselect.allRegionsClass option:first-child{\r\n    color: rgb(51, 51, 51);\r\n  } \r\n\r\nselect.allRegionsClass:hover,input.selectCityClass:hover,button.btnSearchClass:hover{\r\n    box-shadow: 0px 2px 2px 0px rgb(51,51,51);\r\n  } \r\n\r\n.linkCompleteDealerList{\r\n     /* text-decoration:underline; */\r\n } \r\n\r\n.dropdown-btn{\r\n    border:none !important;\r\n    border-radius:2px;\r\n } \r\n\r\n@media (max-width: 991px) and (min-width: 100px){\r\n        .visible-sm-search{\r\n            display: block !important;\r\n            background-color: rgb(0, 51, 171);\r\n            color: #fff;\r\n            height: 4.3rem;\r\n        }\r\n    } \r\n\r\n@media (max-width: 768px) and (min-width: 100px){\r\n        .visible-lg-search{\r\n            display:none !important;\r\n        }\r\n       \r\n    } \r\n\r\n@media (min-width: 769px){\r\n        .visible-sm-search{\r\n            display:none !important;\r\n         }\r\n    } \r\n\r\n.arrow-icon{\r\n     font-weight: bold;\r\n    color: rgb(21, 98, 207);\r\n    margin-top: 0px;\r\n    position: relative;\r\n    top: 6px;\r\n    }"
 
 /***/ }),
 
@@ -666,7 +726,7 @@ var serviceTypes = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".outerBoxClass{\r\n    opacity: 1; mix-blend-mode: normal; padding: 0px;\r\n    border-width: 0px; border-radius: 0px; border-color: rgb(102, 102, 102); border-style: solid; \r\n    background-image: none; background-size: cover; background-repeat: repeat; \r\n    background-position: center center; box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px; width: 100%; height: auto;  \r\n    background-color: #f0f0f0;\r\n    height: auto;\r\n    padding: 0px 0px 20px 0px;\r\n}\r\n.dealerDisplayBox{\r\n    color: rgb(120, 120, 120);\r\n    font-size: 16px; \r\n    text-align: center; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: none;\r\n}\r\n.dlr_distance{\r\n    line-height: 15px;\r\n    color: rgb(119, 119, 119); \r\n    font-size: 12px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: none; \r\n    text-align: left;  \r\n    padding-bottom:8px;\r\n}\r\n.btn-lg{\r\n   background-color: rgb(184, 184, 184);\r\n    background-image: none;\r\n    background-position: center center;\r\n    background-repeat: repeat;\r\n    background-size: cover;\r\n    border-radius: 4px;\r\n     border-width: 0px;\r\n     border-color: rgb(102, 102, 102);\r\n    border-style: solid;\r\n     text-transform:uppercase;\r\n     font-size:14px;\r\n     height: 40px;\r\n     color:#fff;\r\n}\r\n.dlr_address{\r\n    line-height: 20px; \r\n    color: rgb(18, 18, 18); \r\n    font-size: 14px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: none; \r\n    text-align: left;\r\n    overflow-wrap: break-word;\r\n}\r\n.innerBoxClass{\r\n    margin: 0 2% 0% 2%;\r\n    width: auto;\r\n   height:auto;\r\n   background-color: #FFFFFF;\r\n}\r\n.container.container-rounded {\r\n    border-radius: 1px; \r\n    background-color: #FFFFFF;\r\n    width: auto;\r\n    min-height: 100px;  \r\n    border: 1px solid rgb(222,222,222);;  \r\n    padding: 15px;\r\n}\r\n.container.container-rounded.active {\r\n    border-width: 4px;\r\n    border-radius: 0px;\r\n    border-color: rgb(177, 207, 240);\r\n    border-style: solid;\r\n    padding:15px;\r\n     \r\n}\r\nspan{    \r\n    display: block;    \r\n}\r\n.dealerInfomationWrapperClass{\r\n    display: inline-block; \r\n    min-width: 40%;\r\n    padding: 15px;\r\n}\r\n.dealerInfomationClass{\r\n    padding: 2%;\r\n     \r\n}\r\n.dealerNameHeading{\r\n    text-align: center;    \r\n    line-height: 24px;\r\n    color: rgb(51, 51, 51); \r\n    font-size: 26px;\r\n    font-weight: normal;\r\n    font-style: normal; \r\n    text-decoration: none;\r\n    margin-bottom: 20px;\r\n}\r\n.imageDealerOfTheYear{\r\n    width: 100%;\r\n    height:105px; \r\n}\r\n.imagesRowWrapper{\r\n    margin:0;   \r\n    height: 95%;\r\n}\r\n.borderRight{\r\n    padding-right: 20px;\r\n    border-right: 2px solid blue;\r\n    overflow: hidden;\r\n}\r\n.img-responsive{\r\n    height:100px; \r\n    padding:0;\r\n}\r\n.boldClass{\r\n    font-weight: bold;\r\n    font-size:16px;\r\n}\r\n.greenTextClass {\r\n    color: #7aa72d;\r\n    font-size: 16px;\r\n}\r\n.redTextClass {\r\n    color:  red;\r\n    font-size: 16px;\r\n}\r\n.displayTodayTimingClass{\r\n    display: inline;\r\n}\r\n.fontColorBlue{\r\n    color: rgb(21, 98, 207); \r\n    font-size: 18px; \r\n    font-weight: normal; \r\n    font-style: normal;\r\n     text-decoration: none; \r\n     text-align: left;\r\n     font-family: G-Roboto-n4, Arial !important;\r\n}\r\nagm-map {\r\n    height: 600px;\r\n  }\r\n.displayMapClass{\r\n    margin: 0%;\r\n    /* border: 1px solid black; */\r\n    height:100%;\r\n    width:100%;\r\n}\r\n@media (max-width: 1285px) {\r\n    .outerBoxClass {\r\n        height: auto;\r\n      }\r\n}\r\n.overflowScroll{\r\nmax-height: 600px;\r\noverflow: scroll;\r\noverflow-x: hidden;\r\n}\r\n.buttonDealerInfoClass{\r\n     margin: 30px 0 0 5px;\r\n     display: inline-block;\r\n }\r\n.dlrTimingClass{\r\n     /* display: inline; */\r\n }\r\n.dealerNameDetails{\r\n    cursor: pointer;\r\n}\r\n.google-location-search{\r\n     \r\n    position: absolute;\r\n    top: 400px;\r\n    left: 160px;\r\n    z-index: 1;\r\n}\r\n.btnDirectionClass{\r\n    background-color: rgb(0, 51, 171);\r\n    height:35px;border-radius: 4px;\r\n}\r\n\r\n \r\n\r\n\r\n\r\n\r\n\r\n"
+module.exports = ".outerBoxClass{\r\n    opacity: 1; mix-blend-mode: normal; padding: 0px;\r\n    border-width: 0px; border-radius: 0px; border-color: rgb(102, 102, 102); border-style: solid; \r\n    background-image: none; background-size: cover; background-repeat: repeat; \r\n    background-position: center center; box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px; width: 100%; height: auto;  \r\n    background-color: #f0f0f0;\r\n    height: auto;\r\n    padding: 0px 0px 20px 0px;\r\n}\r\n.dealerDisplayBox{\r\n    color: rgb(120, 120, 120);\r\n    font-size: 16px; \r\n    text-align: center; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: none;\r\n}\r\n.dlr_distance{\r\n    line-height: 15px;\r\n    color: rgb(119, 119, 119); \r\n    font-size: 12px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: none; \r\n    text-align: left;  \r\n    padding-bottom:8px;\r\n}\r\n.btn-lg{\r\n   background-color: rgb(184, 184, 184);\r\n    background-image: none;\r\n    background-position: center center;\r\n    background-repeat: repeat;\r\n    background-size: cover;\r\n    border-radius: 4px;\r\n     border-width: 0px;\r\n     border-color: rgb(102, 102, 102);\r\n    border-style: solid;\r\n     text-transform:uppercase;\r\n     font-size:14px;\r\n     height: 40px;\r\n     color:#fff;\r\n}\r\n.dlr_address{\r\n    line-height: 20px; \r\n    color: rgb(18, 18, 18); \r\n    font-size: 14px; \r\n    font-weight: normal; \r\n    font-style: normal; \r\n    text-decoration: none; \r\n    text-align: left;\r\n    overflow-wrap: break-word;\r\n}\r\n.innerBoxClass{\r\n    margin: 0 2% 0% 2%;\r\n    width: auto;\r\n   height:auto;\r\n   background-color: #FFFFFF;\r\n}\r\n.container.container-rounded {\r\n    border-radius: 1px; \r\n    background-color: #FFFFFF;\r\n    width: auto;\r\n    min-height: 100px;  \r\n    border: 1px solid rgb(222,222,222);;  \r\n    padding: 15px;\r\n}\r\n.container.container-rounded.active {\r\n    border-width: 4px;\r\n    border-radius: 0px;\r\n    border-color: rgb(177, 207, 240);\r\n    border-style: solid;\r\n    padding:15px;\r\n     \r\n}\r\nspan{    \r\n    display: block;    \r\n}\r\n.dealerInfomationWrapperClass{\r\n    display: inline-block; \r\n    min-width: 40%;\r\n    padding: 15px;\r\n}\r\n.dealerInfomationClass{\r\n    padding: 2%;\r\n     \r\n}\r\n.dealerNameHeading{\r\n    text-align: center;    \r\n    line-height: 24px;\r\n    color: rgb(51, 51, 51); \r\n    font-size: 26px;\r\n    font-weight: normal;\r\n    font-style: normal; \r\n    text-decoration: none;\r\n    margin-bottom: 20px;\r\n}\r\n.imageDealerOfTheYear{\r\n    width: 100%;\r\n    height:105px; \r\n}\r\n.imagesRowWrapper{\r\n    margin:0;   \r\n    height: 95%;\r\n}\r\n.borderRight{\r\n    padding-right: 20px;\r\n    border-right: 2px solid blue;\r\n    overflow: hidden;\r\n}\r\n.img-responsive{\r\n    height:100px; \r\n    padding:0;\r\n}\r\n.boldClass{\r\n    font-weight: bold;\r\n    font-size:16px;\r\n}\r\n.greenTextClass {\r\n    color: #7aa72d;\r\n    font-size: 16px;\r\n}\r\n.redTextClass {\r\n    color:  red;\r\n    font-size: 16px;\r\n}\r\n.displayTodayTimingClass{\r\n    display: inline;\r\n}\r\n.fontColorBlue{\r\n    color: rgb(21, 98, 207); \r\n    font-size: 18px; \r\n    font-weight: normal; \r\n    font-style: normal;\r\n     text-decoration: none; \r\n     text-align: left;\r\n     font-family: G-Roboto-n4, Arial !important;\r\n}\r\nagm-map {\r\n    height: 600px;\r\n  }\r\n.displayMapClass{\r\n    margin: 0%;\r\n    /* border: 1px solid black; */\r\n    height:100%;\r\n    width:100%;\r\n}\r\n@media (max-width: 1285px) {\r\n    .outerBoxClass {\r\n        height: auto;\r\n      }\r\n}\r\n.overflowScroll{\r\nmax-height: 600px;\r\noverflow: scroll;\r\noverflow-x: hidden;\r\n}\r\n.buttonDealerInfoClass{\r\n     margin: 30px 0 0 5px;\r\n     display: inline-block;\r\n }\r\n.dlrTimingClass{\r\n     /* display: inline; */\r\n }\r\n.dealerNameDetails{\r\n    cursor: pointer;\r\n}\r\n.google-location-search{\r\n     \r\n    position: absolute;\r\n    top: 400px;\r\n    left: 160px;\r\n    z-index: 1;\r\n}\r\n.btnDirectionClass{\r\n    background-color: rgb(0, 51, 171);\r\n    height:35px;border-radius: 4px;\r\n}\r\n@media (max-width: 500px) and (min-width: 100px){\r\n    .btnDirectionClass{\r\n       \r\n        margin-left: -50px;\r\n        margin-right: auto;\r\n    }\r\n   \r\n}\r\n.emailTextBox{\r\n                opacity: 1; \r\n                mix-blend-mode: normal; background-color: rgb(255, 255, 255); \r\n                border-color: rgb(200, 200, 200); \r\n                border-width: 1px; \r\n                color: rgb(200, 200, 200); \r\n                padding: 0px 10px; text-align: left; \r\n                font-size: 12px; font-weight: normal;\r\n                 font-style: normal; background-image: \r\n                 none; background-position: center center;\r\n                  background-repeat: repeat; background-size: cover; border-radius: 4px; \r\n                  border-style: solid; width: 95%; height: 40px;  \r\n}\r\n\r\n \r\n\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -677,7 +737,7 @@ module.exports = ".outerBoxClass{\r\n    opacity: 1; mix-blend-mode: normal; pad
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ng-element outerBoxClass\">\n    <div class=\"innerBoxClass\" *ngIf=\"dealerArray && dealerArray.length > 0\">\n\n        <div class=\"container pd-0 margin-0 w-100\">\n            <div class=\"row  pd-0 margin-0 w-100\">\n                <div class=\"col-md-3 col-sm-12 pd-0\">\n                    <div class=\"dealerNameDetails overflowScroll\">\n                        <div class=\"container container-rounded\" *ngFor=\"let dlr of dealerArray; let i=index;\" (click)=\"selectDealer(dlr,i)\"\n                            [ngClass]=\"{active: i===selectedRow}\">\n                            <span class=\"fontColorBlue\">{{ dlr?.name }}</span>\n                            <span *ngIf=\"dlr?.distance\" class=\"dlr_distance\">{{ dlr?.distance }} Miles Away</span>\n                            <span class=\"dlr_address\"> {{dlr?.dealerAddressDetailModel?.address1 }}</span>\n                            <span class=\"dlr_address\">{{ dlr?.dealerAddressDetailModel?.address2 }}</span>\n                            <span class=\"dlr_address\">{{dlr?.dealerAddressDetailModel?.city}}{{dlr.dealerAddressDetailModel?.city\n                                ? ',' : ''}}\n                                {{ dlr.dealerAddressDetailModel?.state}}{{dlr.dealerAddressDetailModel?.state ? ',' :\n                                ''}}\n                                {{ dlr.dealerAddressDetailModel?.postalCode }}</span>\n                            <span class=\"dlr_address\">{{dlr?.phone}}</span>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-5 col-sm-12 dealerInfomationWrapperClass pd-0\">\n                    <div class=\"dealerInfomationClass\">\n                        <span class=\"dealerNameHeading\">\n                            {{_selectedDealer?.name}}\n                        </span>\n                        <div class=\"imageDealerOfTheYear\">\n                            <div class=\"row imagesRowWrapper\">\n                                <div class=\"col-xs-6 col-sm-3 borderRight\" *ngIf=\"serviceTypeDealerLevelPath\">\n                                    <img class=\"img-responsive\" src=\"{{serviceTypeDealerLevelPath}}\">\n                                </div>\n                                <div *ngIf=\"serviceTypeTruckTrailer\" class=\"col-xs-6 col-sm-3 pd-r-0\">\n                                    <img class=\"img-responsive\" src=\"assets/img/TT and Truck.png\" alt=\"\">\n                                </div>\n                                <div *ngIf=\"serviceTypeAPU\" class=\"col-xs-6 col-sm-3\">\n                                    <img class=\"img-responsive\" src=\"assets/img/APU icon.png\" alt=\"\">\n                                </div>\n                                <div *ngIf=\"serviceTypeMobile\" class=\"col-xs-6 col-sm-3 pd-0\">\n                                    <img class=\"img-responsive\" src=\"assets/img/Truck Service.png\" alt=\"\">\n                                </div>\n                            </div>\n                        </div>\n                        <h5 class=\"boldClass\">Additional Information: </h5>\n                        <span> {{_selectedDealer?.otherInformation}} </span>\n\n                        <div class=\"addressDealerInformationClass\">\n                            <h5 class=\"boldClass\">Address:</h5>\n                            {{_selectedDealer?.dealerAddressDetailModel?.address1}}<br />\n                            {{_selectedDealer?.dealerAddressDetailModel?.address2}}\n                            {{_selectedDealer?.dealerAddressDetailModel?.city}}{{_selectedDealer?.dealerAddressDetailModel?.city\n                            ? ',' : ''}}\n                            {{_selectedDealer?.dealerAddressDetailModel?.state}}{{_selectedDealer?.dealerAddressDetailModel?.state\n                            ? ',' : ''}}\n                            {{_selectedDealer?.dealerAddressDetailModel?.postalCode}}<br />\n                            {{_selectedDealer?.country}}\n                        </div>\n\n                        <h5 class=\"boldClass\">Phone Number:</h5>\n                        {{_selectedDealer?.phone}}\n\n                        <h5 class=\"boldClass\">Mobile Number:</h5>\n                        {{_selectedDealer?.Mobile}}\n\n                        <h5 class=\"boldClass\">Hours: </h5>\n                        <div [ngClass]=\"checkStoreStatusObj ? 'show' : 'hide'\">\n                            <h5 class=\"greenTextClass boldClass display-inline-block\">Open Today </h5>\n                            <div class=\"display-inline-block\" style=\"padding-left:10px\">{{TodayTimingdata[0]?.startTime}}  \n                                 </div>\n                        </div>\n                        <h5 class=\"redTextClass boldClass\" [ngClass]=\"checkStoreStatusObj ? 'hide' : 'show'\">Closed</h5>\n\n                        <div class=\"dlrTimingClass\" *ngFor=\"let dlrTiming of finalTimingsObj\">\n                            <div class=\"col-xs-2\"></div>\n                            <div class=\"col-xs-4\" style=\"padding-left:20px\">{{ dlrTiming.openingDay }} </div>\n                            <div class=\"col-xs-6\" style=\"padding-left:20px\">{{ dlrTiming.startTime }}  </div>                          \n                        </div>\n                        \n                        <div class=\"display-inline-block buttonDealerInfoClass\">\n                            <button type=\"button\" (click)=\"goToSpecificUrl()\" class=\"btn btn-default btn-lg\">Website</button>\n                            <button type=\"button\" (click)=\"openShareStoreDetailmodal()\" class=\"btn btn-default btn-lg\" style=\"margin-left:20px;\">Share Store\n                                    Details</button>\n                        </div>\n                    </div>  \n                </div>\n\n                <div class=\"col-md-4 col-sm-12 displayMapWrapperClass\">\n                    <div class=\"displayMapClass\">\n                        <!-- <button class=\"w-100\" (click)=\"getDirection()\">\n                            <i class=\"material-icons\" (click)=\"getDirection()\">\n                                directions\n                            </i>\n                        </button> -->\n                                               \n                        <div class=\"google-location-search\">\n                                <button id=\"Settings\" class=\"btn-primary btnDirectionClass\" (click)=\"getDirection()\">GET DIRECTIONS\n                                        \n                                    </button>\n                            </div>\n           \n                        \n                        <agm-map [latitude]=\"_selectedDealer?.dealerLatitude\" [longitude]=\"_selectedDealer?.dealerLongitude\"\n                            [zoom]=15>\n                            <agm-marker [latitude]=\"_selectedDealer?.dealerLatitude\" [longitude]=\"_selectedDealer?.dealerLongitude\">\n                                    </agm-marker> \n                                                \n                        </agm-map>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"innerBoxClass\" #nodata *ngIf=\"!(dealerArray && dealerArray.length > 0)\">\n        <div class=\"container pd-0 margin-0 w-100\" style=\"text-align: center\">\n            <h3>No Data Found</h3>\n        </div>\n    </div>\n\n\n</div>\n\n<ng-template #shareStoreDetailmodal class=\"modal-box\" >\n        <div class=\"modal-header\"  >\n          <h4 class=\"modal-title pull-left\">Share Store Details with Others</h4>\n          <!-- <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">X -->\n                <span (click)=\"modalRef.hide()\" class=\"close pull-right\">\n                        <i class=\"material-icons\">\n                              close\n                              </i></span>\n            <!-- <span aria-hidden=\"true\"></span>\n          </button> -->\n\n\n        </div>\n        <div class=\"modal-body\">\n\n                <input placeholder=\"Enter email addresses seperated by commas...\" class=\"ng-element el-input-without-label font-G-a9qp4vvmdw-n3\" autocomplete=\"off\" spellcheck=\"false\" data-id=\"82a11b3b37b649c8a2e4decac0ed74ea\" type=\"text\" style=\"opacity: 1; mix-blend-mode: normal; background-color: rgb(255, 255, 255); border-color: rgb(200, 200, 200); border-width: 1px; color: rgb(200, 200, 200); padding: 0px 10px; text-align: left; font-size: 12px; font-weight: normal; font-style: normal; background-image: none; background-position: center center; background-repeat: repeat; background-size: cover; border-radius: 4px; border-style: solid; width: 358px; height: 40px;  \">\n                <svg version=\"1.2\" preserveAspectRatio=\"none\" viewBox=\"0 0 24 24\" class=\"ng-element\" style=\"opacity: 1; mix-blend-mode: normal; fill: rgb(119, 119, 119); width: 22px; height: 22px; \"><g><path xmlns:default=\"http://www.w3.org/2000/svg\" d=\"M2 12.5C2 9.46 4.46 7 7.5 7H18c2.21 0 4 1.79 4 4s-1.79 4-4 4H9.5C8.12 15 7 13.88 7 12.5S8.12 10 9.5 10H17v2H9.41c-.55 0-.55 1 0 1H18c1.1 0 2-.9 2-2s-.9-2-2-2H7.5C5.57 9 4 10.57 4 12.5S5.57 16 7.5 16H17v2H7.5C4.46 18 2 15.54 2 12.5z\" style=\"fill: rgb(119, 119, 119);\"></path></g></svg>\n                <a>Get shareable link</a>\n                \n                <input placeholder=\"Enter Custom Message\" class=\"ng-element el-input-without-label font-G-a9qp4vvmdw-n3\" autocomplete=\"off\" spellcheck=\"false\" data-id=\"837a57e8d3024fa081ee2bd2c315f912\" type=\"text\" style=\"opacity: 1; mix-blend-mode: normal; background-color: rgb(255, 255, 255); border-color: rgb(200, 200, 200); border-width: 1px; color: rgb(200, 200, 200); padding: 10px 10px 75px; text-align: left; font-size: 12px; font-weight: normal; font-style: normal; background-image: none; background-position: center center; background-repeat: repeat; background-size: cover; border-radius: 4px; border-style: solid; width: 358px; height: 103px;\">\n            \n            </div>\n            <div class=\"modal-footer\">\n                    <button  class=\"btn\" style=\"opacity: 1; mix-blend-mode: normal; background-color: rgb(0, 51, 171); background-image: none; background-position: center center; background-repeat: repeat; background-size: cover; border-radius: 4px; border-width: 0px; border-color: rgb(102, 102, 102); border-style: solid; padding: 0px; width: 107px; height: 30px;\n                    color: rgb(255, 255, 255); font-size: 14px; text-align: center; font-weight: normal; font-style: normal; text-decoration: none;\n                    \n                    \">SEND EMAIL</button>\n            </div>\n    </ng-template>"
+module.exports = "<div class=\"ng-element outerBoxClass\">\n    <div class=\"innerBoxClass\" *ngIf=\"dealerArray && dealerArray.length > 0\">\n\n        <div class=\"container pd-0 margin-0 w-100\">\n            <div class=\"row  pd-0 margin-0 w-100\">\n                <div class=\"col-md-3 col-sm-12 pd-0\">\n                    <div class=\"dealerNameDetails overflowScroll\">\n                        <div class=\"container container-rounded\" *ngFor=\"let dlr of dealerArray; let i=index;\" (click)=\"selectDealer(dlr,i)\"\n                            [ngClass]=\"{active: i===selectedRow}\">\n                            <span class=\"fontColorBlue\">{{ dlr?.name }}</span>\n                            <span *ngIf=\"dlr?.distance\" class=\"dlr_distance\">{{ dlr?.distance }} Miles Away</span>\n                            <span class=\"dlr_address\"> {{dlr?.dealerAddressDetailModel?.address1 }}</span>\n                            <span class=\"dlr_address\">{{ dlr?.dealerAddressDetailModel?.address2 }}</span>\n                            <span class=\"dlr_address\">{{dlr?.dealerAddressDetailModel?.city}}{{dlr.dealerAddressDetailModel?.city\n                                ? ',' : ''}}\n                                {{ dlr.dealerAddressDetailModel?.state}}{{dlr.dealerAddressDetailModel?.state ? ',' :\n                                ''}}\n                                {{ dlr.dealerAddressDetailModel?.postalCode }}</span>\n                            <span class=\"dlr_address\">{{dlr?.phone}}</span>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-5 col-sm-12 dealerInfomationWrapperClass pd-0\">\n                    <div class=\"dealerInfomationClass\">\n                        <span class=\"dealerNameHeading\">\n                            {{_selectedDealer?.name}}\n                        </span>\n                        <div class=\"imageDealerOfTheYear\">\n                            <div class=\"row imagesRowWrapper\">\n                                <div class=\"col-xs-6 col-sm-3 borderRight\" *ngIf=\"serviceTypeDealerLevelPath\">\n                                    <img class=\"img-responsive\" src=\"{{serviceTypeDealerLevelPath}}\">\n                                </div>\n                                <div *ngIf=\"serviceTypeTruckTrailer\" class=\"col-xs-6 col-sm-3 pd-r-0\">\n                                    <img class=\"img-responsive\" src=\"assets/img/TT and Truck.png\" alt=\"\">\n                                </div>\n                                <div *ngIf=\"serviceTypeAPU\" class=\"col-xs-6 col-sm-3\">\n                                    <img class=\"img-responsive\" src=\"assets/img/APU icon.png\" alt=\"\">\n                                </div>\n                                <div *ngIf=\"serviceTypeMobile\" class=\"col-xs-6 col-sm-3 pd-0\">\n                                    <img class=\"img-responsive\" src=\"assets/img/Truck Service.png\" alt=\"\">\n                                </div>\n                            </div>\n                        </div>\n                        <h5 class=\"boldClass\">Additional Information: </h5>\n                        <span> {{_selectedDealer?.otherInformation}} </span>\n\n                        <div class=\"addressDealerInformationClass\">\n                            <h5 class=\"boldClass\">Address:</h5>\n                            {{_selectedDealer?.dealerAddressDetailModel?.address1}}<br />\n                            {{_selectedDealer?.dealerAddressDetailModel?.address2}}\n                            {{_selectedDealer?.dealerAddressDetailModel?.city}}{{_selectedDealer?.dealerAddressDetailModel?.city\n                            ? ',' : ''}}\n                            {{_selectedDealer?.dealerAddressDetailModel?.state}}{{_selectedDealer?.dealerAddressDetailModel?.state\n                            ? ',' : ''}}\n                            {{_selectedDealer?.dealerAddressDetailModel?.postalCode}}<br />\n                            {{_selectedDealer?.country}}\n                        </div>\n\n                        <h5 class=\"boldClass\">Phone Number:</h5>\n                        {{_selectedDealer?.phone}}\n\n                        <h5 class=\"boldClass\">Mobile Number:</h5>\n                        {{_selectedDealer?.Mobile}}\n\n                        <h5 class=\"boldClass\">Hours: </h5>\n                        <div [ngClass]=\"checkStoreStatusObj ? 'show' : 'hide'\">\n                            <h5 class=\"greenTextClass boldClass display-inline-block\">Open Today </h5>\n                            <div class=\"display-inline-block\" style=\"padding-left:10px\">{{TodayTimingdata[0]?.startTime}}  \n                                 </div>\n                        </div>\n                        <h5 class=\"redTextClass boldClass\" [ngClass]=\"checkStoreStatusObj ? 'hide' : 'show'\">Closed</h5>\n\n                        <div class=\"dlrTimingClass\" *ngFor=\"let dlrTiming of finalTimingsObj\">\n                            <div class=\"col-xs-2\"></div>\n                            <div class=\"col-xs-4\" style=\"padding-left:20px\">{{ dlrTiming.openingDay }} </div>\n                            <div class=\"col-xs-6\" style=\"padding-left:20px\">{{ dlrTiming.startTime }}  </div>                          \n                        </div>\n                        \n                        <div class=\"display-inline-block buttonDealerInfoClass\">\n                            <button type=\"button\" (click)=\"goToSpecificUrl()\" class=\"btn btn-default btn-lg\">Website</button>\n                            <button type=\"button\" (click)=\"openShareStoreDetailmodal()\" class=\"btn btn-default btn-lg\" style=\"margin-left:20px;\">Share Store\n                                    Details</button>\n                        </div>\n                    </div>  \n                </div>\n\n                <div class=\"col-md-4 col-sm-12 displayMapWrapperClass\">\n                    <div class=\"displayMapClass\">\n                        <!-- <button class=\"w-100\" (click)=\"getDirection()\">\n                            <i class=\"material-icons\" (click)=\"getDirection()\">\n                                directions\n                            </i>\n                        </button> -->\n                                               \n                        <div class=\"google-location-search\">\n                                <button id=\"Settings\" class=\"btn-primary btnDirectionClass\" (click)=\"getDirection()\">GET DIRECTIONS\n                                        \n                                    </button>\n                            </div>\n           \n                        \n                        <agm-map [latitude]=\"_selectedDealer?.dealerLatitude\" [longitude]=\"_selectedDealer?.dealerLongitude\"\n                            [zoom]=15>\n                            <agm-marker [latitude]=\"_selectedDealer?.dealerLatitude\" [longitude]=\"_selectedDealer?.dealerLongitude\">\n                                    </agm-marker> \n                                                \n                        </agm-map>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"innerBoxClass\" #nodata *ngIf=\"!(dealerArray && dealerArray.length > 0)\">\n        <div class=\"container pd-0 margin-0 w-100\" style=\"text-align: center\">\n            <h3>No Data Found</h3>\n        </div>\n    </div>\n\n\n</div>\n\n<ng-template #shareStoreDetailmodal class=\"modal-box\" >\n        <div class=\"modal-header\"  >\n          <h4 class=\"modal-title pull-left\">Share Store Details with Others</h4>\n          <!-- <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">X -->\n                <span (click)=\"modalRef.hide()\" class=\"close pull-right\">\n                        <i class=\"material-icons\">\n                              close\n                              </i></span>\n            <!-- <span aria-hidden=\"true\"></span>\n          </button> -->\n\n\n        </div>\n        <div class=\"modal-body\">\n\n                <input  #email placeholder=\"Enter email addresses seperated by commas...\" \n                class=\"emailTextBox\" \n                autocomplete=\"off\" \n                spellcheck=\"false\" type=\"text\" \n                 >\n<div *ngIf=\"emailAlert\"> \n    Email is required.\n  </div>\n\n                <svg version=\"1.2\" preserveAspectRatio=\"none\" viewBox=\"0 0 24 24\" class=\"ng-element\" style=\"opacity: 1; mix-blend-mode: normal; fill: rgb(119, 119, 119); width: 22px; height: 22px; \"><g><path xmlns:default=\"http://www.w3.org/2000/svg\" d=\"M2 12.5C2 9.46 4.46 7 7.5 7H18c2.21 0 4 1.79 4 4s-1.79 4-4 4H9.5C8.12 15 7 13.88 7 12.5S8.12 10 9.5 10H17v2H9.41c-.55 0-.55 1 0 1H18c1.1 0 2-.9 2-2s-.9-2-2-2H7.5C5.57 9 4 10.57 4 12.5S5.57 16 7.5 16H17v2H7.5C4.46 18 2 15.54 2 12.5z\" style=\"fill: rgb(119, 119, 119);\"></path></g></svg>\n                <a>Get shareable link</a>\n                \n                <input #emailTextMessage placeholder=\"Enter Custom Message\" class=\"ng-element el-input-without-label font-G-a9qp4vvmdw-n3\" autocomplete=\"off\" spellcheck=\"false\" data-id=\"837a57e8d3024fa081ee2bd2c315f912\" type=\"text\" style=\"opacity: 1; mix-blend-mode: normal; background-color: rgb(255, 255, 255); border-color: rgb(200, 200, 200); border-width: 1px; color: rgb(200, 200, 200); padding: 10px 10px 75px; text-align: left; font-size: 12px; font-weight: normal; font-style: normal; background-image: none; background-position: center center; background-repeat: repeat; background-size: cover; border-radius: 4px; border-style: solid; width: 95%; height: 103px;\">\n                \n            </div>\n            <div class=\"modal-footer\">\n                    <button (click)='sendEmail(email.value,emailTextMessage.value)' class=\"btn\"\n                     style=\"opacity: 1; mix-blend-mode: normal; background-color: rgb(0, 51, 171); background-image: none; background-position: center center; background-repeat: repeat; background-size: cover; border-radius: 4px; border-width: 0px; border-color: rgb(102, 102, 102); border-style: solid; padding: 0px; width: 107px; height: 30px;\n                    color: rgb(255, 255, 255); font-size: 14px; text-align: center; font-weight: normal; font-style: normal; text-decoration: none;\n                    \">SEND EMAIL</button>\n            </div>\n    </ng-template>"
 
 /***/ }),
 
@@ -701,6 +761,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _models_dealerTimingModel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../models/dealerTimingModel */ "./src/app/models/dealerTimingModel.ts");
 /* harmony import */ var _models_locationModel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../models/locationModel */ "./src/app/models/locationModel.ts");
 /* harmony import */ var _node_modules_ngx_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../node_modules/ngx-bootstrap */ "./node_modules/ngx-bootstrap/esm5/ngx-bootstrap.js");
+/* harmony import */ var _services_email_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../services/email.service */ "./src/app/services/email.service.ts");
+/* harmony import */ var _models_emailModel__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../models/emailModel */ "./src/app/models/emailModel.ts");
+/* harmony import */ var _services_error_handler_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../services/error-handler.service */ "./src/app/services/error-handler.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -720,14 +783,19 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
+
 var DealerlistComponent = /** @class */ (function () {
-    function DealerlistComponent(_dealerService, geocodeService, ref, _dataService, spinnerService, modalService) {
+    function DealerlistComponent(_dealerService, geocodeService, ref, _dataService, spinnerService, modalService, emailService, errorHandlerService) {
         this._dealerService = _dealerService;
         this.geocodeService = geocodeService;
         this.ref = ref;
         this._dataService = _dataService;
         this.spinnerService = spinnerService;
         this.modalService = modalService;
+        this.emailService = emailService;
+        this.errorHandlerService = errorHandlerService;
         this._selectedDealer = {};
         this.dealerArray = [];
         this.dealerCompleteArray = [];
@@ -738,6 +806,7 @@ var DealerlistComponent = /** @class */ (function () {
         this.TodayTimingdata = {};
         this.filterObj = {};
         this.country = [];
+        this.emailAlert = false;
         this.config = {
             animated: true,
             keyboard: true,
@@ -795,15 +864,25 @@ var DealerlistComponent = /** @class */ (function () {
         //var red="https://www.google.es/maps/dir/'37.7699298,-122.4469157'/'37.7683909618184,-122.51089453697205'";
         var url;
         if (this.filterargs) {
-            if (this.filterargs.userLat && this.filterargs.userLong) {
+            if (this.filterargs.userLat && this.filterargs.userLong && this._selectedDealer.dealerLatitude && this._selectedDealer.dealerLongitude) {
                 url = "https://www.google.es/maps/dir/'" + this.filterargs.userLat + "," + this.filterargs.userLong + "'/'"
                     + this._selectedDealer.dealerLatitude + "," + this._selectedDealer.dealerLongitude + "'";
+                this.showLocationInMap(url);
+            }
+            else {
+                alert('Location not available');
             }
         }
         else if (this._selectedDealer.dealerLatitude && this._selectedDealer.dealerLongitude) {
             url = "https://www.google.es/maps/dir/''/'"
                 + this._selectedDealer.dealerLatitude + "," + this._selectedDealer.dealerLongitude + "'";
+            this.showLocationInMap(url);
         }
+        else {
+            alert('Location not available');
+        }
+    };
+    DealerlistComponent.prototype.showLocationInMap = function (url) {
         var win = window.open(url, '_blank');
         win.focus();
     };
@@ -1122,17 +1201,6 @@ var DealerlistComponent = /** @class */ (function () {
     DealerlistComponent.prototype.filterByServices = function (dealers, services) {
         if (services) {
             var result = [];
-            // dealers.forEach(dlr => {
-            //   services.forEach(service => {
-            //     if (dlr.dealerServiceTypeModel) {
-            //       dlr.dealerServiceTypeModel.forEach(serviceType => {
-            //         if (serviceType.serviceType_uid == service) {
-            //           result.push(dlr);
-            //         }
-            //       });
-            //     }
-            //   });
-            // });
             dealers.forEach(function (item, service) {
                 if (item.dealerServiceTypeModel) {
                     item.dealerServiceTypeModel.forEach(function (dealerService) {
@@ -1151,17 +1219,6 @@ var DealerlistComponent = /** @class */ (function () {
             return dealers;
         }
     };
-    // performServiceFilter(item: dealerModel, services: any) {
-    //   if (item.dealerServiceTypeModel) {
-    //     item.dealerServiceTypeModel.forEach(dealerService => {
-    //       for (var service of services) {
-    //         if (service === dealerService.serviceType_uid) {
-    //           return item;
-    //         }
-    //       }
-    //     });
-    //   }
-    // }
     DealerlistComponent.prototype.addressToCoordinates = function (address) {
         var _this = this;
         this.geocodeService.geocodeAddress(address)
@@ -1242,6 +1299,45 @@ var DealerlistComponent = /** @class */ (function () {
         this.modalRef = this.modalService.show(this.shareStoreDetailmodal
         // ,{ class: 'shareStoreModalClass' }
         , this.config);
+        this.emailAlert = false;
+    };
+    DealerlistComponent.prototype.isRequired = function () {
+        return false;
+    };
+    DealerlistComponent.prototype.sendEmail = function (email, emailText) {
+        var _this = this;
+        this.emailAlert = false;
+        if (email && email.length > 0) {
+            var emailObj = new _models_emailModel__WEBPACK_IMPORTED_MODULE_10__["emailModel"]();
+            emailObj.emailAddress = email;
+            emailObj.emailMessage = emailText;
+            emailObj.storeName = this._selectedDealer.name;
+            emailObj.storeWebUrl = this._selectedDealer.webUrl;
+            if (this._selectedDealer.dealerAddressDetailModel) {
+                var address1 = this._selectedDealer.dealerAddressDetailModel.address1;
+                var address2 = this._selectedDealer.dealerAddressDetailModel.address2;
+                var city = this._selectedDealer.dealerAddressDetailModel.city;
+                var state = this._selectedDealer.dealerAddressDetailModel.state;
+                var postalCode = this._selectedDealer.dealerAddressDetailModel.postalCode;
+                emailObj.storeAddress =
+                    address1
+                        + ' ' + address2
+                        + ' ' + city
+                        + ' ' + state
+                        + ' ' + postalCode
+                        + ' ' + this._selectedDealer.country;
+                this.emailService.sendEmail(emailObj)
+                    .subscribe(function (msg) {
+                    alert(msg);
+                    _this.modalRef.hide();
+                })
+                    //.catch(err => console.error(err));
+                    , function (error) { return _this.errorHandlerService.handleError(error); };
+            }
+        }
+        else {
+            this.emailAlert = true;
+        }
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('shareStoreDetailmodal'),
@@ -1252,14 +1348,16 @@ var DealerlistComponent = /** @class */ (function () {
             selector: 'app-dealerlist',
             template: __webpack_require__(/*! ./dealerlist.component.html */ "./src/app/dealerlist/dealerlist.component.html"),
             styles: [__webpack_require__(/*! ./dealerlist.component.css */ "./src/app/dealerlist/dealerlist.component.css")],
-            providers: [_services_dealer_service__WEBPACK_IMPORTED_MODULE_2__["DealerService"], _services_geocode_service__WEBPACK_IMPORTED_MODULE_3__["GeocodeService"]]
+            providers: [_services_dealer_service__WEBPACK_IMPORTED_MODULE_2__["DealerService"], _services_geocode_service__WEBPACK_IMPORTED_MODULE_3__["GeocodeService"], _services_email_service__WEBPACK_IMPORTED_MODULE_9__["EmailService"]]
         }),
         __metadata("design:paramtypes", [_services_dealer_service__WEBPACK_IMPORTED_MODULE_2__["DealerService"],
             _services_geocode_service__WEBPACK_IMPORTED_MODULE_3__["GeocodeService"],
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"],
             _services_data_service_service__WEBPACK_IMPORTED_MODULE_4__["DataServiceService"],
             ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__["Ng4LoadingSpinnerService"],
-            _node_modules_ngx_bootstrap__WEBPACK_IMPORTED_MODULE_8__["BsModalService"]])
+            _node_modules_ngx_bootstrap__WEBPACK_IMPORTED_MODULE_8__["BsModalService"],
+            _services_email_service__WEBPACK_IMPORTED_MODULE_9__["EmailService"],
+            _services_error_handler_service__WEBPACK_IMPORTED_MODULE_11__["ErrorHandlerService"]])
     ], DealerlistComponent);
     return DealerlistComponent;
 }());
@@ -1979,6 +2077,26 @@ var dealerTimingModel = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/models/emailModel.ts":
+/*!**************************************!*\
+  !*** ./src/app/models/emailModel.ts ***!
+  \**************************************/
+/*! exports provided: emailModel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "emailModel", function() { return emailModel; });
+var emailModel = /** @class */ (function () {
+    function emailModel() {
+    }
+    return emailModel;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/models/filterModel.ts":
 /*!***************************************!*\
   !*** ./src/app/models/filterModel.ts ***!
@@ -2409,6 +2527,112 @@ var DealerService = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], DealerService);
     return DealerService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/email.service.ts":
+/*!*******************************************!*\
+  !*** ./src/app/services/email.service.ts ***!
+  \*******************************************/
+/*! exports provided: EmailService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmailService", function() { return EmailService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _services_error_handler_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/error-handler.service */ "./src/app/services/error-handler.service.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var EmailService = /** @class */ (function () {
+    function EmailService(http, errorHandlerService) {
+        this.http = http;
+        this.errorHandlerService = errorHandlerService;
+        this.baseUrl = "https://dealerlocatorwapp.azurewebsites.net/api/";
+    }
+    EmailService.prototype.sendEmail = function (emailObj) {
+        if (emailObj) {
+            return this.http.post(this.baseUrl + 'email/Send', emailObj)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.errorHandlerService.handleError));
+        }
+    };
+    EmailService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _services_error_handler_service__WEBPACK_IMPORTED_MODULE_2__["ErrorHandlerService"]])
+    ], EmailService);
+    return EmailService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/error-handler.service.ts":
+/*!***************************************************!*\
+  !*** ./src/app/services/error-handler.service.ts ***!
+  \***************************************************/
+/*! exports provided: ErrorHandlerService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorHandlerService", function() { return ErrorHandlerService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ErrorHandlerService = /** @class */ (function () {
+    function ErrorHandlerService() {
+    }
+    ErrorHandlerService.prototype.handleError = function (error) {
+        if (error.error instanceof ErrorEvent) {
+            // A client-side or network error occurred. Handle it accordingly.
+            console.error('An error occurred:', error.error.message);
+        }
+        else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            console.error("Backend returned code " + error.status + ", " +
+                ("body was: " + error.error));
+        }
+        // return an observable with a user-facing error message
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["throwError"])('Something bad happened; please try again later.');
+    };
+    ;
+    ErrorHandlerService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], ErrorHandlerService);
+    return ErrorHandlerService;
 }());
 
 
