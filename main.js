@@ -36,6 +36,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -45,10 +46,12 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
     { path: '', component: _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"] },
     { path: 'home', component: _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"] },
-    { path: '**', redirectTo: 'PageNotFoundComponent' }
+    { path: 'home/:id', component: _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"] },
+    { path: '**', component: _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_3__["PageNotFoundComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -84,7 +87,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-contentpage></app-contentpage>\n<app-dealerlist></app-dealerlist>\n<app-footer></app-footer>\n<ng4-loading-spinner></ng4-loading-spinner>\n\n\n\n<!-- \n<cookie-law #cookieLaw \nname=\"ng4CookieLaw\"\n(isSeen)=\"cookieLawSeen = $event\"\nlearnMore=\"/learn-more\" theme= \"edgeless\" \ntarget=\"_blank\" position=\"top\"></cookie-law> -->"
+module.exports = "<app-header></app-header>\n<app-contentpage></app-contentpage>\n<app-dealerlist></app-dealerlist>\n<app-footer></app-footer>\n<ng4-loading-spinner></ng4-loading-spinner>\n\n<!-- <router-outlet></router-outlet> -->\n<!-- <app-myfrontpage></app-myfrontpage> -->\n\n "
 
 /***/ }),
 
@@ -99,6 +102,7 @@ module.exports = "<app-header></app-header>\n<app-contentpage></app-contentpage>
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -109,11 +113,20 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(route) {
+        this.route = route;
         this.title = 'Dealer Locator';
     }
     AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.sub = this.route.params.subscribe(function (params) {
+            console.log(_this.route.snapshot.paramMap.get("id"));
+            _this.dealerIdFromRoute = +params['id']; // (+) converts string 'id' to a number
+            //console.log(this.dealerIdFromRoute);
+            // In a real app: dispatch action to load the details here.
+        });
     };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -121,7 +134,7 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -385,10 +398,10 @@ var ContentpageComponent = /** @class */ (function () {
             // if (this.filterdCities) {
             //   var Cities = this.filterdCities.sort((a, b) => a.name.localeCompare(b.name));
             //   this.filterdCities= Array.from(new Set(Cities))
-            // }
-            if (!this.flagAdvanceSearch) {
-                this.selectRegionData();
-            }
+            // }    
+        }
+        if (!this.flagAdvanceSearch) {
+            this.selectRegionData();
         }
     };
     ContentpageComponent.prototype.selectRegionData = function () {
@@ -537,14 +550,13 @@ var ContentpageComponent = /** @class */ (function () {
             this.sendMessage(this.dataFilter);
         }
         else if (type === 'advSearch') {
-            //this.spinnerService.show();
             this.flagAdvanceSearch = !this.flagAdvanceSearch;
             this.isAdvFilter = false;
             this.advSearchDistance = 1;
             this.selectedServiceIds = [];
             if (!this.flagAdvanceSearch) {
                 this.setAdvSearchRegion();
-                this.createAdvanceFilterObject();
+                //this.createAdvanceFilterObject();
             }
         }
         else if (type === 'noSearch') {
@@ -557,7 +569,6 @@ var ContentpageComponent = /** @class */ (function () {
     };
     ContentpageComponent.prototype.onSerchClick = function (searchText, region, distanceDropdown, dealerServices, userLoclat, userLoclng) {
         if (this.flagAdvanceSearch) {
-            //this.spinnerService.show();
             this.dataFilter = new _models_filterModel__WEBPACK_IMPORTED_MODULE_6__["filterModel"]();
             this.dataFilter.inputText = searchText;
             this.dataFilter.region = region;
@@ -570,7 +581,6 @@ var ContentpageComponent = /** @class */ (function () {
                 this.dataFilter.userLong = this.userLoclng;
             }
             this.sendMessage(this.dataFilter);
-            //this.clearSearchfields()
         }
         else {
             if (!this.advanceDataFilterObj) {
@@ -694,6 +704,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_email_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../services/email.service */ "./src/app/services/email.service.ts");
 /* harmony import */ var _models_emailModel__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../models/emailModel */ "./src/app/models/emailModel.ts");
 /* harmony import */ var _services_error_handler_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../services/error-handler.service */ "./src/app/services/error-handler.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -707,7 +718,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-//import {Dealers} from './dealersData';
+
 
 
 
@@ -717,7 +728,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var DealerlistComponent = /** @class */ (function () {
-    function DealerlistComponent(_dealerService, geocodeService, ref, _dataService, spinnerService, modalService, emailService, errorHandlerService) {
+    function DealerlistComponent(_dealerService, geocodeService, ref, _dataService, spinnerService, modalService, emailService, errorHandlerService, route) {
         this._dealerService = _dealerService;
         this.geocodeService = geocodeService;
         this.ref = ref;
@@ -726,6 +737,7 @@ var DealerlistComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.emailService = emailService;
         this.errorHandlerService = errorHandlerService;
+        this.route = route;
         this._selectedDealer = {};
         this.dealerArray = [];
         this.dealerCompleteArray = [];
@@ -746,6 +758,16 @@ var DealerlistComponent = /** @class */ (function () {
         };
     }
     DealerlistComponent.prototype.ngOnInit = function () {
+        //   this.sub = this.route.params.subscribe(params => {
+        //     console.log(this.route.snapshot.paramMap.get("id"));
+        //     this.dealerIdFromRoute = +params['id']; // (+) converts string 'id' to a number
+        //     console.log(this.dealerIdFromRoute);
+        //     // In a real app: dispatch action to load the details here.
+        //  });
+        // const queryParams = this.route.snapshot.queryParams
+        // const routeParams = this.route.snapshot.params;
+        // // do something with the parameters
+        // console.log(queryParams);
         this.getFiltersFromContent();
         this._selectedDealer = new _models_dealerModel__WEBPACK_IMPORTED_MODULE_1__["dealerModel"]();
         this._selectedDealer.dealerTimingModel = new _models_dealerTimingModel__WEBPACK_IMPORTED_MODULE_6__["dealerTimingModel"]();
@@ -824,29 +846,16 @@ var DealerlistComponent = /** @class */ (function () {
         });
         this.subscriptionAdvSearchFilter = this._dataService.getAdvanceSearchFilterMessage().subscribe(function (message) {
             _this.advSearchFilterArgs = message.text;
-            if (_this.dealerCompleteArray.length < 1) {
-                _this._dealerService.getAllDealers().subscribe(function (data) {
-                    //alert();
-                    //this.dealerArray = data;
-                    console.log('2222');
-                    _this.dealerCompleteArray = data;
-                    _this.setSelectedDealer();
-                    _this.setImagesServiceType();
-                    if (_this.dealerCompleteArray.length > 0) {
-                        _this.setSelectedDealer();
-                        _this.setImagesServiceType();
-                        var items = _this.dealerCompleteArray;
-                        _this.filterDealersAdvanceSearch(items, _this.advSearchFilterArgs);
-                    }
-                });
-                //this.spinnerService.hide;
+            if (_this.dealerCompleteArray.length !== 0) {
+                _this.filterDealersAdvanceSearch(_this.dealerCompleteArray, _this.advSearchFilterArgs);
             }
             else {
-                if (_this.dealerCompleteArray.length > 0) {
-                    var items = _this.dealerCompleteArray;
-                    _this.filterDealersAdvanceSearch(items, _this.advSearchFilterArgs);
-                    //this.spinnerService.hide;
-                }
+                _this._dealerService.getAllDealers().subscribe(function (data) {
+                    _this.dealerCompleteArray = data;
+                    if (_this.dealerCompleteArray) {
+                        _this.filterDealersAdvanceSearch(_this.dealerCompleteArray, _this.advSearchFilterArgs);
+                    }
+                });
             }
         });
     };
@@ -880,7 +889,6 @@ var DealerlistComponent = /** @class */ (function () {
                     if (this.dealerArray)
                         this.selectDealer(this.dealerArray[0], 0);
                 }
-                //this.dealerArray = this.filteredByCountry;
                 if (this.dealerArray)
                     this.selectDealer(this.dealerArray[0], 0);
             }
@@ -1186,8 +1194,6 @@ var DealerlistComponent = /** @class */ (function () {
     DealerlistComponent.prototype.getDistanceBetweenPoints = function (lat1, lon1, end, unit) {
         var radlat1 = Math.PI * lat1 / 180;
         var radlat2 = Math.PI * end.lat / 180;
-        var radlon1 = Math.PI * lon1 / 180;
-        var radlon2 = Math.PI * end.lng / 180;
         var theta = lon1 - end.lng;
         var radtheta = Math.PI * theta / 180;
         var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
@@ -1274,7 +1280,8 @@ var DealerlistComponent = /** @class */ (function () {
             ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__["Ng4LoadingSpinnerService"],
             _node_modules_ngx_bootstrap__WEBPACK_IMPORTED_MODULE_8__["BsModalService"],
             _services_email_service__WEBPACK_IMPORTED_MODULE_9__["EmailService"],
-            _services_error_handler_service__WEBPACK_IMPORTED_MODULE_11__["ErrorHandlerService"]])
+            _services_error_handler_service__WEBPACK_IMPORTED_MODULE_11__["ErrorHandlerService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_12__["ActivatedRoute"]])
     ], DealerlistComponent);
     return DealerlistComponent;
 }());
@@ -2129,7 +2136,7 @@ module.exports = ".Container {\r\n    width: 100%;\r\n    min-width: 500px;\r\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "  <app-header></app-header> \n   <app-contentpage></app-contentpage>\n   <app-dealerlist></app-dealerlist>\n<app-footer></app-footer>    \n "
+module.exports = "<!-- <app-header></app-header>\n<app-contentpage></app-contentpage>\n<app-dealerlist></app-dealerlist>\n<app-footer></app-footer>\n<ng4-loading-spinner></ng4-loading-spinner>   \n  -->"
 
 /***/ }),
 
