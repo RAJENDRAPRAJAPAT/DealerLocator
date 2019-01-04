@@ -272,7 +272,7 @@ module.exports = ".imageClass{\r\n    background-image: url(\r\n        https://
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"imageClass shadownAnimation\">\r\n</div>\r\n\r\n<div class=\"row transparentSection\">\r\n  <div class=\"col-xs ng-element transparentSectionText font-S-Times_New_Roman-n4\">\r\n    Carrier Transicold's Truck Trailer Dealer Locator </div>\r\n</div>\r\n<div class=\"seachDealersWrapperClass\">\r\n  <div class=\"seachDealersClass\">\r\n    <div class=\"row searchDealer\" [ngClass]=\"flagAdvanceSearch ? 'show' : 'hide'\">\r\n      <div class=\"col-xs-3 pd-r-0 col-md-3\">\r\n        <select [(ngModel)]=\"selectedRegion\" #Region class=\"font-G-a9qp4vvmdw-n4 allRegionsClass input-lg\">\r\n          -->\r\n          <option *ngFor=\"let region of _allRegionsList\" value={{region.id}}>\r\n            {{region.name}}\r\n          </option>\r\n        </select>\r\n      </div>\r\n\r\n      <div class=\"col-xs-9 col-md-9\">\r\n        <div class=\"search-city\">\r\n          <div class=\"pull-left search-city-input\">\r\n            <input google-place #searchText [(ngModel)]=\"inputText\" class=\"selectCityClass input-lg\" placeholder=\"Enter City name or Postal code\"\r\n              (onSelect)=\"setAddress($event)\" />\r\n          </div>\r\n\r\n\r\n          <div class=\"pull-right search-btn\">\r\n            <button type=\"button\" class=\"btn btnSearchClass visible-lg-search show\" (click)=\"onSerchClick(searchText.value,Region.value,distanceDropdown.value,dealerServices.value,userLoclat,userLoclng)\">Search</button>\r\n            <button type=\"button\" class=\"btn visible-sm-search hide glyphicon glyphicon-search\" (click)=\"onSerchClick(searchText.value,Region.value,distanceDropdown.value,dealerServices.value,userLoclat,userLoclng)\"></button>\r\n          </div>\r\n          <div class=\"clearfix\"></div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <p class=\"linkCompleteDealerList\" *ngIf=\"this.flagAdvanceSearch\" (click)=\"toggleFilter('advSearch')\">See The\r\n      Complete Dealer List\r\n    </p>\r\n    <p *ngIf=\"!this.flagAdvanceSearch\" style=\"\r\n              text-align: center;color: rgb(0, 0, 0); \r\n              font-size: 20px; font-weight: normal; \r\n              font-style: normal; \r\n              text-decoration: none; \r\n              text-align: center; \r\n              width: 326px; height: 24px;margin-left: auto;margin-right: auto;margin-top:25px\">\r\n      Complete Dealer List\r\n    </p>\r\n\r\n    <p class=\"linkCompleteDealerList\" *ngIf=\"!this.flagAdvanceSearch\" (click)=\"toggleFilter('Search')\">Go Back to\r\n      Search\r\n    </p>\r\n\r\n\r\n    <div class=\"advanceSearchWrapperClass shadownAnimation\">\r\n\r\n\r\n        <div class=\"advanceSearchClass\">\r\n            <div class=\"row advanceSearch\">\r\n\r\n\r\n\r\n              <div class=\"form-group col-xs-4 col-sm-2\">\r\n                <svg version=\"1.2\" preserveAspectRatio=\"none\" viewBox=\"0 0 24 24\" class=\"svgAdvanceSeachImageClass\">\r\n                  <g>\r\n                    <path xmlns:default=\"http://www.w3.org/2000/svg\" d=\"M10,18h4v-2h-4V18z M3,6v2h18V6H3z M6,13h12v-2H6V13z\"\r\n                      style=\"fill: rgb(51, 51, 51);\"></path>\r\n                  </g>\r\n                </svg>\r\n                <div class=\"AdvanceSeachTextHeadingClass font-weight-bold\">Advance Search</div>\r\n              </div>\r\n    \r\n              <div [ngClass]=\"flagAdvanceSearch ? 'hide' : 'show'\">\r\n                  <div class=\"form-group col-sm-2\">\r\n                    <select [(ngModel)]=\"selectedRegion\" #rgn (change)=\"onDropdownChange(rgn.value)\" class=\"allDropdownClass allDropdownAdditional shadownAnimation\">\r\n                      <option *ngFor=\"let region of _allRegionsList\" value={{region.id}}>\r\n                        {{region.name}}\r\n                      </option>\r\n                    </select>\r\n                  </div>\r\n                  <div class=\"form-group col-sm-2\">\r\n                    <ng-multiselect-dropdown [(ngModel)]=\"selectedFilterStatesIds\" class=\"allDropdownClass colorToDropdown shadownAnimation\"\r\n                      [placeholder]=\"'All States'\" [data]=\"filteredStates\" [settings]=\"dropdownSettings\" (onSelect)=\"onItemSelectState($event)\"\r\n                      (onSelectAll)=\"onSelectAllStates($event)\" (onDeSelect)=\"onItemDeSelectState($event)\" (onDeSelectAll)=\"onItemDeSelectAllState($event)\">\r\n                    </ng-multiselect-dropdown>\r\n                  </div>\r\n                  <div class=\"form-group col-sm-2\">\r\n                    <ng-multiselect-dropdown [(ngModel)]=\"selectedFilterCitiesIds\" class=\"allDropdownClass colorToDropdown shadownAnimation\"\r\n                      [placeholder]=\"'All Cities'\" [data]=\"filterdCities\" [settings]=\"dropdownSettings\" (onSelect)=\"onItemSelectCity($event)\"\r\n                      (onSelectAll)=\"onSelectAllCity($event)\" (onDeSelect)=\"onItemDeSelectCity($event)\">\r\n                    </ng-multiselect-dropdown>\r\n      \r\n                  </div>\r\n      \r\n      \r\n      \r\n                  <div class=\"form-group col-sm-2\">\r\n                    <input class=\"input-md textboxClass\" [(ngModel)]=\"advSearchPostalCode\" (change)=\"createAdvanceFilterObject()\"\r\n                      placeholder=\"Postal Code\" style=\"border: 1px solid #adadad;padding: 6px 12px 6px 12px\">\r\n                  </div>\r\n                  <div class=\"form-group col-sm-2\">\r\n      \r\n      \r\n                    <span class=\"show_more\" (click)=\"toggleFilter('noSearch')\">\r\n                      <span class=\"arrow-icon\" style=\"cursor:pointer\" *ngIf=\"!isAdvFilter\"><i class=\"material-icons\">keyboard_arrow_down</i>\r\n                      </span>\r\n                      <span class=\"arrow-icon\" style=\"cursor:pointer\" *ngIf=\"isAdvFilter\"><i class=\"material-icons\">keyboard_arrow_up</i>\r\n                      </span>\r\n                      {{!isAdvFilter ? 'Show More Filters' : \"Hide Filters\"}}</span>\r\n                  </div>\r\n      \r\n                </div>\r\n      \r\n      \r\n                <div class=\"col-sm-8\" [ngClass]=\"{'col-sm-offset-1': flagAdvanceSearch, 'col-sm-offset-3': !flagAdvanceSearch, 'show' : isAdvFilter, 'hide' : !isAdvFilter, 'show':flagAdvanceSearch}\">\r\n                  <div class=\"form-group col-xs-6 col-sm-5\">\r\n                    <select #distanceDropdown [(ngModel)]=\"advSearchDistance\" (change)=\"onSerchClick(searchText.value,Region.value,distanceDropdown.value,dealerServices.value,userLoclat,userLoclng)\"\r\n                      class=\"form-control allDropdownClass shadownAnimation\">\r\n                      <option value=\"1\">Distance (In miles)</option>\r\n                      <option value=\"2\">50</option>\r\n                      <option value=\"3\">100</option>\r\n                      <option value=\"4\">150</option>\r\n                      <option value=\"5\">200</option>\r\n                      <option value=\"6\">250</option>\r\n                    </select>\r\n                  </div>\r\n      \r\n                  <div class=\"form-group col-xs-6 col-sm-5\">\r\n                    <ng-multiselect-dropdown #dealerServices [(ngModel)]=\"selectedServiceIds\" class=\"allDropdownClass colorToDropdown shadownAnimation multiselectArrow\"\r\n                      [placeholder]=\"'All Dealer Services'\" [data]=\"serviceType\" [settings]=\"dropdownSettings\" (onSelect)=\"onItemSelectServices($event)\"\r\n                      (onSelectAll)=\"onItemSelectAllServices($event)\" (onDeSelect)=\"onItemDeSelectService($event)\"\r\n                      (onDeSelectAll)=\"onItemDeSelectAllService($event)\">\r\n                    </ng-multiselect-dropdown>\r\n                  </div>\r\n                </div>\r\n    \r\n    \r\n            </div>\r\n    \r\n          </div>\r\n\r\n\r\n    </div>\r\n\r\n\r\n\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"imageClass shadownAnimation\">\r\n</div>\r\n\r\n<div class=\"row transparentSection\">\r\n  <div class=\"col-xs ng-element transparentSectionText font-S-Times_New_Roman-n4\">\r\n    Carrier Transicold's Truck Trailer Dealer Locator </div>\r\n</div>\r\n<div class=\"seachDealersWrapperClass\">\r\n  <div class=\"seachDealersClass\">\r\n    <div class=\"row searchDealer\" [ngClass]=\"flagAdvanceSearch ? 'show' : 'hide'\">\r\n      <div class=\"col-xs-3 pd-r-0 col-md-3\">\r\n        <select [(ngModel)]=\"selectedRegion\" #Region class=\"font-G-a9qp4vvmdw-n4 allRegionsClass input-lg\">\r\n          -->\r\n          <option *ngFor=\"let region of _allRegionsList\" value={{region.id}}>\r\n            {{region.name}}\r\n          </option>\r\n        </select>\r\n      </div>\r\n\r\n      <div class=\"col-xs-9 col-md-9\">\r\n        <div class=\"search-city\">\r\n          <div class=\"pull-left search-city-input\">\r\n            <input google-place #searchText [(ngModel)]=\"inputText\" class=\"selectCityClass input-lg\" placeholder=\"Enter City name or Postal code\"\r\n              (onSelect)=\"setAddress($event)\" />\r\n          </div>\r\n\r\n\r\n          <div class=\"pull-right search-btn\">\r\n            <button type=\"button\" class=\"btn btnSearchClass visible-lg-search show\" (click)=\"onSerchClick(searchText.value,Region.value,distanceDropdown.value,dealerServices.value,userLoclat,userLoclng)\">Search</button>\r\n            <button type=\"button\" class=\"btn visible-sm-search hide glyphicon glyphicon-search\" (click)=\"onSerchClick(searchText.value,Region.value,distanceDropdown.value,dealerServices.value,userLoclat,userLoclng)\"></button>\r\n          </div>\r\n          <div class=\"clearfix\"></div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <p class=\"linkCompleteDealerList\" *ngIf=\"this.flagAdvanceSearch\" (click)=\"toggleFilter('advSearch')\">See The\r\n      Complete Dealer List\r\n    </p>\r\n    <p *ngIf=\"!this.flagAdvanceSearch\" style=\"\r\n              text-align: center;color: rgb(0, 0, 0); \r\n              font-size: 20px; font-weight: normal; \r\n              font-style: normal; \r\n              text-decoration: none; \r\n              text-align: center; \r\n              width: 326px; height: 24px;margin-left: auto;margin-right: auto;margin-top:25px\">\r\n      Complete Dealer List\r\n    </p>\r\n\r\n    <p class=\"linkCompleteDealerList\" *ngIf=\"!this.flagAdvanceSearch\" (click)=\"toggleFilter('Search')\">Go Back to\r\n      Search\r\n    </p>\r\n\r\n\r\n    <div class=\"advanceSearchWrapperClass shadownAnimation\">\r\n\r\n\r\n        <div class=\"advanceSearchClass\">\r\n            <div class=\"row advanceSearch\">\r\n\r\n\r\n\r\n              <div class=\"form-group col-xs-4 col-sm-2\">\r\n                <svg version=\"1.2\" preserveAspectRatio=\"none\" viewBox=\"0 0 24 24\" class=\"svgAdvanceSeachImageClass\">\r\n                  <g>\r\n                    <path xmlns:default=\"http://www.w3.org/2000/svg\" d=\"M10,18h4v-2h-4V18z M3,6v2h18V6H3z M6,13h12v-2H6V13z\"\r\n                      style=\"fill: rgb(51, 51, 51);\"></path>\r\n                  </g>\r\n                </svg>\r\n                <div class=\"AdvanceSeachTextHeadingClass font-weight-bold\">Advance Search</div>\r\n              </div>\r\n    \r\n              <div [ngClass]=\"flagAdvanceSearch ? 'hide' : 'show'\">\r\n                  <div class=\"form-group col-sm-2\">\r\n                    <select [(ngModel)]=\"selectedRegion\" #rgn (change)=\"onDropdownChange(rgn.value)\" class=\"allDropdownClass allDropdownAdditional shadownAnimation\">\r\n                      <option *ngFor=\"let region of _allRegionsList\" value={{region.id}}>\r\n                        {{region.name}}\r\n                      </option>\r\n                    </select>\r\n                  </div>\r\n                  <div class=\"form-group col-sm-2\">\r\n                    <ng-multiselect-dropdown [(ngModel)]=\"selectedFilterStatesIds\" class=\"allDropdownClass colorToDropdown shadownAnimation\"\r\n                      [placeholder]=\"'All States'\" [data]=\"filteredStates\" [settings]=\"dropdownSettings\" (onSelect)=\"onItemSelectState($event)\"\r\n                      (onSelectAll)=\"onSelectAllStates($event)\" (onDeSelect)=\"onItemDeSelectState($event)\" (onDeSelectAll)=\"onItemDeSelectAllState($event)\">\r\n                    </ng-multiselect-dropdown>\r\n                  </div>\r\n                  <div class=\"form-group col-sm-2\">\r\n                    <ng-multiselect-dropdown [(ngModel)]=\"selectedFilterCitiesIds\" class=\"allDropdownClass colorToDropdown shadownAnimation\"\r\n                      [placeholder]=\"'All Cities'\" [data]=\"filterdCities\" [settings]=\"dropdownSettings\" (onSelect)=\"onItemSelectCity($event)\"\r\n                      (onSelectAll)=\"onSelectAllCity($event)\" (onDeSelect)=\"onItemDeSelectCity($event)\">\r\n                    </ng-multiselect-dropdown>\r\n      \r\n                  </div>\r\n      \r\n      \r\n      \r\n                  <div class=\"form-group col-sm-2\">\r\n                    <input class=\"input-md textboxClass\" [(ngModel)]=\"advSearchPostalCode\" (change)=\"createAdvanceFilterObject()\"\r\n                      placeholder=\"Postal Code\" style=\"border: 1px solid #adadad;padding: 6px 12px 6px 12px\">\r\n                  </div>\r\n                  <div class=\"form-group col-sm-2\">\r\n      \r\n      \r\n                    <span class=\"show_more\" (click)=\"toggleFilter('noSearch')\">\r\n                      <span class=\"arrow-icon\" style=\"cursor:pointer\" *ngIf=\"!isAdvFilter\"><i class=\"material-icons\">keyboard_arrow_down</i>\r\n                      </span>\r\n                      <span class=\"arrow-icon\" style=\"cursor:pointer\" *ngIf=\"isAdvFilter\"><i class=\"material-icons\">keyboard_arrow_up</i>\r\n                      </span>\r\n                      {{!isAdvFilter ? 'Show More Filters' : \"Hide Filters\"}}</span>\r\n                  </div>\r\n      \r\n                </div>\r\n      \r\n      \r\n                <div class=\"col-sm-8\" [ngClass]=\"{'col-sm-offset-1': flagAdvanceSearch, 'col-sm-offset-3': !flagAdvanceSearch, 'show' : isAdvFilter || flagAdvanceSearch, 'hide' : !isAdvFilter}\">\r\n                  <div class=\"form-group col-xs-6 col-sm-5\">\r\n                    <select #distanceDropdown [(ngModel)]=\"advSearchDistance\" (change)=\"onSerchClick(searchText.value,Region.value,distanceDropdown.value,dealerServices.value,userLoclat,userLoclng)\"\r\n                      class=\"form-control allDropdownClass shadownAnimation\">\r\n                      <option value=\"1\">Distance (In miles)</option>\r\n                      <option value=\"2\">50</option>\r\n                      <option value=\"3\">100</option>\r\n                      <option value=\"4\">150</option>\r\n                      <option value=\"5\">200</option>\r\n                      <option value=\"6\">250</option>\r\n                    </select>\r\n                  </div>\r\n      \r\n                  <div class=\"form-group col-xs-6 col-sm-5\">\r\n                    <ng-multiselect-dropdown #dealerServices [(ngModel)]=\"selectedServiceIds\" class=\"allDropdownClass colorToDropdown shadownAnimation multiselectArrow\"\r\n                      [placeholder]=\"'All Dealer Services'\" [data]=\"serviceType\" [settings]=\"dropdownSettings\" (onSelect)=\"onItemSelectServices($event)\"\r\n                      (onSelectAll)=\"onItemSelectAllServices($event)\" (onDeSelect)=\"onItemDeSelectService($event)\"\r\n                      (onDeSelectAll)=\"onItemDeSelectAllService($event)\">\r\n                    </ng-multiselect-dropdown>\r\n                  </div>\r\n                </div>\r\n    \r\n    \r\n            </div>\r\n    \r\n          </div>\r\n\r\n\r\n    </div>\r\n\r\n\r\n\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -721,6 +721,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+//import { environment } from '../../environments/environment';
 
 var DealerlistComponent = /** @class */ (function () {
     function DealerlistComponent(_dealerService, geocodeService, ref, _dataService, spinnerService, modalService, emailService, errorHandlerService, route //,private router : Router,
@@ -862,8 +863,8 @@ var DealerlistComponent = /** @class */ (function () {
             if (_this.dealerCompleteArray && _this.dealerCompleteArray.length) {
                 _this.filterDealerArray(_this.dealerCompleteArray, _this.filterargs);
             }
-            if (_this.dealerArray)
-                _this.selectDealer(_this.dealerArray[0], 0);
+            // if (this.dealerArray)
+            //   this.selectDealer(this.dealerArray[0], 0);
         });
         this.subscriptionAdvSearchFilter = this._dataService.getAdvanceSearchFilterMessage().subscribe(function (message) {
             _this.advSearchFilterArgs = message.text;
@@ -892,26 +893,29 @@ var DealerlistComponent = /** @class */ (function () {
             }
             else {
                 this.currentLocation = new _models_locationModel__WEBPACK_IMPORTED_MODULE_7__["locationModel"]();
+                var result = [];
                 if (filter.userLat && filter.userLong) {
                     this.currentLocation.lat = filter.userLat;
                     this.currentLocation.lng = filter.userLong;
-                    this.dealerArray = this.applyHaversine(this.filteredByCountry).sort(this.compare);
+                    result = this.applyHaversine(this.filteredByCountry).sort(this.compare);
                     if (filter.distance) {
-                        this.dealerArray = this.filterByDistance(this.dealerArray, filter.distance);
-                        if (this.dealerArray)
-                            this.selectDealer(this.dealerArray[0], 0);
+                        result = this.filterByDistance(result, filter.distance);
+                        if (result)
+                            this.selectDealer(result[0], 0);
                     }
                 }
                 else {
-                    this.dealerArray = this.filteredByCountry;
+                    result = this.filteredByCountry;
                 }
                 if (filter.dealerServices && filter.dealerServices.length > 0) {
-                    this.dealerArray = this.filterByServices(this.dealerArray, filter.dealerServices);
-                    if (this.dealerArray)
-                        this.selectDealer(this.dealerArray[0], 0);
+                    result = this.filterByServices(result, filter.dealerServices);
+                    if (result)
+                        this.selectDealer(result[0], 0);
                 }
-                if (this.dealerArray)
-                    this.selectDealer(this.dealerArray[0], 0);
+                if (result) {
+                    this.selectDealer(result[0], 0);
+                    this.dealerArray = result;
+                }
             }
         }
         else {
@@ -920,7 +924,6 @@ var DealerlistComponent = /** @class */ (function () {
     };
     DealerlistComponent.prototype.filterDealersAdvanceSearch = function (items, filter) {
         if (items.length > 0 && filter) {
-            //this.spinnerService.show;
             var result = [];
             if (filter.postalCode && filter.postalCode.length > 0) {
                 this.dealerArray = items.filter(function (a) {
@@ -929,7 +932,6 @@ var DealerlistComponent = /** @class */ (function () {
                 });
                 if (this.dealerArray)
                     this.selectDealer(this.dealerArray[0], 0);
-                //this.spinnerService.hide;
             }
             else {
                 this.country = this._dataService.getSelectedCountries(filter.region);
@@ -1176,16 +1178,17 @@ var DealerlistComponent = /** @class */ (function () {
         if (this.loc.lat && this.loc.lng) {
             this.filterObj.userLat = this.currentLocation.lat = this.loc.lat;
             this.filterObj.userLong = this.currentLocation.lng = this.loc.lng;
-            this.dealerArray = this.applyHaversine(this.filteredByCountry).sort(this.compare);
+            var result = [];
+            result = this.applyHaversine(this.filteredByCountry).sort(this.compare);
             if (this.filterObj.distance) {
-                this.dealerArray = this.filterByDistance(this.dealerArray, this.filterObj.distance);
-                if (this.dealerArray)
-                    this.selectDealer(this.dealerArray[0], 0);
+                result = this.filterByDistance(result, this.filterObj.distance);
             }
             if (this.filterObj.dealerServices && this.filterObj.dealerServices.length > 0) {
-                this.dealerArray = this.filterByServices(this.dealerArray, this.filterObj.dealerServices);
-                if (this.dealerArray)
-                    this.selectDealer(this.dealerArray[0], 0);
+                result = this.filterByServices(result, this.filterObj.dealerServices);
+            }
+            if (result) {
+                this.selectDealer(result[0], 0);
+                this.dealerArray = result;
             }
         }
         else {
@@ -1257,7 +1260,7 @@ var DealerlistComponent = /** @class */ (function () {
             emailObj.emailMessage = emailText;
             emailObj.storeName = this._selectedDealer.name;
             emailObj.storeWebUrl = this._selectedDealer.webUrl;
-            emailObj.dealerLocatorLink = _environments_environment__WEBPACK_IMPORTED_MODULE_13__["environment"].apiBaseUrl + 'dealer/' + this._selectedDealer.uid;
+            emailObj.dealerLocatorLink = _environments_environment__WEBPACK_IMPORTED_MODULE_13__["environment"].webBaseUrl + 'dealer/' + this._selectedDealer.uid;
             if (this._selectedDealer.dealerAddressDetailModel) {
                 var address1 = this._selectedDealer.dealerAddressDetailModel.address1;
                 var address2 = this._selectedDealer.dealerAddressDetailModel.address2;
@@ -2767,7 +2770,8 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 var environment = {
     production: false,
-    apiBaseUrl: 'https://dealerlocatorwapp.azurewebsites.net/'
+    apiBaseUrl: 'https://dealerlocatorwapp.azurewebsites.net/',
+    webBaseUrl: 'https://dealerlocatorapp.azurewebsites.net/'
 };
 /*
  * For easier debugging in development mode, you can import the following file
