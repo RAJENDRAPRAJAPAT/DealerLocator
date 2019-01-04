@@ -35,8 +35,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
+/* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
+/* harmony import */ var _app_myfrontpage_myfrontpage_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../app/myfrontpage/myfrontpage.component */ "./src/app/myfrontpage/myfrontpage.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -48,10 +48,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 var routes = [
-    { path: '', component: _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"] },
-    { path: 'home', component: _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"] },
-    { path: 'home/:id', component: _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"] },
-    { path: '**', component: _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_3__["PageNotFoundComponent"] }
+    { path: '', component: _app_myfrontpage_myfrontpage_component__WEBPACK_IMPORTED_MODULE_3__["MyfrontpageComponent"] },
+    { path: 'home', component: _app_myfrontpage_myfrontpage_component__WEBPACK_IMPORTED_MODULE_3__["MyfrontpageComponent"] },
+    { path: 'dealer/:id', component: _app_myfrontpage_myfrontpage_component__WEBPACK_IMPORTED_MODULE_3__["MyfrontpageComponent"] },
+    { path: '**', component: _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_2__["PageNotFoundComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -87,7 +87,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-contentpage></app-contentpage>\n<app-dealerlist></app-dealerlist>\n<app-footer></app-footer>\n<ng4-loading-spinner></ng4-loading-spinner>\n\n<!-- <router-outlet></router-outlet> -->\n<!-- <app-myfrontpage></app-myfrontpage> -->\n\n "
+module.exports = "<!-- <app-header></app-header>\n<app-contentpage></app-contentpage>\n<app-dealerlist></app-dealerlist>\n<app-footer></app-footer>\n<ng4-loading-spinner></ng4-loading-spinner> -->\n\n<!-- <router-outlet></router-outlet> -->\n<!-- <app-myfrontpage></app-myfrontpage> -->\n\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -120,13 +120,6 @@ var AppComponent = /** @class */ (function () {
         this.title = 'Dealer Locator';
     }
     AppComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.sub = this.route.params.subscribe(function (params) {
-            console.log(_this.route.snapshot.paramMap.get("id"));
-            _this.dealerIdFromRoute = +params['id']; // (+) converts string 'id' to a number
-            //console.log(this.dealerIdFromRoute);
-            // In a real app: dispatch action to load the details here.
-        });
     };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -705,6 +698,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _models_emailModel__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../models/emailModel */ "./src/app/models/emailModel.ts");
 /* harmony import */ var _services_error_handler_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../services/error-handler.service */ "./src/app/services/error-handler.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -727,8 +721,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var DealerlistComponent = /** @class */ (function () {
-    function DealerlistComponent(_dealerService, geocodeService, ref, _dataService, spinnerService, modalService, emailService, errorHandlerService, route) {
+    function DealerlistComponent(_dealerService, geocodeService, ref, _dataService, spinnerService, modalService, emailService, errorHandlerService, route //,private router : Router,
+    //,locationPath: Location
+    ) {
+        //this.currentUrl = locationPath.path();
         this._dealerService = _dealerService;
         this.geocodeService = geocodeService;
         this.ref = ref;
@@ -749,6 +747,7 @@ var DealerlistComponent = /** @class */ (function () {
         this.filterObj = {};
         this.country = [];
         this.emailAlert = false;
+        this.loadFullSite = true;
         this.config = {
             animated: true,
             keyboard: true,
@@ -758,20 +757,42 @@ var DealerlistComponent = /** @class */ (function () {
         };
     }
     DealerlistComponent.prototype.ngOnInit = function () {
-        //   this.sub = this.route.params.subscribe(params => {
-        //     console.log(this.route.snapshot.paramMap.get("id"));
-        //     this.dealerIdFromRoute = +params['id']; // (+) converts string 'id' to a number
-        //     console.log(this.dealerIdFromRoute);
-        //     // In a real app: dispatch action to load the details here.
-        //  });
-        // const queryParams = this.route.snapshot.queryParams
-        // const routeParams = this.route.snapshot.params;
-        // // do something with the parameters
-        // console.log(queryParams);
+        this.getCurrentUrlDealerID();
+        //this.InitApp();
+    };
+    DealerlistComponent.prototype.InitApp = function () {
         this.getFiltersFromContent();
         this._selectedDealer = new _models_dealerModel__WEBPACK_IMPORTED_MODULE_1__["dealerModel"]();
         this._selectedDealer.dealerTimingModel = new _models_dealerTimingModel__WEBPACK_IMPORTED_MODULE_6__["dealerTimingModel"]();
         this.dealerArray = [];
+    };
+    DealerlistComponent.prototype.getCurrentUrlDealerID = function () {
+        this.currentUrlDealerID = this.route.snapshot.paramMap.get('id');
+        if (this.currentUrlDealerID) {
+            var uri = "https://dealerlocatorapp.azurewebsites.net/dealer/" + this.currentUrlDealerID;
+            var encoded = encodeURI(uri);
+            console.log('enc ' + encoded);
+            try {
+                console.log('dec ' + decodeURI(encoded));
+            }
+            catch (e) {
+                console.error(e);
+            }
+            this.getDealerById();
+        }
+        else {
+            this.InitApp();
+        }
+    };
+    DealerlistComponent.prototype.getDealerById = function () {
+        var _this = this;
+        this._dealerService.getDealer(this.currentUrlDealerID).subscribe(function (data) {
+            _this.dealer = data;
+            console.log(_this.dealer);
+            _this.dealerArray.push(_this.dealer);
+            _this.selectDealer(_this.dealerArray[0], 0);
+            _this._selectedDealer = _this.dealerArray[0];
+        });
     };
     DealerlistComponent.prototype.setSelectedDealer = function () {
         this._selectedDealer = this.dealerArray[0];
@@ -1236,6 +1257,7 @@ var DealerlistComponent = /** @class */ (function () {
             emailObj.emailMessage = emailText;
             emailObj.storeName = this._selectedDealer.name;
             emailObj.storeWebUrl = this._selectedDealer.webUrl;
+            emailObj.dealerLocatorLink = _environments_environment__WEBPACK_IMPORTED_MODULE_13__["environment"].apiBaseUrl + 'dealer/' + this._selectedDealer.uid;
             if (this._selectedDealer.dealerAddressDetailModel) {
                 var address1 = this._selectedDealer.dealerAddressDetailModel.address1;
                 var address2 = this._selectedDealer.dealerAddressDetailModel.address2;
@@ -1281,7 +1303,9 @@ var DealerlistComponent = /** @class */ (function () {
             _node_modules_ngx_bootstrap__WEBPACK_IMPORTED_MODULE_8__["BsModalService"],
             _services_email_service__WEBPACK_IMPORTED_MODULE_9__["EmailService"],
             _services_error_handler_service__WEBPACK_IMPORTED_MODULE_11__["ErrorHandlerService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_12__["ActivatedRoute"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_12__["ActivatedRoute"] //,private router : Router,
+            //,locationPath: Location
+        ])
     ], DealerlistComponent);
     return DealerlistComponent;
 }());
@@ -1706,7 +1730,7 @@ module.exports = ".cookieConsentClass{\r\n    min-height:  45px;\r\n      line-h
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n <div *ngIf=\"!cookieAccepted\" class=\"container w-auto\"> <div class=\"row\">\n<div class=\"cookieConsentClass\">\n    This website use cookies. By clicking on \"Accept\" you are agreeing to our use of cookies. \n    For more details view our Cookie Policy Information.\n<button class=\"cookieConsentAcceptClass\" (click)=\"acceptCookie()\">\n    Accept\n</button>\n</div></div>\n</div>\n<nav class=\"navbar navbarClass navbar-default upper-nav\">\n    <div class=\"container w-auto\">\n        <div class=\"row\">\n            <div class=\"col-md-4 col-md-offset-8\">\n                <div class=\"row hidden-xs sec-nav\">\n                    <div class=\"col-xs display-inline-block pull-right\">\n\n\n                        <div class=\"downloadMobileAppClass\">\n                            <span class=\"mobile-icon\">\n                                <i class=\"material-icons\">phone_iphone</i>\n                            </span>\n                            <span class=\"down-app\" (click)=\"open()\">Download Mobile App</span>\n                        </div>\n\n\n\n                    </div>\n                    <div class=\"col-xs pd-0 w-auto display-inline-block pull-right\">\n                        <div>\n                            <div class=\"selectLanguageClassWrapper \">\n                                <span class=\"mobile-icon\">\n                                    <i class=\"material-icons\">language</i>\n                                </span>\n                                <select class=\"ng-element selectLanguageClass\">\n                                    <option value=\"1\">English</option>\n                                    <option value=\"2\">Español</option>\n                                    <option value=\"3\">Français</option>\n                                    <option value=\"4\">Português</option>\n                                </select>\n                            </div>\n                        </div>\n                    </div>\n\n\n                </div>\n            </div>\n        </div>\n    </div>\n</nav>\n\n\n<nav class=\"nav navbar  font-S-Arial-n4 navbar-default navbar-theme navbar-theme-shadow navbarClass2\">\n    <div class=\"\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed eyebrow\" data-toggle=\"collapse\" data-target=\"#nav-toggle\"\n                aria-expanded=\"false\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"/carrier/\">\n                <link rel=\"alternate\" href=\"https://www.carrier.com/carrier/en/dz/\" hreflang=\"en-dz\">\n                <link rel=\"alternate\" href=\"https://www.carrier.com/carrier/en/us/\" hreflang=\"en-us\">\n                <img src=\"https://s3.amazonaws.com/upload.uxpin/files/913027/903263/carrier_logo-6599e8.PNG\" alt=\"Carrier Logo\"\n                    title=\"Carrier Logo\" itemprop=\"logo\" class=\"carrier-logo\">\n            </a>\n        </div>\n\n\n\n        <div class=\"collapse navbar-collapse menuClass\" id=\"nav-toggle\">\n            <ul class=\"nav navbar-nav font-G-a9qp4vvmdw-n3\">\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/products/\">Products<span class=\"sr-only\">(current)</span></a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/service-support/\">Service and\n                        Support</a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/customer-connection/\">Customer\n                        Connection</a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/sustainability/\">Sustainability</a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/about-carrier/about-carrier-transicold/\">About\n                        Us</a>\n                </li>\n                <li class=\"visible-xs visible-sm hidden-xl\">\n                    <a href=\"#\">\n                        <span class=\"mobile-icon\">\n                            <i class=\"material-icons\">phone_iphone\n\n                            </i>\n                        </span>\n                        <select class=\"ng-element selectLanguageClass\">\n                            <option value=\"1\">English</option>\n                            <option value=\"2\">Español</option>\n                            <option value=\"3\">Français</option>\n                            <option value=\"4\">Português</option>\n                        </select>\n                    </a>\n                </li>\n                <li class=\"visible-xs visible-sm hidden-xl\">\n                    <a href=\"#\">\n                        <span class=\"mobile-icon\">\n                            <i class=\"material-icons\">language\n                            </i> </span> Download Mobile App\n                    </a>\n                </li>\n            </ul>\n        </div>\n    </div>\n\n</nav>\n \n\n<ng-template #generatemodal class=\"modal-box\" style=\"width: 400px; height: 282px;\">\n    <div class=\"modal-header\"  >\n      <h4 class=\"modal-title pull-left\"  >Download Mobile Application</h4>\n      <!-- <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">X -->\n          \n        <!-- <span aria-hidden=\"true\"></span>\n      </button> -->\n<span (click)=\"modalRef.hide()\" class=\"close pull-right\">\n      <i class=\"material-icons\">\n            close\n            </i></span>\n    </div>\n    <div class=\"modal-body\">\n            Get the Carrier mobile application to easily find your dealers in the palm of your hands. Available for Android and iOS devices.\n       <div  style=\"margin-top:70px;text-align:center\">\n            <img  (click)=\"openAndroid()\"      \n         src=\"https://uc.uxpin.com/files/913027/903263/1024px-Get_it_on_Google_play.svg-d24706.png\" \n         style=\"opacity: 1; \n         mix-blend-mode: normal; \n         border-radius: 0px; object-fit: fill; \n         object-position: center center; width: 130px; height: 38px; \n         \">\n    \n\n    <img src=\"https://uc.uxpin.com/files/913027/903263/640px-Download_on_the_App_Store_Badge.svg-9c011d.png\" \n    style=\"opacity: 1; mix-blend-mode: normal; border-radius: 0px; \n    object-fit: fill; object-position: center center; \n    width: 130px; height: 38px; margin-left:18px\">\n</div> </div>\n</ng-template>\n "
+module.exports = "\n <div *ngIf=\"!cookieAccepted\" class=\"container w-auto\"> <div class=\"row\">\n<div class=\"cookieConsentClass\">\n    This website use cookies. By clicking on \"Accept\" you are agreeing to our use of cookies. \n    For more details view our Cookie Policy Information.\n<button class=\"cookieConsentAcceptClass\" (click)=\"acceptCookie()\">\n    Accept\n</button>\n</div></div>\n</div>\n<nav class=\"navbar navbarClass navbar-default upper-nav\">\n    <div class=\"container w-auto\">\n        <div class=\"row\">\n            <div class=\"col-md-4 col-md-offset-8\">\n                <div class=\"row hidden-xs sec-nav\">\n                    <div class=\"col-xs display-inline-block pull-right\">\n\n\n                        <div class=\"downloadMobileAppClass\">\n                            <span class=\"mobile-icon\">\n                                <i class=\"material-icons\">phone_iphone</i>\n                            </span>\n                            <span class=\"down-app\" (click)=\"openDownloadAppModal()\">Download Mobile App</span>\n                        </div>\n\n\n\n                    </div>\n                    <div class=\"col-xs pd-0 w-auto display-inline-block pull-right\">\n                        <div>\n                            <div class=\"selectLanguageClassWrapper \">\n                                <span class=\"mobile-icon\">\n                                    <i class=\"material-icons\">language</i>\n                                </span>\n                                <select class=\"ng-element selectLanguageClass\">\n                                    <option value=\"1\">English</option>\n                                    <option value=\"2\">Español</option>\n                                    <option value=\"3\">Français</option>\n                                    <option value=\"4\">Português</option>\n                                </select>\n                            </div>\n                        </div>\n                    </div>\n\n\n                </div>\n            </div>\n        </div>\n    </div>\n</nav>\n\n\n<nav class=\"nav navbar  font-S-Arial-n4 navbar-default navbar-theme navbar-theme-shadow navbarClass2\">\n    <div class=\"\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed eyebrow\" data-toggle=\"collapse\" data-target=\"#nav-toggle\"\n                aria-expanded=\"false\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"/carrier/\">\n                <link rel=\"alternate\" href=\"https://www.carrier.com/carrier/en/dz/\" hreflang=\"en-dz\">\n                <link rel=\"alternate\" href=\"https://www.carrier.com/carrier/en/us/\" hreflang=\"en-us\">\n                <img src=\"https://s3.amazonaws.com/upload.uxpin/files/913027/903263/carrier_logo-6599e8.PNG\" alt=\"Carrier Logo\"\n                    title=\"Carrier Logo\" itemprop=\"logo\" class=\"carrier-logo\">\n            </a>\n        </div>\n\n\n\n        <div class=\"collapse navbar-collapse menuClass\" id=\"nav-toggle\">\n            <ul class=\"nav navbar-nav font-G-a9qp4vvmdw-n3\">\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/products/\">Products<span class=\"sr-only\">(current)</span></a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/service-support/\">Service and\n                        Support</a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/customer-connection/\">Customer\n                        Connection</a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/sustainability/\">Sustainability</a>\n                </li>\n                <li><a href=\"https://www.carrier.com/truck-trailer/en/north-america/about-carrier/about-carrier-transicold/\">About\n                        Us</a>\n                </li>\n                <li class=\"visible-xs visible-sm hidden-xl\">\n                    <a href=\"#\">\n                        <span class=\"mobile-icon\">\n                            <i class=\"material-icons\">phone_iphone\n                            </i>\n                        </span>\n                        <select class=\"ng-element selectLanguageClass\">\n                            <option value=\"1\">English</option>\n                            <option value=\"2\">Español</option>\n                            <option value=\"3\">Français</option>\n                            <option value=\"4\">Português</option>\n                        </select>\n                    </a>\n                </li>\n                <li class=\"visible-xs visible-sm hidden-xl\">\n                    <a href=\"#\">\n                        <span class=\"mobile-icon\" (click)=\"openDownloadAppModal()\">\n                            <i class=\"material-icons\">language\n                            </i> </span> Download Mobile App\n                    </a>\n                </li>\n            </ul>\n        </div>\n    </div>\n\n</nav>\n \n\n<ng-template #generatemodal class=\"modal-box\" style=\"width: 400px; height: 282px;\">\n    <div class=\"modal-header\"  >\n      <h4 class=\"modal-title pull-left\" >Download Mobile Application</h4>\n      <!-- <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">X -->\n          \n        <!-- <span aria-hidden=\"true\"></span>\n      </button> -->\n<span (click)=\"modalRef.hide()\" class=\"close pull-right\">\n      <i class=\"material-icons\">\n            close\n            </i></span>\n    </div>\n    <div class=\"modal-body\">\n            Get the Carrier mobile application to easily find your dealers in the palm of your hands. Available for Android and iOS devices.\n       <div  style=\"margin-top:70px;text-align:center\">\n            <img  (click)=\"openAndroid()\"      \n         src=\"https://uc.uxpin.com/files/913027/903263/1024px-Get_it_on_Google_play.svg-d24706.png\" \n         style=\"opacity: 1; \n         mix-blend-mode: normal; \n         border-radius: 0px; object-fit: fill; \n         object-position: center center; width: 130px; height: 38px; \n         \">\n    \n\n    <img src=\"https://uc.uxpin.com/files/913027/903263/640px-Download_on_the_App_Store_Badge.svg-9c011d.png\" \n    style=\"opacity: 1; mix-blend-mode: normal; border-radius: 0px; \n    object-fit: fill; object-position: center center; \n    width: 130px; height: 38px; margin-left:18px\">\n</div> </div>\n</ng-template>\n "
 
 /***/ }),
 
@@ -1763,7 +1787,7 @@ var HeaderComponent = /** @class */ (function () {
             this.cookieAccepted = true;
         }
     };
-    HeaderComponent.prototype.open = function () {
+    HeaderComponent.prototype.openDownloadAppModal = function () {
         this.modalRef = this.modalService.show(this.generatemodal, this.config);
     };
     HeaderComponent.prototype.acceptCookie = function () {
@@ -1772,15 +1796,19 @@ var HeaderComponent = /** @class */ (function () {
     };
     HeaderComponent.prototype.openAndroid = function () {
         if (navigator.userAgent.match(/android/i)) {
-            var androidLink = 'market://details?id=com.carriertransicold.containerLINK';
-            var win = window.open(androidLink, '_blank');
+            var androidLink = 'http://play.google.com/store/apps/details?id=com.carriertransicold.containerLINK';
+            // var androidLink = 'market://details?id=com.carriertransicold.containerLINK';
             this.modalRef.hide();
+            var win = window.open(androidLink, '_blank');
             win.focus();
         }
+        else if (navigator.userAgent.match(/iphone/i)) {
+            window.location.href = 'http://itunes.apple.com/lb/app/truecaller-caller-id-number/id448142450?mt=8';
+        }
         else {
-            var androidLink = 'https://play.google.com/store/apps/details?id=com.carriertransicold.containerLINK';
-            var win = window.open(androidLink, '_blank');
+            var Link = 'https://play.google.com/store/apps/details?id=com.carriertransicold.containerLINK';
             this.modalRef.hide();
+            var win = window.open(Link, '_blank');
             win.focus();
         }
     };
@@ -2136,7 +2164,7 @@ module.exports = ".Container {\r\n    width: 100%;\r\n    min-width: 500px;\r\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <app-header></app-header>\n<app-contentpage></app-contentpage>\n<app-dealerlist></app-dealerlist>\n<app-footer></app-footer>\n<ng4-loading-spinner></ng4-loading-spinner>   \n  -->"
+module.exports = " <app-header></app-header>\n<app-contentpage></app-contentpage>\n<app-dealerlist></app-dealerlist>\n<app-footer></app-footer>\n<ng4-loading-spinner></ng4-loading-spinner>   \n "
 
 /***/ }),
 
@@ -2256,6 +2284,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AllRegionsService", function() { return AllRegionsService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2267,13 +2296,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var AllRegionsService = /** @class */ (function () {
     function AllRegionsService(http) {
         this.http = http;
-        this.baseUrl = "https://dealerlocatorwapp.azurewebsites.net/api/";
+        this.baseUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiBaseUrl + 'api/countrycitystate/';
     }
     AllRegionsService.prototype.getAllRegions = function () {
-        return this.http.get(this.baseUrl + 'countrycitystate/getallregions');
+        return this.http.get(this.baseUrl + 'getallregions');
     };
     AllRegionsService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -2448,6 +2478,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _contentpage_allRegionData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../contentpage/allRegionData */ "./src/app/contentpage/allRegionData.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2460,17 +2491,21 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var httpOptions = {
     headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json' })
 };
 var DealerService = /** @class */ (function () {
     function DealerService(http) {
         this.http = http;
-        this.baseUrl = "https://dealerlocatorwapp.azurewebsites.net/api/";
+        this.baseUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + 'api/dealer/';
     }
     // Uses http.get() to load data from a single API endpoint
     DealerService.prototype.getAllDealers = function () {
-        return this.http.get(this.baseUrl + 'dealer/getall');
+        return this.http.get(this.baseUrl + 'getall');
+    };
+    DealerService.prototype.getDealer = function (id) {
+        return this.http.get(this.baseUrl + 'get/' + id);
     };
     DealerService.prototype.getAllRegions = function () {
         return _contentpage_allRegionData__WEBPACK_IMPORTED_MODULE_1__["AllRegions"];
@@ -2502,6 +2537,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _services_error_handler_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/error-handler.service */ "./src/app/services/error-handler.service.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2515,15 +2551,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var EmailService = /** @class */ (function () {
     function EmailService(http, errorHandlerService) {
         this.http = http;
         this.errorHandlerService = errorHandlerService;
-        this.baseUrl = "https://dealerlocatorwapp.azurewebsites.net/api/";
+        this.baseUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].apiBaseUrl + 'api/email/';
     }
     EmailService.prototype.sendEmail = function (emailObj) {
         if (emailObj) {
-            return this.http.post(this.baseUrl + 'email/Send', emailObj)
+            return this.http.post(this.baseUrl + 'Send', emailObj)
                 .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.errorHandlerService.handleError));
         }
     };
@@ -2729,7 +2766,8 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
-    production: false
+    production: false,
+    apiBaseUrl: 'https://dealerlocatorwapp.azurewebsites.net/'
 };
 /*
  * For easier debugging in development mode, you can import the following file
