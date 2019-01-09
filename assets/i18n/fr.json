@@ -1,5 +1,14 @@
 {
-    "Title": "Exemple de traduction",
-    "Intro": "Bonjour je m'appelle {{name}}, j'ai {{age}} ans.",
-    "TitleSeeCompleteList":"Voir la liste complète des revendeurs"
+    "Accept":"",
+    "SeeCompleteList":"Voir la liste complète des revendeurs",
+    "DownloadMobileApplication":"Télécharger l'application mobile",
+    "DownloadMobileApp":"Télécharger l'application mobile",
+    "Products":"Des produits",
+    "ServiceandSupport":"Service et support",
+    "CustomerConnection":"Connexion client",
+    "Sustainability":"Durabilité",
+    "AboutUs":"À propos de nous",
+    "GetDirection": "OBTENIR DES DIRECTIONS",
+
+    "PrivacyNotice" :"Avis de confidentialité"
 }

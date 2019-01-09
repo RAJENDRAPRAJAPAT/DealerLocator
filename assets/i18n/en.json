@@ -1,6 +1,18 @@
 {
-    "Title": "Translation example",
-    "Intro": "Hello I am {{name}}, I am {{age}} years old.",
-    "TitleSeeCompleteList":"See The Complete Dealer List"
+    
+    
+    "DownloadMobileApplication": "Download Mobile Application",
+    "DownloadMobileApp":"Download Mobile App",
+    "Products":"Products",
+    "ServiceandSupport":"Service and Support",
+    "CustomerConnection":"Customer Connection",
+    "Sustainability":"Sustainability",
+    "AboutUs":"About Us",
 
+    "SeeCompleteList":"See The Complete Dealer List",
+
+
+    "GetDirection": "GET DIRECTIONS",
+
+    "PrivacyNotice" :"Privacy Notice"
 }
