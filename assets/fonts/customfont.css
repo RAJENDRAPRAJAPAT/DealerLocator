@@ -1,4 +1,4 @@
 @font-face {
-    font-family: 'rotissemiserifw01-roman','Rotis','Georgia';
-    src: url("/assets/font/6448334c-4ba8-48e9-aecd-d87bf53d47a3.ttf") format("truetype");
+    font-family: 'rotissemiserifw01-roman';
+    src: url('./6448334c-4ba8-48e9-aecd-d87bf53d47a3.ttf') format("truetype");
 }
