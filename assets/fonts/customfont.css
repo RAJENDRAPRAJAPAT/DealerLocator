@@ -1,4 +1,44 @@
+@charset "UTF-8";
+
 @font-face {
-    font-family: 'rotissemiserifw01-roman';
-    src: url('./6448334c-4ba8-48e9-aecd-d87bf53d47a3.ttf') format("truetype");
+	font-family: news gothic mt w01;
+	src: url(./37d9e911-0350-4505-a092-d4bb68731be9.eot?#iefix);
+    src: url(./37d9e911-0350-4505-a092-d4bb68731be9.eot?#iefix) format("eot"), 
+    url(./a48fde8c-ae6e-4cd2-882e-c9296613398c.woff2) format("woff2"), 
+    url(./df9b49fd-a69d-4b3c-9502-e148796c36ba.woff) format("woff"), 
+    url(./2547c32b-e98b-487e-b645-8f51db8ae92f.ttf) format("truetype"), 
+    url(./a5f40cdb-c908-4500-81c7-a7e69f01df8c.svg#a5f40cdb-c908-4500-81c7-a7e69f01df8c) format("svg")
+}
+
+@font-face {
+	font-family: rotissemiserifw01-roman;
+	src: url(../fonts/2ee0e7ed-5668-4fa5-8637-7a8bc98cd1fd.eot?#iefix);
+    src: url(../fonts/2ee0e7ed-5668-4fa5-8637-7a8bc98cd1fd.eot?#iefix) format("eot"), 
+    url(../fonts/df75a53e-dbb3-455d-97fe-06cc05821fc8.woff2) format("woff2"), 
+    url(../fonts/afaa3c4a-15e8-43f7-8055-7a6ec2236af2.woff) format("woff"), 
+    url(../fonts/6448334c-4ba8-48e9-aecd-d87bf53d47a3.ttf) format("truetype"), 
+    url(../fonts/86b9f366-3460-4acc-9a7e-b9b64613f83a.svg#86b9f366-3460-4acc-9a7e-b9b64613f83a) format("svg")
+}
+
+@font-face {
+	font-family: news gothic mt w01 bold;
+	src: url(../fonts/1dd2c283-40a4-490b-a0d7-ef417dac4d66.eot?#iefix);
+    src: url(../fonts/1dd2c283-40a4-490b-a0d7-ef417dac4d66.eot?#iefix) format("eot"), 
+    url(../fonts/d256558e-3dfc-4734-a7ea-9820056356ee.woff2) format("woff2"), 
+    url(../fonts/7100c084-fc4c-46d8-b4e5-ddddc8a5ef96.woff) format("woff"), 
+    url(../fonts/8abe9396-51db-4d9e-a3e2-71f057051ec6.ttf) format("truetype"), 
+    url(../fonts/9937da80-c9ad-405a-b7ad-ed7552fbc86a.svg#9937da80-c9ad-405a-b7ad-ed7552fbc86a) format("svg")
+}
+
+body, html, app-root {
+    font-family: news gothic mt w01,news gothic mt,news gothic,helvetica neue,Helvetica,Arial,sans-serif !important;
+    font-size: 13px;
+}
+
+.dealerNameHeading, .transparentSectionText.font-S-Times_New_Roman-n4  {
+    font-family: rotissemiserifw01-roman,Rotis,Georgia,times new roman,Times,serif !important;
+}
+
+.nav>li>a {
+    font-family: news gothic mt w01,news gothic mt,news gothic,helvetica neue,Helvetica,Arial,sans-serif !important;
 }
