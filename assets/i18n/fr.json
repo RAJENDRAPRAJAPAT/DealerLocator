@@ -1,13 +1,18 @@
 {
-    "Accept":"",
-    "SeeCompleteList":"Voir la liste complète des revendeurs",
-    "DownloadMobileApplication":"Télécharger l'application mobile",
-    "DownloadMobileApp":"Télécharger l'application mobile",
-    "Products":"Des produits",
-    "ServiceandSupport":"Service et support",
-    "CustomerConnection":"Connexion client",
-    "Sustainability":"Durabilité",
-    "AboutUs":"À propos de nous",
-    "GetDirection": "OBTENIR DES DIRECTIONS",
-    "PrivacyNotice" :"Avis de confidentialité"
+    
+    "GetTheCarrierMobileApp":"Get the Carrier mobile application to easily find your dealers in the palm of your hands. Available for Android and iOS devices.",
+    "DownloadMobileApplication": "Download Mobile Application",
+    "DownloadMobileApp":"Download Mobile App",
+    "Products":"Products",
+    "ServiceandSupport":"Service and Support",
+    "CustomerConnection":"Customer Connection",
+    "Sustainability":"Sustainability",
+    "AboutUs":"About Us",
+
+    "SeeCompleteList":"See The Complete Dealer List",
+
+
+    "GetDirection": "GET DIRECTIONS",
+
+    "PrivacyNotice" :"Privacy Notice"
 }
