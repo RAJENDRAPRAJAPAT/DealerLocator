@@ -1,6 +1,6 @@
 {
     "CookiePolicy": "This website use cookies. By clicking on 'Accept' you are agreeing to our use of cookies. For more details view our ",
-    "CookiePolicyInformation":"Cookie Policy Information.",
+    "CookiePolicyInformation":"Privacy Notice.",
     "GetTheCarrierMobileApp": "Get the Carrier mobile application to easily find your dealers in the palm of your hands. Available for Android and iOS devices.",
     "DownloadMobileApplication": "Download Mobile Application",
     "DownloadMobileApp": "Download Mobile App",
@@ -28,17 +28,23 @@
     "GetDirection": "GET DIRECTIONS",
     "PrivacyNotice": "Privacy Notice",
     "TermsOfUse": "Terms Of Use",
-    "CarrierCorporation2018": "Carrier Corporation 2018",
+    "CarrierCorporation2018": "Carrier Corporation 2019",
 
   "EnterEmailAddresses":  "Enter email addresses seperated with commas...",
   "EnterCustomMessage":"Enter custom message",
    
   "PostalCode":"Postal Code",
-  "DistanceInMiles":"Distance (in miles)",
+  "DistanceInMiles":"Distance",
   "AllDealerServices":"All Dealer services",
   "TruckTrailerRail":"Truck/Trailer/Rail",
   "MobileService":"Mobile Service",
   "APU":"APU",
-  "EnterCityNamePostalCode":"Enter City Name or Postal Code"
-
+  "EnterCityNamePostalCode":"Enter City Name or Postal Code",
+  "NoDataFound": "No Data Found",
+  "CarrierIsPart":"Carrier is part of",
+  "Security":"",
+  "aUnitOf":"a unit of",
+  "AllStates":"All States",
+  "AllCities":"All Cities",
+  "Accept":"Accept"
 }
