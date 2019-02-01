@@ -11,6 +11,7 @@
     "AboutUs": "About Us",
     "CarrierTransicold": "Carrier Transicold's Truck Trailer Dealer Locator",
     "SeeCompleteList": "See The Complete Dealer List",
+    "CompleteDealerList":"Complete Dealer List",
     "Search": "Search",
     "GoBackToSearch": "Go Back to Search",
     "HideFilters": "Hide Filters",
@@ -22,7 +23,7 @@
     "MobileNumber": "Mobile Number",
     "Hours": "Hours",
     "Closed": "Closed",
-    "Open": "Open",
+    "OpenToday": "Open Today",
     "Website": "Website",
     "ShareStoreDetails": "Share Store Details",
     "GetDirection": "GET DIRECTIONS",
@@ -46,5 +47,8 @@
   "aUnitOf":"a unit of",
   "AllStates":"All States",
   "AllCities":"All Cities",
-  "Accept":"Accept"
+  "Accept":"Accept",
+  "MappingAt":"Mapping services provided by this Website and its Apps are provided by Google Maps and are subject to the current (as of time of use) Google Maps/Google Earth Additional Terms of Service found at",
+  "GooglePrivacy":" and Google Privacy Policy found at",
+  "InTheEventConflict":" In the event of a conflict between this Privacy Notice and the Google Maps/Google Earth Additional Terms of Service and/or Google Privacy Policy, then as to issues related solely to the use of the mapping services provided by this Website or its Apps, the terms of the Google Maps/Google Earth Additional Terms of Service and/or Google Privacy Policy shall control."
 }

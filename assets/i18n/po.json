@@ -11,6 +11,7 @@
   "AboutUs": "Sobre nós",
   "CarrierTransicold": "Localizador de Centros de Serviço da Carrier Transicold Truck Trailer",
   "SeeCompleteList": "Veja a lista completa de Centros de Serviço",
+  "CompleteDealerList":"Lista completa de Centros de Serviço",
   "Search": "Pesquisar",
   "GoBackToSearch": "Voltar para a pesquisa",
   "HideFilters": "Ocultar filtros",
@@ -23,7 +24,7 @@
   "Hours": "Horário",
   "Website": "Website",
   "Closed": "Fechado",
-  "Open": "Aberto",
+  "OpenToday": "Aberto hoje",
   "ShareStoreDetails": "Compartilhar detalhes do Centro de Serviço",
   "GetDirection": "Obter direções",
   "TermsOfUse": "Termos de uso",
@@ -45,5 +46,8 @@
   "AllStates":"Todos os Estados",
   "AllCities":"Todas as cidades",
   "MappingServicesTerms":"Termos de uso dos serviços de mapeamento",
-  "Accept":"Aceitar"
+  "Accept":"Aceitar",
+  "MappingAt":"Os serviços de mapeamento fornecidos por este site e seus aplicativos são fornecidos pelo Google Maps e estão sujeitos aos Termos de Serviço adicionais atuais do Google Maps/Google Earth (no momento do uso) encontrados em:",
+  "GooglePrivacy":" e da Política de Privacidade do Google encontrada em: ",
+  "InTheEventConflict":" Em caso de conflito entre este Aviso de Privacidade e os Termos de Serviço Adicionais do Google Maps/Google Earth e/ou a Política de Privacidade do Google, quanto a questões relacionadas exclusivamente ao uso dos serviços de mapeamento fornecidos por este site ou seus Aplicativos, os Termos de Serviço Adicionais do Google Maps/Google Earth e/ou a Política de Privacidade do Google prevalecerão."
 }
