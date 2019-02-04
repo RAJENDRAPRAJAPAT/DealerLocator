@@ -49,5 +49,12 @@
   "Accept":"Aceitar",
   "MappingAt":"Os serviços de mapeamento fornecidos por este site e seus aplicativos são fornecidos pelo Google Maps e estão sujeitos aos Termos de Serviço adicionais atuais do Google Maps/Google Earth (no momento do uso) encontrados em:",
   "GooglePrivacy":" e da Política de Privacidade do Google encontrada em: ",
-  "InTheEventConflict":" Em caso de conflito entre este Aviso de Privacidade e os Termos de Serviço Adicionais do Google Maps/Google Earth e/ou a Política de Privacidade do Google, quanto a questões relacionadas exclusivamente ao uso dos serviços de mapeamento fornecidos por este site ou seus Aplicativos, os Termos de Serviço Adicionais do Google Maps/Google Earth e/ou a Política de Privacidade do Google prevalecerão."
+  "InTheEventConflict":" Em caso de conflito entre este Aviso de Privacidade e os Termos de Serviço Adicionais do Google Maps/Google Earth e/ou a Política de Privacidade do Google, quanto a questões relacionadas exclusivamente ao uso dos serviços de mapeamento fornecidos por este site ou seus Aplicativos, os Termos de Serviço Adicionais do Google Maps/Google Earth e/ou a Política de Privacidade do Google prevalecerão.",
+  "privacyUrl": "https://www.carrier.com/truck-trailer/pt/br/privacy-notice/",
+  "ProductLink":"https://www.carrier.com/truck-trailer/pt/br/products/br-truck-trailer/",
+  "ServiceSupportLink":"https://www.carrier.com/truck-trailer/pt/br/servico-e-suporte/",
+  "CustomerConnectionLink":"https://www.carrier.com/truck-trailer/pt/br/noticias/",
+  "SustainabilityLink": "https://www.carrier.com/truck-trailer/pt/br/sustentabilidade/",
+  "AboutUsLink":"https://www.carrier.com/truck-trailer/pt/br/sobre-a-carrier/",
+  "TermsOfUseLink":"https://www.carrier.com/truck-trailer/pt/br/terms-of-use/"
 }
