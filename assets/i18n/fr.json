@@ -26,6 +26,7 @@
     "OpenToday": "Ouvert Aujourd'hui",
     "Website": "Site Internet",
     "ShareStoreDetails": "Partager les détails du magasin avec d'autres",
+    "ShareStoreDetailsOthers": "Partager les détails",
     "GetDirection": "Itinéraire",
     "PrivacyNotice": "Avis de confidentialité",
     "TermsOfUse": "Conditions d'utilisation",
@@ -60,6 +61,7 @@
   "SustainabilityLink": "https://www.carrier.com/truck-trailer/en/north-america/sustainability/",
   "AboutUsLink":"https://www.carrier.com/truck-trailer/en/north-america/about-carrier/about-carrier-transicold/",
   "TermsOfUseLink":"https://www.carrier.com/truck-trailer/en/north-america/terms-of-use/",
-  "eMail":"Email"
+  "eMail":"Email",
+  "SendEmail":"Envoyer un email"
 
 }

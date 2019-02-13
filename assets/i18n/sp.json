@@ -26,6 +26,7 @@
   "OpenToday": "Abierto hoy",
   "Website": "Sitio Web",
   "ShareStoreDetails": "Compartir detalles del Distribuidor",
+  "ShareStoreDetailsOthers": "Compartir detalles del Dealer",
   "GetDirection": "Obtener direcciones",
   "PrivacyNotice": "Notificación de Privacidad",
   "TermsOfUse": "Términos de Uso",
@@ -57,6 +58,7 @@
   "SustainabilityLink": "https://www.carrier.com/truck-trailer/es/latin-america/sostenibilidad/",
   "AboutUsLink":"https://www.carrier.com/truck-trailer/es/latin-america/sobre-carrier/",
   "TermsOfUseLink":"https://www.carrier.com/truck-trailer/es/latin-america/terms-of-use/",
-  "eMail":"Email"
+  "eMail":"Email",
+  "SendEmail":"Enviar correo electrónico"
 
 }

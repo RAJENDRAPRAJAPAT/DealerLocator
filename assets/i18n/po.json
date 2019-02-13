@@ -26,6 +26,7 @@
   "Closed": "Fechado",
   "OpenToday": "Aberto hoje",
   "ShareStoreDetails": "Compartilhar detalhes do Centro de Serviço",
+  "ShareStoreDetailsOthers": "Compartilhar detalhes do Centro de Serviço",
   "GetDirection": "Obter direções",
   "TermsOfUse": "Termos de uso",
   "PrivacyNotice": "Aviso de privacidade",
@@ -57,5 +58,7 @@
   "SustainabilityLink": "https://www.carrier.com/truck-trailer/pt/br/sustentabilidade/",
   "AboutUsLink":"https://www.carrier.com/truck-trailer/pt/br/sobre-a-carrier/",
   "TermsOfUseLink":"https://www.carrier.com/truck-trailer/pt/br/terms-of-use/",
-  "eMail":"Email"
+  "eMail":"Email",
+  "SendEmail":"Enviar e-mail"
+
 }
